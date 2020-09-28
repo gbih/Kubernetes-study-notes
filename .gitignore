@@ -1,0 +1,31 @@
+# FILES
+.DS_Store
+API-SERVER
+CLUSTER-PSP-SETUP
+tls.cert
+tls.key
+*.cert
+*.key
+
+
+# DIRECTORIES
+vendor/
+00-blog/
+INGRESS-RULES/
+MANUAL-INGRESS/
+MISC/
+PREDEFINED-RESOURCES/
+PSP/
+REFERENCE/
+SETUP-Fluentd/
+SETUP-rbac-and-metrics/
+chp08-pod-metadata/
+chp09-deployments/
+chp10-statefulsets/
+chp11-internals/
+chp12-secure/
+chp13-secure-clusters/
+chp14-pod-resources/
+chp15-scaling/
+chp17-bestpractices/
+

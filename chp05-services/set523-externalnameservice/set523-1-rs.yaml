@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kubia
+  namespace: chp05-set523
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubia # match spec.template.metadata.labels
+  # set up pods here
+  template:
+    metadata:
+      labels:
+        app: kubia # match spec.selector.matchLabels
+    spec:
+      containers:
+      - name: kubia
+        image: luksa/kubia
+        # use containerPort inside 'container' field
+        ports:
+        - containerPort: 8080

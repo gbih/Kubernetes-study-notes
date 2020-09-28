@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortune-https
+  namespace: chp07-set753
+  labels:
+    app: fortune-https
+spec:
+  # volumes go in spec.volumes
+  volumes:
+  - name: html 
+    emptyDir: {}
+  - name: config
+    # This volume references the fortune-config ConfigMap
+    configMap:
+      name: fortune-config
+      # populate configMap volume with only entries under this key
+      items:
+      - key: my-nginx-config.conf
+        # value of entry stored in this file
+        path: https.conf 
+      defaultMode: 0666
+  - name: certs
+    secret:
+      secretName: fortune-https
+
+  containers:
+  - image: georgebaptista/fortune:env
+    name: html-generator
+    # volumeMounts go in spec.containers[].volumeMounts
+    volumeMounts:
+    - name: html
+      # mount here for this container
+      mountPath: /var/htdocs
+    env:
+    - name: INTERVAL
+      valueFrom:
+        configMapKeyRef:
+          name: fortune-config
+          key: sleep-interval
+
+  - image: nginx:alpine
+    name: web-server
+    volumeMounts:
+      # refer to emptyDir html
+    - name: html
+      mountPath: /usr/share/nginx/html
+      readOnly: true
+
+      # refer to configMap config
+    - name: config
+      mountPath: /etc/nginx/conf.d
+      readOnly: true 
+
+      # refer to configMap cert
+      # we configured Nginx to read the cert and key file from 
+      # /etc/nginx/certs, so we need to mount the Secret volume there
+    - name: certs
+      mountPath: /etc/nginx/certs/ 
+      readOnly: true
+
+    ports:
+    - containerPort: 80
+    - containerPort: 443
+

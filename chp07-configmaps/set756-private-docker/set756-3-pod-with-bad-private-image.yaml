@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-pod-bad
+  namespace: chp07-set756
+spec:
+  imagePullSecrets:
+  - name: mydockerhubsecreti-bad
+  containers:
+  - image: georgebaptista/kubia
+    name: kubia
+

@@ -1,0 +1,21 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: batch-job
+  namespace: chp04-set461
+spec:
+  schedule: "*/1 * * * *"
+  #schedule: "0,15,30,45 * * * *"
+  concurrencyPolicy: Allow
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: periodic-batch-job
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: main
+            image: georgebaptista/batch-job
+

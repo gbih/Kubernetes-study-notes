@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitrepo-volume-demo
+  namespace: chp06-set622
+spec:
+  ports:
+  - port: 80 # incoming 
+    # the pod containerPort is 80, so our targetPort is 80
+    targetPort: 80 # outgoing target 
+    protocol: TCP
+  selector:
+    app: gitrepo-volume-demo 

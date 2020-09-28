@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: batch-job
+  namespace: chp04-set452
+spec:
+  template:
+    metadata:
+      labels:
+        app: batch-job
+    spec:
+      # Jobs can't use the default restart policy, which is Always
+      restartPolicy: OnFailure # needs to be either OnFailure or Never
+      containers:
+      - name: main
+        image: georgebaptista/batch-job # based on busybox image
+
+# This runs a pod performing a single completable task.
+

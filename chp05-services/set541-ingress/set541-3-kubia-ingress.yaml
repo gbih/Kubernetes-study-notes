@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubia
+  namespace: chp05-set541
+spec:
+  rules:
+  # map kubia.example.com to our service
+  # Add this entry to /etc/hosts
+  # 127.0.0.1 kubia.example.com
+  - host: kubia.example.com
+    http:
+      paths:
+      # all requests sent to port 80 of the kubia-nodeport service
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kubia-nodeport
+            port:
+              number: 80
+          # IC on most cloud providers require the Ingress to point to a NodePort service
+  - host: foo.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: foo-nodeport
+            port:
+              number: 80
+  - host: bar.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: bar-nodeport
+            port:
+              number: 80
+  

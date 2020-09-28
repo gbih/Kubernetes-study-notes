@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+  namespace: chp03-set322
+spec:
+  selector:
+    # match corresponding pods with label `creation_method: manual`    
+    creation_method: manual
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  type: NodePort
+

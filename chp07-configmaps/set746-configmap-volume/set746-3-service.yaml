@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fortune-configmap-volume
+  namespace: chp07-set746
+spec:
+  ports:
+  - port: 80 # incoming port
+    targetPort: 80 # outgoing port
+  selector:
+    app: fortune-configmap-volume

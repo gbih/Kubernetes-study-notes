@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-liveness
+  namespace: chp04-set412
+  labels:
+    ver: "1"
+    app: kubia-liveness
+    env: dev
+spec:
+  containers:
+  #- image: georgebaptista/kubia-unhealthy # broken app image
+  - image: luksa/kubia-unhealthy
+    name: kubia
+    livenessProbe:
+      httpGet:
+        path: / # probe HTTP request path
+        port: 8080 # port the probe connects to
+      initialDelaySeconds: 10 # default: 0
+      timeoutSeconds: 1 # default: 1
+      periodSeconds: 1 # default: 30
+      failureThreshold: 2 # default: 3
+

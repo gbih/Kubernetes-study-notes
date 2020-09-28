@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-service
+  namespace: chp05-set523
+# we do not create pods here, only set up the ports for them
+spec:
+  type: ExternalName
+  externalName: api6.ipify.org
+  ports:
+  - port: 80 # accept connections on port 80
+
+# Note: we only use containerPort inside container YAML
+# Note: we only use targetPort in a Service resource

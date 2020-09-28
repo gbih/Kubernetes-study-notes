@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dnsutils
+  namespace: chp05-set561
+spec:
+  containers:
+  - image: tutum/dnsutils
+    name: dnsutils
+    command:
+    - sleep
+    - infinity

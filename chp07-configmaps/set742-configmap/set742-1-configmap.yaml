@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: fortune-config
+    namespace: chp07-set742
+  data:
+    sleep-interval: "23"
+    location: Japan

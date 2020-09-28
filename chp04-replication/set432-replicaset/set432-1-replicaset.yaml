@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kubia
+  namespace: chp04-set432
+spec:
+  replicas: 3
+  selector:
+    matchLabels: # simple matchLabels selector
+      app: kubia
+
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: kubia
+        image: georgebaptista/kubia
+

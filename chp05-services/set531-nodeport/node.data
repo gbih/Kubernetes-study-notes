@@ -1,0 +1,302 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Node",
+            "metadata": {
+                "annotations": {
+                    "node.alpha.kubernetes.io/ttl": "0",
+                    "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+                },
+                "creationTimestamp": "2020-01-15T03:26:14Z",
+                "labels": {
+                    "beta.kubernetes.io/arch": "amd64",
+                    "beta.kubernetes.io/os": "linux",
+                    "gpu": "true",
+                    "kubernetes.io/arch": "amd64",
+                    "kubernetes.io/hostname": "actionbook-vm",
+                    "kubernetes.io/os": "linux",
+                    "microk8s.io/cluster": "true"
+                },
+                "name": "actionbook-vm",
+                "resourceVersion": "557504",
+                "selfLink": "/api/v1/nodes/actionbook-vm",
+                "uid": "e3a81c76-1f34-4fbb-b7ee-ccfd8123915b"
+            },
+            "spec": {},
+            "status": {
+                "addresses": [
+                    {
+                        "address": "192.168.64.85",
+                        "type": "InternalIP"
+                    },
+                    {
+                        "address": "actionbook-vm",
+                        "type": "Hostname"
+                    }
+                ],
+                "allocatable": {
+                    "cpu": "1",
+                    "ephemeral-storage": "29259664Ki",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "8066392Ki",
+                    "pods": "110"
+                },
+                "capacity": {
+                    "cpu": "1",
+                    "ephemeral-storage": "30308240Ki",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "8168792Ki",
+                    "pods": "110"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2020-01-23T13:30:24Z",
+                        "lastTransitionTime": "2020-01-23T10:43:01Z",
+                        "message": "kubelet has sufficient memory available",
+                        "reason": "KubeletHasSufficientMemory",
+                        "status": "False",
+                        "type": "MemoryPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2020-01-23T13:30:24Z",
+                        "lastTransitionTime": "2020-01-23T10:43:01Z",
+                        "message": "kubelet has no disk pressure",
+                        "reason": "KubeletHasNoDiskPressure",
+                        "status": "False",
+                        "type": "DiskPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2020-01-23T13:30:24Z",
+                        "lastTransitionTime": "2020-01-23T10:43:01Z",
+                        "message": "kubelet has sufficient PID available",
+                        "reason": "KubeletHasSufficientPID",
+                        "status": "False",
+                        "type": "PIDPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2020-01-23T13:30:24Z",
+                        "lastTransitionTime": "2020-01-23T10:43:01Z",
+                        "message": "kubelet is posting ready status. AppArmor enabled",
+                        "reason": "KubeletReady",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "daemonEndpoints": {
+                    "kubeletEndpoint": {
+                        "Port": 10250
+                    }
+                },
+                "images": [
+                    {
+                        "names": [
+                            "docker.io/library/node@sha256:2822a3dad9c78add26f6265983d82b49882560c34c018cbbb09e594027a5d1bc",
+                            "docker.io/library/node:latest"
+                        ],
+                        "sizeBytes": 361123263
+                    },
+                    {
+                        "names": [
+                            "docker.io/luksa/kubia-pet-peers@sha256:7a0aa2ab88fb24878a2a96c68e4f2a458d1135dccf60b8be62e993ba0158bd3b",
+                            "docker.io/luksa/kubia-pet-peers:latest"
+                        ],
+                        "sizeBytes": 263842441
+                    },
+                    {
+                        "names": [
+                            "docker.io/luksa/kubia-pet@sha256:4263bc375d3ae2f73fe7486818cab64c07f9cd4a645a7c71a07c1365a6e1a4d2",
+                            "docker.io/luksa/kubia-pet:latest"
+                        ],
+                        "sizeBytes": 263842068
+                    },
+                    {
+                        "names": [
+                            "docker.io/luksa/kubia@sha256:bcae4c20b355376d86bb34db0c9637a2e72058db5a66af82c868a2cfdcb0ac80",
+                            "docker.io/luksa/kubia:v3"
+                        ],
+                        "sizeBytes": 263841930
+                    },
+                    {
+                        "names": [
+                            "docker.io/luksa/kubia-unhealthy@sha256:5c746a42612be61209417d913030d97555cff0b8225092908c57634ad7c235f7",
+                            "docker.io/luksa/kubia-unhealthy:latest"
+                        ],
+                        "sizeBytes": 263841919
+                    },
+                    {
+                        "names": [
+                            "docker.io/luksa/kubia@sha256:216cdd252c24726012bd78d47c2538de2abe5d75ac5a8afddeed8b3833f9e88d",
+                            "docker.io/luksa/kubia:v2"
+                        ],
+                        "sizeBytes": 263841859
+                    },
+                    {
+                        "names": [
+                            "docker.io/luksa/kubia@sha256:64e06eba2c35e7ccba6f26626ac962164382adedcef30b3416517f47d81f7a0b",
+                            "docker.io/luksa/kubia:v4"
+                        ],
+                        "sizeBytes": 263841858
+                    },
+                    {
+                        "names": [
+                            "docker.io/luksa/kubia@sha256:259e3d728621f001a629a5fe4b56020d0a14e239b0ea82727c1398f155c75a5d",
+                            "docker.io/luksa/kubia:v1"
+                        ],
+                        "sizeBytes": 263841857
+                    },
+                    {
+                        "names": [
+                            "docker.io/luksa/kubia@sha256:3f28e304dc0f63dc30f273a4202096f0fa0d08510bd2ee7e1032ce600616de24",
+                            "docker.io/luksa/kubia:latest"
+                        ],
+                        "sizeBytes": 259048246
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/tomcat@sha256:f8edbcba564eca1d3d6d5d73d993a661801b5a7c6542dff44bdab57d0bccc567",
+                            "docker.io/library/tomcat:latest"
+                        ],
+                        "sizeBytes": 230938784
+                    },
+                    {
+                        "names": [
+                            "quay.io/kubernetes-ingress-controller/nginx-ingress-controller-amd64:0.25.1"
+                        ],
+                        "sizeBytes": 205038326
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/mongo@sha256:aff0c497cff4f116583b99b21775a8844a17bcf5c69f7f3f6028013bf0d6c00c",
+                            "docker.io/library/mongo:3.4.1"
+                        ],
+                        "sizeBytes": 150414410
+                    },
+                    {
+                        "names": [
+                            "docker.io/tutum/curl:latest"
+                        ],
+                        "sizeBytes": 84166323
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/nginx@sha256:8aa7f6a9585d908a63e5e418dc5d14ae7467d2e36e1ab4f0d8f9d059a3d071ce",
+                            "docker.io/library/nginx:latest"
+                        ],
+                        "sizeBytes": 50842838
+                    },
+                    {
+                        "names": [
+                            "docker.io/georgebaptista/kubia@sha256:ad49c50464079f94d3af1cefd9b8335513c3eac19982bceef8436e35b3f4cbd2",
+                            "docker.io/georgebaptista/kubia:latest"
+                        ],
+                        "sizeBytes": 39175041
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/redis@sha256:90d44d431229683cadd75274e6fcb22c3e0396d149a8f8b7da9925021ee75c30",
+                            "docker.io/library/redis:latest"
+                        ],
+                        "sizeBytes": 35806399
+                    },
+                    {
+                        "names": [
+                            "docker.io/luksa/kubectl-proxy@sha256:d456d90030fa6befb62d43efd4367c3654fc0538304b9d99d1491d52bcc8a60d",
+                            "docker.io/luksa/kubectl-proxy:1.6.2"
+                        ],
+                        "sizeBytes": 19423854
+                    },
+                    {
+                        "names": [
+                            "docker.io/coredns/coredns@sha256:e83beb5e43f8513fa735e77ffc5859640baea30a882a11cc75c4c3244a737d3c",
+                            "docker.io/coredns/coredns:1.5.0"
+                        ],
+                        "sizeBytes": 13341835
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/redis@sha256:2953e537b8eaa5120855285497d4f936d9f02a16480a9d76e8ba014dc3998704",
+                            "docker.io/library/redis:4.0.11-alpine"
+                        ],
+                        "sizeBytes": 12056522
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/redis@sha256:a0a282c2699db44b0b6253ac8c31d0926cc2f87403aae798e93472a8edc3d04c",
+                            "docker.io/library/redis:6.0-rc1-alpine"
+                        ],
+                        "sizeBytes": 10531404
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/redis@sha256:cb9783b1c39bb34f8d6572406139ab325c4fac0b28aaa25d5350495637bb2f76",
+                            "docker.io/library/redis:alpine"
+                        ],
+                        "sizeBytes": 9996542
+                    },
+                    {
+                        "names": [
+                            "docker.io/cdkbot/hostpath-provisioner-amd64@sha256:339f78eabc68ffb1656d584e41f121cb4d2b667565428c8dde836caf5b8a0228",
+                            "docker.io/cdkbot/hostpath-provisioner-amd64:1.0.0"
+                        ],
+                        "sizeBytes": 9745308
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/redis@sha256:95f0c9434f37db0a4f9563379184ff4895685d2381e2d81bd10dfcbcadfc095f",
+                            "docker.io/library/redis:3.2.7-alpine"
+                        ],
+                        "sizeBytes": 8130313
+                    },
+                    {
+                        "names": [
+                            "docker.io/dontrebootme/microbot:v1"
+                        ],
+                        "sizeBytes": 3161882
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/busybox@sha256:6915be4043561d64e0ab0f8f098dc2ac48e077fe23f488ac24b665166898115a",
+                            "docker.io/library/busybox:latest"
+                        ],
+                        "sizeBytes": 764872
+                    },
+                    {
+                        "names": [
+                            "docker.io/luksa/batch-job@sha256:572a3eba91f3349063f7eb00c03cdb5e1b8f50ca88b8cdf30df8ae218564055b",
+                            "docker.io/luksa/batch-job:latest"
+                        ],
+                        "sizeBytes": 680138
+                    },
+                    {
+                        "names": [
+                            "k8s.gcr.io/pause@sha256:f78411e19d84a252e53bff71a4407a5686c46983a2c2eeed83929b888179acea",
+                            "k8s.gcr.io/pause:3.1"
+                        ],
+                        "sizeBytes": 317164
+                    }
+                ],
+                "nodeInfo": {
+                    "architecture": "amd64",
+                    "bootID": "f76328c4-43e3-49f9-acc2-3cf01cabb0e8",
+                    "containerRuntimeVersion": "containerd://1.2.5",
+                    "kernelVersion": "4.15.0-74-generic",
+                    "kubeProxyVersion": "v1.17.0",
+                    "kubeletVersion": "v1.17.0",
+                    "machineID": "5cfe86ac3da247fe8bffd97e08cf0ae2",
+                    "operatingSystem": "linux",
+                    "osImage": "Ubuntu 18.04.3 LTS",
+                    "systemUUID": "17AC3856-0000-0000-8115-FFA58D4969C2"
+                }
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}

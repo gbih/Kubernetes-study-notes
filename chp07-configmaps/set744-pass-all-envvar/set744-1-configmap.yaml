@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: fortune-config
+    namespace: chp07-set744
+  data:
+    sleep-interval: "23"
+    foo: "foo-value"
+    bar: "bar-value"
+    foo-bar: "foo-bar value"
+    author: "George Baptista"
+    email: "george@omame.com"

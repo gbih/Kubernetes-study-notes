@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+  namespace: chp02-set231-declarative
+spec:
+  selector:
+    run: kubia # select the pod with this label
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  type: NodePort

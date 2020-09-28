@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubia
+  namespace: chp05-set544
+spec:
+  tls: # TLS config is set here
+  - hosts:
+    - kubia.example.com # TLS connections accepted for this hostname
+    secretName: tls-secret # holds private key and certificate
+
+  rules:
+  # map kubia.example.com to our service
+  # Add this entry to /etc/hosts
+  # 127.0.0.1 kubia.example.com
+  - host: kubia.example.com
+    http:
+      paths:
+      # all requests sent to port 80 of the kubia-nodeport service
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kubia-nodeport
+            port:
+              number: 80
+            # most cloud providers require the Ingress to point to a NodePort service

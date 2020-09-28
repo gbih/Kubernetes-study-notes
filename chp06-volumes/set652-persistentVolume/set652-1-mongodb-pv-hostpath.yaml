@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-pv
+  # no namespace for PVs
+  labels:
+    app: mongodb-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce # single client, R+W
+  - ReadOnlyMany # multiple clients, R
+  persistentVolumeReclaimPolicy: Retain # after claim release
+  hostPath: # persistent volume backing object on microk8s
+    path: /tmp/mongodb

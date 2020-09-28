@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kubia
+  namespace: chp04-set422
+spec:
+  replicas: 5
+  selector:
+    app: kubia
+  template:
+    metadata:
+      labels:
+        app: kubia # default 'app' label
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: kubia
+        image: georgebaptista/kubia
+        ports:
+        - containerPort: 8080
+

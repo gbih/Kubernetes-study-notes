@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kubia
+  namespace: chp04-set434
+spec:
+  replicas: 9
+  selector:
+    matchExpressions:
+      - key: app # select pods with app key
+        operator: In
+        values:
+        - kubia # label's value is kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: kubia
+        image: luksa/kubia
+

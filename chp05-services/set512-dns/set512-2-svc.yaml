@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+  namespace: chp05-set512
+# we do not create pods here, only set up the ports for them
+spec:
+  ports:
+  - port: 80 # accept connections on port 80
+    targetPort: 8080 # match containerPort, which is 8080
+  selector: # select pods with app=kubia label for this service 
+    app: kubia
+
+# Note: we only use containerPort inside container YAML
+# Note: we only use targetPort in a Service resource

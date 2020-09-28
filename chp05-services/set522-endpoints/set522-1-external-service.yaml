@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  # must match Endpoints name object
+  name: external-service
+  namespace: chp05-set522
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  # no pod selector defined here, so we have to manually create Endpoints resource
