@@ -1,0 +1,113 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: downward
+  namespace: chp08-set812
+  labels:
+    env: development
+    app: downward
+spec:
+  containers:
+  - name: main
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    command: ["sleep", "99999999"]
+# These settings do not work for this container!
+#    resources:
+#      requests:
+#        cpu: 15m
+#        memory: 100Ki
+#      limits:
+#        cpu: 100m
+#        memory: 4Mi
+
+    env:
+    # info available from downwardAPI volumes
+
+    - name: POD_NAME
+      valueFrom: # use to reference env vars, think 'valueFromEnvVar'
+        fieldRef: # use to reference env var field
+          fieldPath: metadata.name # access via pod manifest
+
+    - name: POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.namespace
+   
+    - name: POD_UID
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.uid
+
+    - name: POD_LABELS
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.labels['env']
+
+    - name: POD_ANNOTATIONS
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.annotations['kubectl.kubernetes.io/last-applied-configuration.apiVersion']
+    
+    # information available from env vars
+    - name: POD_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.podIP
+
+    - name: HOST_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.hostIP
+
+    - name: NODE_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+
+    - name: SERVICE_ACCOUNT
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.serviceAccountName
+
+    # Container Information available via resourceFieldRef
+
+    - name: CONTAINER_CPU_REQUEST_MILLICORES
+      valueFrom:
+        resourceFieldRef:
+          resource: requests.cpu
+          divisor: 1m
+
+    - name: CONTAINER_CPU_LIMITS_MILLICORES
+      valueFrom:
+        resourceFieldRef:
+          resource: limits.cpu
+          divisor: 1m
+
+    - name: CONTAINER_MEMORY_REQUEST_KIBIBYTES
+      valueFrom:
+        resourceFieldRef:
+          resource: requests.memory
+          divisor: 1Ki
+
+    - name: CONTAINER_MEMORY_LIMIT_KIBIBYTES
+      valueFrom:
+        resourceFieldRef:
+          resource: limits.memory
+          divisor: 1Ki
+
+    - name: CONTAINER_EPHEMERAL_STORAGE_LIMIT
+      valueFrom:
+        resourceFieldRef:
+          resource: limits.ephemeral-storage
+          divisor: 1Ki
+
+    - name: CONTAINER_EPHEMERAL_STORAGE_REQUEST
+      valueFrom:
+        resourceFieldRef:
+          resource: requests.ephemeral-storage
+          divisor: 1Ki
+
+
+    
+      
