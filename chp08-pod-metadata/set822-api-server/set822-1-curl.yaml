@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curl
+  namespace: chp08-set822
+  labels:
+    name: chp08-set822
+spec:
+  containers:
+  - name: main
+    # this image has curl in the container
+    image: tutum/curl
+    #image: georgebaptista/curl
+    # run the sleep command with a long delay to keep the container running
+    command: ["sleep", "99999999"]

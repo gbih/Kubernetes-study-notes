@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: chp08-set824
+  labels:
+    name: chp08-set824
+
