@@ -5,53 +5,39 @@ echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH/set756-0-ns.yaml"
 kubectl apply -f $FULLPATH/set756-0-ns.yaml
+
 echo $HR
 
 echo "Create a docker-registry Secret called mydockerhubsecret, and specify the Docker Hub username, password, and email."
-echo ""
-
-echo $HR
 echo "Input docker password:"
 read dockerpassword
-echo "kubectl -n=chp07-set756 create secret docker-registry mydockerhubsecret --docker-username=georgebaptista --docker-password=\$dockerpasswordd --docker-email=george@omame.com"
-
+echo ""
+echo "kubectl -n=chp07-set756 create secret docker-registry mydockerhubsecret --docker-username=georgebaptista --docker-password=\$dockerpassword --docker-email=george@omame.com"
 kubectl -n=chp07-set756 create secret docker-registry mydockerhubsecret --docker-username=georgebaptista --docker-password=$dockerpassword --docker-email=george@omame.com
-echo ""
-
-echo "For comparison, purposely create a docker-registry with bad credentials:"
-echo ""
-echo "kubectl -n=chp07-set756 create secret docker-registry mydockerhubsecret-bad --docker-username=georgebaptista --docker-password=bad --docker-email=george@omame.com"
-
-kubectl -n=chp07-set756 create secret docker-registry mydockerhubsecret-bad --docker-username=georgebaptista --docker-password=bad --docker-email=george@omame.com
 echo $HR
 
-
-echo "kubectl apply -f $FULLPATH/"
-kubectl apply -f $FULLPATH/
-echo ""
-
-echo "kubectl wait --for=condition=Ready=True pod/private-pod -n=chp07-756 --timeout=20s"
-kubectl wait --for=condition=Ready=True pod/private-pod -n=chp07-set756 --timeout=30s
+echo "Create pod using this docker-registry secret:"
+echo "kubectl apply -f $FULLPATH/set756-2-pod-with-private-image.yaml"
+kubectl apply -f $FULLPATH/set756-2-pod-with-private-image.yaml
 echo $HR
 
-enter
-
-echo "kubectl get all -n=chp07-set756 -o wide"
-kubectl get all -n=chp07-set756 -o wide --show-labels
+echo "kubectl wait --for=condition=Ready=True pod/private-pod -n=chp07-set756 --timeout=10s"
+kubectl wait --for=condition=Ready=True pod/private-pod -n=chp07-set756 --timeout=10s
 echo $HR
 
+echo "kubectl get pod/private-pod -n=chp07-set756"
+kubectl get pod/private-pod -n=chp07-set756 --show-labels
 
 echo "kubectl port-forward private-pod -n=chp07-set756 8888:8080 &"
 kubectl port-forward private-pod -n=chp07-set756 8888:8080 &
 echo ""
 
-sleep 1 >> /dev/null
+sleep 1
 
-echo ""
-echo "Running jobs are:"
-jobs
 echo $HR
 
+echo "Running jobs are:"
+jobs
 
 enter
 
@@ -59,13 +45,20 @@ echo "curl http://localhost:8888 -v"
 curl http://localhost:8888 -v
 echo $HR
 
-ps ax | grep port-forward | awk -F ' ' '{print $1}' | xargs sudo kill -9
-#ps ax | grep 'client.config port-forward fortune-https' | awk -F ' ' '{print $1}' | xargs sudo kill -9
+echo "Kill port-forward process listening to port 8888"
+echo "kill -9 \`sudo fuser 8888/tcp|xargs -n 1\`"
+kill -9 `sudo fuser 8888/tcp|xargs -n 1`
+sleep 1
 
-enter
+echo $HR
 
 echo "kubectl get events -n=chp07-set756"
 kubectl get events -n=chp07-set756
+echo $HR
+
+echo "kubectl logs private-pod -n=chp07-set756"
+kubectl logs private-pod -n=chp07-set756
+
 echo $HR
 
 echo "kubectl delete -f $FULLPATH"

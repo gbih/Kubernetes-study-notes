@@ -20,6 +20,9 @@ spec:
   imagePullSecrets:
   - name: mydockerhubsecret
   containers:
-  - image: georgebaptista/kubia
+  - image: georgebaptista/mykubia:private
     name: kubia
+    imagePullPolicy: Always
 ```
+
+We also need to make sure `imagePullPolicy` is marked `Always`, to prevent any cached copies from being pulled without proper authentication.

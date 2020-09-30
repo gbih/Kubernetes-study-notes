@@ -7,6 +7,6 @@ spec:
   imagePullSecrets:
   - name: mydockerhubsecret
   containers:
-  - image: georgebaptista/kubia
+  - image: georgebaptista/mykubia:private
     name: kubia
-
+    imagePullPolicy: Always
