@@ -1,8 +1,10 @@
-# Chapter 7, Section 8.1.2
+# Chapter 8, Section 8.1.2
 
 ### Objective
 
 ### Notes
+* https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/
+
 * The Kubernetes Downward API allows you to pass metadata about the pod and its environment through environment variables or files (in a downwardAPI volume).
 * It is a way of having environment variables or files populated with values from the pod’s specification or status.
 * The Downward API enables you to expose the pod’s own metadata to the processes running inside that pod. Currently, it allows you to pass the following information to your containers:
