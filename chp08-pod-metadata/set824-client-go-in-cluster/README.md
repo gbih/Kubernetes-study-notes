@@ -3,14 +3,10 @@
 ### Objective
 
 ### Notes
-Authenticating inside the cluster
-https://github.com/kubernetes/client-go
-https://github.com/kubernetes/client-go/tree/master/examples/in-cluster-client-configuration
-
 
 # Authenticating inside the cluster
-https://github.com/kubernetes/client-go
-https://github.com/kubernetes/client-go/tree/master/examples/in-cluster-client-configuration
+- https://github.com/kubernetes/client-go
+- https://github.com/kubernetes/client-go/tree/master/examples/in-cluster-client-configuration
 
 ## Setup and create Go program
 Create main.go
