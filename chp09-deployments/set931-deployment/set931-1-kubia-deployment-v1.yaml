@@ -15,7 +15,7 @@ spec:
         app: kubia # match spec.selector.matchLabels
     spec:
       containers:
-      - image: luksa/kubia:v1
+      - image: georgebaptista/kubia:v1
         name: nodejs
 
 # The basic layout is very similar to a ReplicationController.
