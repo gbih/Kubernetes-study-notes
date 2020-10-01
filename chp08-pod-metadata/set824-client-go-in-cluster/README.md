@@ -23,7 +23,7 @@ Create main.go
 
 
 ## Build and push container to Docker Hub
-`GOOS=linux go build -o ./app .`
+`GOOS=linux go build -o ./bin/app .`
 
 `docker build -t georgebaptista/client-go-auth-inside:v1 .`
 

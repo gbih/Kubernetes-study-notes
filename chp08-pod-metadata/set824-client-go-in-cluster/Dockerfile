@@ -13,5 +13,5 @@
 # limitations under the License.
 
 FROM debian
-COPY ./app /app
+COPY ./bin/app /app
 ENTRYPOINT /app
