@@ -1,73 +1,45 @@
 #!/bin/bash
 . ../../SETUP.sh
 FULLPATH=$(pwd)
+echo $HR_TOP
 
-echo "NOTES:"
-echo "Simplifying API server communication with ambassador containers" 
-echo $HR
-
+echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH
-#sleep 1
+sleep 1
 
-
-echo "kubectl get events -n=chp08-set823"
-kubectl get events -n=chp08-set823
 echo $HR
 
 echo "kubectl wait --for=condition=Ready=True pod/curl-with-ambassador -n=chp08-set823 --timeout=20s"
 kubectl wait --for=condition=Ready=True pod/curl-with-ambassador -n=chp08-set823 --timeout=20s
 echo $HR
 
-
-echo "kubectl get events -n=chp08-set823"
-kubectl get events -n=chp08-set823
-echo $HR
-
-
-echo "kubectl get all -n=chp08-set823"
-kubectl get all -n=chp08-set823
-echo ""
-
-echo "kubectl get endpoints -n=chp08-set823"
-kubectl get endpoints -n=chp08-set823
-echo $HR
-
-#echo "Talking to the API server through the main container (should fail)"
-#echo "kubectl -n=chp08-set823 exec curl-with-ambassador -c main -- curl localhost:8001"
-#echo ""
-#kubectl -n=chp08-set823 exec curl-with-ambassador -c main -- curl localhost:8001
-#echo ""
+#echo "kubectl get events -n=chp08-set823"
+#kubectl get events -n=chp08-set823
 #echo $HR
 
+enter
+kubectl describe pods/curl-with-ambassador -n=chp08-set823
+enter
 
-echo "Workaround for RBAC"
-echo "This gives all service accounts (we could also say all pods) cluster-admin privileges, allowing them to do whatever they want."
-echo "kubectl create clusterrolebinding permissive-binding --clusterrole=cluster-admin --group=system:serviceaccounts"
+echo "These access commands are essentially the same."
 echo ""
-kubectl create clusterrolebinding permissive-binding --clusterrole=cluster-admin --group=system:serviceaccounts
-
-sleep 1
-echo $HR
-
-
-echo "Talking to the API server through the Ambassador Container Pattern"
-echo "kubectl -n=chp08-set823 exec curl-with-ambassador -c ambassador -- curl localhost:8001"
+echo "1. The main container passes this request to the ambassador container by accessing port 8001"
+echo "kubectl -n=chp08-set823 exec curl-with-ambassador -c main -- curl localhost:8001"
 echo ""
-echo "kubectl -n=chp08-set823 exec curl-with-ambassador -c ambassador -- curl http://localhost:8001/api/v1/namespaces/chp08-set823/pods -v"
-#kubectl -n=chp08-set823 exec curl-with-ambassador -c ambassador -- curl http://localhost:8001/api/v1/namespaces/chp08-set823/pods -v
-kubectl -n=chp08-set823 exec curl-with-ambassador -c ambassador -- curl http://localhost:8001/api/v1/namespaces/chp08-set823/pods
+echo "2. Use curl directly on the ambassador container on port 8001"
+echo "kubectl -n=chp08-set823 exec curl-with-ambassador -c ambassador -- curl http://localhost:8001"
 
-echo $HR
+enter
 
-kubectl -n=chp08-set823 exec curl-with-ambassador -c ambassador -- curl http://localhost:8001/api/v1/namespaces/chp08-set823/pods -v
+echo "kubectl -n=chp08-set823 exec curl-with-ambassador -c main -- curl localhost:8001"
+kubectl -n=chp08-set823 exec curl-with-ambassador -c main -- curl localhost:8001
 
-echo ""
-echo $HR
+enter
 
-echo "kubectl get events -n=chp08-set823"
-kubectl get events -n=chp08-set823
-echo $HR
+echo "kubectl -n=chp08-set823 exec curl-with-ambassador -c ambassador -- curl http://localhost:8001"
+kubectl -n=chp08-set823 exec curl-with-ambassador -c ambassador -- curl http://localhost:8001
 
-kubectl delete -f $FULLPATH --now
-kubectl delete clusterrolebinding permissive-binding
-echo $HR
+enter
+
+echo "kubectl delete -f $FULLPATH"
+kubectl delete -f $FULLPATH
