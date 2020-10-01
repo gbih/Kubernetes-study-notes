@@ -84,7 +84,7 @@ func main() {
       fmt.Printf("Found pod %s in namespace %s\n", pod, namespace)
     }
 
-    time.Sleep(10 * time.Second)
+    time.Sleep(5 * time.Second)
   }
 }
 

@@ -23,12 +23,12 @@ Need to download this dependency:
 
 
 ## Build 
-`go build -o app .`
+`go build -o bin/app .`
 
 
 ## Run
-When you run `./app`, it looks for kubeconfig, so we have to specify the microk8s location:
-./app -kubeconfig /var/snap/microk8s/current/credentials/client.config
+When you run `./bin/app`, it looks for kubeconfig, so we have to specify the microk8s location:
+./bin/app -kubeconfig /var/snap/microk8s/current/credentials/client.config
 
 
 Running this application will use the kubeconfig file and then authenticate to the cluster, and print the number of pods in the cluster every 10 seconds:
