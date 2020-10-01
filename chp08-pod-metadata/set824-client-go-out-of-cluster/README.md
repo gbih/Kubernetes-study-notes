@@ -5,12 +5,12 @@
 ### Notes
 
 # Authenticating outside the cluster
-https://github.com/kubernetes/client-go
-https://github.com/kubernetes/client-go/tree/master/examples/out-of-cluster-client-configuration
+- https://github.com/kubernetes/client-go
+- https://github.com/kubernetes/client-go/tree/master/examples/out-of-cluster-client-configuration
 
 ## Setup and create Go program
 Create main.go
-https://github.com/kubernetes/client-go/blob/master/examples/out-of-cluster-client-configuration/main.go
+- https://github.com/kubernetes/client-go/blob/master/examples/out-of-cluster-client-configuration/main.go
 
 `go mod init github.com/gbih/client-go-outside`
 
