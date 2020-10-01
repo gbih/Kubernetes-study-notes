@@ -9,6 +9,7 @@ tls.key
 
 
 # DIRECTORIES
+bin/
 vendor/
 00-blog/
 INGRESS-RULES/
@@ -19,7 +20,6 @@ PSP/
 REFERENCE/
 SETUP-Fluentd/
 SETUP-rbac-and-metrics/
-chp08-pod-metadata/
 chp09-deployments/
 chp10-statefulsets/
 chp11-internals/

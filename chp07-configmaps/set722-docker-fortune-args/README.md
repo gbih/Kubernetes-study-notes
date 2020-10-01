@@ -44,8 +44,10 @@ CMD ["10"]
 ```
 
 ## Build image, tag as fortune:args, push to image registry
+```
 docker build -t georgebaptista/fortune:args .
 docker push georgebaptista/fortune:args
+```
 
 # If initial log-in to DockerHub:
 docker login --username georgebaptista --password XXXXXXXXXXXXXXX)
