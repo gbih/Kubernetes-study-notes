@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: curl
+  name: curlpod
   namespace: chp08-set822
   labels:
     name: chp08-set822

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes
+  namespace: chp08-set822
+spec:
+  selector:
+    run: curlpod # select the pod with this label
+  ports:
+  - port: 443
+    name: https
+    protocol: TCP
+    targetPort: 16443
