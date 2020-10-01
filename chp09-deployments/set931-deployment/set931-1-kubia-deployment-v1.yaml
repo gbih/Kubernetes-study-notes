@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia # no need to include app version name
+  namespace: chp09-set931
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubia # match spec.template.metadata.labels
+  template:
+    metadata:
+      name: kubia
+      labels:
+        app: kubia # match spec.selector.matchLabels
+    spec:
+      containers:
+      - image: luksa/kubia:v1
+        name: nodejs
+
+# The basic layout is very similar to a ReplicationController.

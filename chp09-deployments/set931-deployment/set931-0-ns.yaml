@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: chp09-set931
+  labels:
+    name: chp09-set931
+
