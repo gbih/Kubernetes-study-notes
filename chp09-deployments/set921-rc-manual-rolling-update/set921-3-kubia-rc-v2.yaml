@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: kubia-v1
+  name: kubia-v2
   namespace: chp09-set921
 spec:
-  replicas: 3
+  replicas: 1
   template: # pod template
     metadata:
       name: kubia
@@ -13,5 +13,5 @@ spec:
     spec:
       # Create a ReplicationController for pods running this image
       containers: 
-      - image: luksa/kubia:v1
+      - image: georgebaptista/kubia:v2
         name: nodejs

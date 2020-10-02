@@ -20,7 +20,6 @@ PSP/
 REFERENCE/
 SETUP-Fluentd/
 SETUP-rbac-and-metrics/
-chp09-deployments/
 chp10-statefulsets/
 chp11-internals/
 chp12-secure/
