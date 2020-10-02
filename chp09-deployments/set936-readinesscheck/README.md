@@ -23,7 +23,7 @@ spec:
         app: kubia # match spec.selector.matchLabels.app
     spec:
       containers:
-      - image: luksa/kubia:v3
+      - image: georgebaptista/kubia:v3
         name: nodejs
         readinessProbe:
           periodSeconds: 1 # readiness probe executed every second

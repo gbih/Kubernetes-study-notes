@@ -13,7 +13,10 @@ spec:
       name: kubia
       labels:
         app: kubia # match spec.selector.matchLabels
+        app.kubernetes.io/version: "4.0"
+        #version: "4"
     spec:
       containers:
-      - image: luksa/kubia:v4
+      - image: georgebaptista/kubia:v4
         name: nodejs
+        imagePullPolicy: Always

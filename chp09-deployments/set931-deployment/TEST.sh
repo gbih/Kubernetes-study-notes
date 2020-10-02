@@ -43,9 +43,7 @@ echo "kubectl rollout status deployment kubia -n=chp09-set931"
 kubectl rollout status deployment kubia -n=chp09-set931
 echo $HR
 
-
 enter
-
 
 echo "kubectl patch deployment kubia -p '{\"spec\": {\"minReadySeconds\": 3}}' -n=chp09-set931"
 kubectl patch deployment kubia -p '{"spec": {"minReadySeconds": 3}}' -n=chp09-set931

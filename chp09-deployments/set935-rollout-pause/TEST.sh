@@ -5,16 +5,10 @@ echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH/set935-0-ns.yaml
-kubectl apply -f $FULLPATH/set935-1-kubia-deployment-v1.yaml --record
+kubectl apply -f $FULLPATH/set935-1-kubia-deployment-v3.yaml --record
 kubectl apply -f $FULLPATH/set935-2-service.yaml
 sleep 1
 echo $HR
-
-#echo "Check ReplicaSet pod-template-hash"
-#POD_TEMPLATE_HASH=$(kubectl get rs -n=chp09-set935 -o jsonpath={'.items[0].metadata.labels.pod-template-hash'})
-#echo "POD_TEMPLATE_HASH=\$(kubectl get rs -n=chp09-set935 -o jsonpath={'.items[0].metadata.labels.pod-template-hash'})"
-#echo $POD_TEMPLATE_HASH
-#echo $HR
 
 echo "kubectl get rs -n=chp09-set935 -o jsonpath={'.items[0].metadata.labels.pod-template-hash'}"
 kubectl get rs -n=chp09-set935 -o jsonpath={'.items[0].metadata.labels.pod-template-hash'}
@@ -31,7 +25,6 @@ echo $HR
 
 POD_0=$(kubectl get pod -n=chp09-set935 -o jsonpath={'.items[0].metadata.name'})
 
-
 echo "kubectl wait --for=condition=Ready=True pod/$POD_0 -n=chp09-set935 --timeout=21s"
 kubectl wait --for=condition=Ready=True pod/$POD_0 -n=chp09-set935 --timeout=21s
 echo ""
@@ -44,17 +37,15 @@ kubectl rollout status deployment kubia -n=chp09-set935
 echo $HR
 
 
-
 echo "curl $SVC_IP"
 counter=1
-while [ $counter -le 5 ]
+while [ $counter -le 20 ]
 do
   curl http://$SVC_IP 
-  sleep 0.5
+  sleep 0.3
   ((counter++))
 done
 echo $HR
-
 
 
 # Imperative style
@@ -65,11 +56,26 @@ echo $HR
 # Declarative style
 echo "kubectl apply -f $FULLPATH/set935-3-kubia-deployment-v4.yaml --record"
 kubectl apply -f $FULLPATH/set935-3-kubia-deployment-v4.yaml --record
+sleep 1
+
+echo $HR
+
+VERSION="4.0"
+echo "POD_V4=$(kubectl get pod -l app.kubernetes.io/version=$VERSION -n=chp09-set935 -o jsonpath={'.items[0].metadata.name'})"
+POD_V4=$(kubectl get pod -l app.kubernetes.io/version=$VERSION -n=chp09-set935 -o jsonpath={'.items[0].metadata.name'})
+echo $POD_V4
+echo ""
+
+echo "kubectl wait --for=condition=Ready=True pod/$POD_V4 -n=chp09-set935 --timeout=21s"
+kubectl wait --for=condition=Ready=True pod/$POD_V4 -n=chp09-set935 --timeout=21s
+
 echo $HR
 
 echo "kubectl rollout pause deployment kubia -n=chp09-set935"
 kubectl rollout pause deployment kubia -n=chp09-set935
 echo $HR
+
+enter
 
 echo "kubectl get rs -n=chp09-set935 -o wide"
 kubectl get rs -n=chp09-set935 -o wide
@@ -79,11 +85,19 @@ echo "kubectl get pods -n=chp09-set935 --show-labels"
 kubectl get pods -n=chp09-set935 --show-labels
 echo $HR
 
-echo "curl $SVC_IP"
+echo "Test curl on the v4.0 pod"
+echo "POD_V4_IP=\$(kubectl get pods/$POD_V4 -n=chp09-set935 -o jsonpath={'.status.podIP'})"
+POD_V4_IP=$(kubectl get pods/$POD_V4 -n=chp09-set935 -o jsonpath={'.status.podIP'})
+echo "POD_V4_IP is $POD_V4_IP"
+
+echo ""
+
+echo "curl $POD_V4_IP"
+echo ""
 counter=1
-while [ $counter -le 20 ]
+while [ $counter -le 10 ]
 do
-  curl http://$SVC_IP 
+  curl http://$POD_V4_IP:8080
   sleep 0.5
   ((counter++))
 done
@@ -97,19 +111,10 @@ echo "kubectl rollout status deployment kubia -n=chp09-set935 -w"
 kubectl rollout status deployment kubia -n=chp09-set935 -w
 echo $HR
 
-echo "curl $SVC_IP"
-counter=1
-while [ $counter -le 20 ]
-do
-  curl http://$SVC_IP 
-  sleep 0.5
-  ((counter++))
-done
-echo $HR
+echo "kubectl get pods -n=chp09-set935 --show-labels"
+kubectl get pods -n=chp09-set935 --show-labels
 
-#echo "kubectl rollout undo deployment kubia --to-revision=1 -n=chp09-set935"
-#kubectl rollout undo deployment kubia --to-revision=1 -n=chp09-set935
-#echo ""
+echo $HR
 
 echo "kubectl rollout history deployment kubia -n=chp09-set935"
 kubectl rollout history deployment kubia -n=chp09-set935

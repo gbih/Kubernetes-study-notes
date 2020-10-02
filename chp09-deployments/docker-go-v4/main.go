@@ -14,7 +14,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
   fmt.Println("Received request from:", r.RemoteAddr)
   w.WriteHeader(http.StatusOK) // 200 status
-  fmt.Fprintf(w, "This is v2 running in pod %v\n", name)
+  fmt.Fprintf(w, "This is v4 running in pod %v\n", name)
 }
 
 func main() {

@@ -8,7 +8,7 @@ spec:
     matchLabels:
       app: kubia # match spec.template.metadata.labels.app
   replicas: 3
-  minReadySeconds: 20 # life of new successful pod before it's considered available
+  minReadySeconds: 10 # life of new successful pod before it's considered available
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -19,9 +19,10 @@ spec:
       name: kubia
       labels:
         app: kubia # match spec.selector.matchLabels.app
+        app.kubernetes.io/version: "3.0"
     spec:
       containers:
-      - image: luksa/kubia:v3
+      - image: georgebaptista/kubia:v3 # bad container
         name: nodejs
         readinessProbe:
           periodSeconds: 1 # readiness probe executed every second

@@ -15,5 +15,5 @@ spec:
         app: kubia # match spec.selector.matchLabels
     spec:
       containers:
-      - image: luksa/kubia:v3
+      - image: georgebaptista/kubia:v3
         name: nodejs

@@ -13,8 +13,10 @@ spec:
       name: kubia
       labels:
         app: kubia # match spec.selector.matchLabels
+        app.kubernetes.io/version: "3.0"
+        #version: "3"
     spec:
       containers:
-      - image: luksa/kubia:v1 # ok release
-#      - image: luksa/kubia:v3 # bad release
+#      - image: georgebaptista/kubia:v1 # ok release
+      - image: georgebaptista/kubia:v3 # bad release
         name: nodejs
