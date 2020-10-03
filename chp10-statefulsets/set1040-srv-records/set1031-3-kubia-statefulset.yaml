@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kubia
+  namespace: chp10-set1031
+  labels:
+    app: kubia
+spec:
+  # need updateStrategy specified in order to use 'kubectl rollout status'
+  # https://github.com/kubernetes/kubernetes/issues/72212#issuecomment-468556805
+#  updateStrategy:
+#    type: RollingUpdate
+#    rollingUpdate:
+#      partition: 1
+
+  selector:
+    matchLabels:
+      # has to match .spec.template.metadata.labels
+      app: kubia
+  serviceName: kubia
+  replicas: 7 # default is 1
+  template: 
+    metadata:
+      labels: # pods created by the StatefulSet have app=kubia label
+        app: kubia # match .spec.selector.matchLabels
+    spec:
+      containers:
+      - name: kubia
+        image: georgebaptista/kubia-pet
+        ports:
+        - name: http
+          containerPort: 8080
+        volumeMounts:
+        # pod container will mount the volume at this path
+        - name: data
+          mountPath: /var/data
+
+  # PVCs will be created from this template
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      resources:
+        requests:
+          storage: 1Mi
+      accessModes:
+      - ReadWriteOnce  
+

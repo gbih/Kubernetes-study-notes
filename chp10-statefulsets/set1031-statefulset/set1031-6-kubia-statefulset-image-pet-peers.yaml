@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kubia
+  namespace: chp10-set1031
+  labels:
+    app: kubia
+
+spec:
+  #updateStrategy:
+  #  type: RollingUpdate
+  #  rollingUpdate:
+  #    partition: 1
+
+  selector:
+    matchLabels:
+      # has to match .spec.template.metadata.labels
+      app: kubia
+  serviceName: kubia
+  replicas: 4 # default is 1
+  template: 
+    metadata:
+      # Pods created by the StatefulSet will have the app=kubia label
+      labels:
+        # has to match .spec.selector.matchLabels
+        app: kubia
+    spec:
+      containers:
+      - name: kubia
+        #image: luksa/kubia-pet
+        #image: luksa/kubia-pet-peers
+        image: georgebaptista/kubia-pet-peers
+        ports:
+        - name: http
+          containerPort: 8080
+        volumeMounts:
+        # pod container will mount the path volume at this path
+        - name: data
+          mountPath: /var/data
+  # PVCs will be created from this template
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      resources:
+        requests:
+          storage: 1Mi
+      accessModes:
+      - ReadWriteOnce  
+

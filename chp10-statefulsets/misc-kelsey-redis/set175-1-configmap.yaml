@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-init
+  namespace: chp17-set175
+data:
+  init.sh: "#!/bin/bash\nif [[ ${HOSTNAME} == 'redis-0' ]]; then\n  redis-server /redis-config/master.conf\nelse
+    \n  redis-server /redis-config/slave.conf\nfi\n\n"
+  master.conf: |+
+    bind 0.0.0.0
+    port 6379
+
+    dir /redis-data
+
+  sentinel.conf: |+
+    bind 0.0.0.0
+    port 26379
+
+    sentinel monitor redis redis-0.redis 6379 2
+    sentinel parallel-syncs redis 1
+    sentinel down-after-milliseconds redis 10000
+    sentinel failover-timeout redis 20000
+
+
+  sentinel.sh: |+
+    #!/bin/bash
+    cp /redis-config-src/*.* /redis-config
+
+    while ! ping -c 1 redis-0.redis; do
+      echo 'Waiting for server'
+      sleep 1
+    done
+
+    redis-sentinel /redis-config/sentinel.conf
+
+  slave.conf: |+
+    bind 0.0.0.0
+    port 6379
+
+    dir .
+
+    slaveof redis-0.redis 6379
+

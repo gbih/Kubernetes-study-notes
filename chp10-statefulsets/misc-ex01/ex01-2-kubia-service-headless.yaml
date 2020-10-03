@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: chp10-ex01
+  labels:
+    app: nginx
+spec:
+  clusterIP: None # Headless. type cannot be LoadBalancer
+  selector: # select pods with app=kubia label
+    app: nginx
+  ports: 
+  - name: web
+    port: 80
+
+# Before deploying a StatefulSet, we have to first create a
+# headless Service, which will be used to provide the network
+# identity for the stateful pods.
+

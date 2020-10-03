@@ -1,0 +1,70 @@
+# Need as many PVs as desired Replica Pods
+
+apiVersion: v1
+kind: List 
+items:
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: pv-a
+    labels:
+      chp: chp10
+      set: chp10-set1031
+  spec:
+    capacity:
+      storage: 20Mi
+    accessModes:
+      - ReadWriteOnce
+    persistentVolumeReclaimPolicy: Recycle
+    # use hostPath as underlying storage mechanism
+    hostPath:
+      path: /tmp/pv-a
+
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: pv-b
+    labels:
+      chp: chp10
+      set: chp10-set1031
+  spec:
+    capacity:
+      storage: 20Mi
+    accessModes:
+      - ReadWriteOnce
+    persistentVolumeReclaimPolicy: Recycle
+    hostPath:
+      path: /tmp/pv-b
+
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: pv-c
+    labels:
+      chp: chp10
+      set: chp10-set1031
+  spec:
+    capacity:
+      storage: 20Mi
+    accessModes:
+      - ReadWriteOnce
+    persistentVolumeReclaimPolicy: Recycle
+    hostPath:
+      path: /tmp/pv-c
+
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: pv-d
+    labels:
+      chp: chp10
+      set: chp10-set1031
+  spec:
+    capacity:
+      storage: 20Mi
+    accessModes:
+      - ReadWriteOnce
+    persistentVolumeReclaimPolicy: Recycle
+    hostPath:
+      path: /tmp/pv-d
+

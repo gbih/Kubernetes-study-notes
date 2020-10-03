@@ -1,0 +1,15 @@
+# Once the StatefulSet is created, we need to create a "headless" service to manage the DNS entries for the StatefulSet.
+# In K8s, a service is called "headless" if it doesn't have a cluster virtual IP address. 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+  namespace: chp10-set1510
+spec:
+  ports:
+  - port: 27017
+    name: peer
+  clusterIP: None
+  selector: 
+    app: mongo

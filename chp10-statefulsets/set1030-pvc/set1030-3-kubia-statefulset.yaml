@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kubia
+  namespace: chp10-set1030
+  labels:
+    app: kubia
+
+spec:
+  selector:
+    matchLabels:
+      app: kubia
+  serviceName: "kubia"
+  replicas: 2 # default is 1
+  template: 
+    metadata:
+      labels: # pods creates by this ss will have app=kubia label
+        app: kubia
+    spec:
+      containers:
+      - name: kubia
+        image: georgebaptista/kubia-pet
+        ports:
+        - name: http
+          containerPort: 8080
+        volumeMounts: # pod container mounts path volume at this path
+        - name: data 
+          mountPath: /var/data
+  
+  volumeClaimTemplates: 
+  - metadata:
+      # Define a volume claim template called data, which will be used to create
+      # a PVC for each pod.
+      name: data 
+    spec:
+      resources:
+        requests:
+          storage: 1Mi # make sure this is less than or equal to the PV spec
+      accessModes:
+      - ReadWriteOnce  
+
+  # The PVC is created from the above volumeClaimTemplate.
+  # We define the volume claim template called data, which will be used to
+  # create a PVC for each pod.
+  # The StatefulSet automatically adds a persistentVolumeClaim to the pod specification  and configures the volume to be bound to the claim the StatefulSet created for the specifc pod.
+  

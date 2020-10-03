@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+  namespace: chp10-set1030
+spec:
+  clusterIP: None # this creates a headless service
+  selector: # select pods with app=kubia label
+    app: kubia
+  ports:
+  - name: http
+    port: 80
+
+# Before deploying a StatefulSet, we have to first create a
+# headless Service, which will be used to provide the network
+# identity for the stateful pods.
+# This headless Service will enable peer discovery between our pods.

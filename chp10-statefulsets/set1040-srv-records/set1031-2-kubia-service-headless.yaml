@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+  namespace: chp10-set1031
+spec:
+  clusterIP: None # this creates a headless service
+  selector: # select pods with app=kubia label
+    app: kubia
+  ports:
+  - name: http
+    port: 80
+

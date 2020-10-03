@@ -1,0 +1,73 @@
+# To use a volume, a Pod specifies what volumes to provide for the Pod (the .spec.volumes field) and where to mount those into Containers (the .spec.containers[*].volumeMounts field).
+# Hence, a volumeMounts field will always be a child of containers!
+# Think: .spec.container[*].volumeMounts
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+  namespace: chp17-set175
+spec:
+#  updateStrategy:
+#    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: redis
+  replicas: 3
+  serviceName: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      # container to determine whether Pod is master or slave
+      # and launch Redis with appropriate configuration,
+      # using either master.conf or slave.conf
+      - command: [sh, -c, source /redis-config/init.sh ]
+        #image: redis:6.0-rc1-alpine 
+        image: redis:6.0.8-alpine
+        name: redis
+        ports:
+        - containerPort: 6379
+          name: redis
+        volumeMounts:
+        - mountPath: /redis-config
+          name: config
+        - mountPath: /redis-data
+          name: data
+      # container to set up high-availability Redis sentinel
+      - command: [sh, -c, source /redis-config/sentinel.sh]
+        image: redis:6.0.8-alpine
+        name: sentinel
+        volumeMounts:
+        - mountPath: /redis-config-src
+          name: config
+        - mountPath: /redis-config
+          name: data
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: redis-config
+        name: config
+      - emptyDir:
+        name: data
+
+#  volumeClaimTemplates:
+#  - metadata:
+#      name: data
+#    spec:
+#      resources:
+#        requests:
+#          storage: 1Mi
+#      accessModes:
+#      - ReadWriteOnce   
+#  - metadata:
+#      name: config
+#    spec:
+#      resources:
+#        requests:
+#          storage: 1Mi
+#      accessModes:
+#      - ReadWriteOnce
+
