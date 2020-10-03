@@ -5,7 +5,6 @@ metadata:
   namespace: chp10-set1030
   labels:
     app: kubia
-
 spec:
   selector:
     matchLabels:
@@ -32,6 +31,8 @@ spec:
       # Define a volume claim template called data, which will be used to create
       # a PVC for each pod.
       name: data 
+      labels:
+        custom-label: chp10-set1030
     spec:
       resources:
         requests:
