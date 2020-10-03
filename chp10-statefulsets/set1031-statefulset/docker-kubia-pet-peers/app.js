@@ -4,8 +4,6 @@ const fs = require('fs');
 const dns = require('dns');
 
 const dataFile = "/var/data/kubia.txt";
-//const serviceName = "kubia.default.svc.cluster.local";
-// Use specific namespace, eg chp10-set1031
 const serviceName = "kubia.chp10-set1031.svc.cluster.local";
 const port = 8080;
 
