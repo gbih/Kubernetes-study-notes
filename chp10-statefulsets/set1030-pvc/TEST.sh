@@ -2,9 +2,6 @@
 . ~/src/SETUP.sh
 FULLPATH=$(pwd)
 
-kubectl delete -f $FULLPATH --now --ignore-not-found
-echo $HR
-
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH/set1030-0-ns.yaml
 kubectl apply -f $FULLPATH/set1030-2-kubia-service-headless.yaml
