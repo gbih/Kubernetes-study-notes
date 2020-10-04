@@ -36,87 +36,72 @@ Force read and execution of ~/.bashrc:
 source ~/.bashrc
 ```
 
----
-
-
 ## etcdctl Examples
-
 
 Lists all members in the cluster:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 member list
 ```
 
-
-
 Show list of keys stored under /registry
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 get /registry --prefix --keys-only=true | grep '/registry'
 ```
 
-Show list of keys and values in /registry/namespaces/default:
+Show list of keys and values in /registry/namespaces/default in JSON format:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 get /registry/namespaces/default --prefix --keys-only=false -w=json
 ```
 
-Show list of keys and values using Python script json.tool in pretty-print format:
+Show list of keys and values in /registry/namespaces/default pretty-print JSON format:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 get /registry/namespaces/default --prefix --keys-only=false -w=json | python3 -m json.tool
 ```
 
-
-Show list of keys stored under /registry/apiregistration.k8s.io/apiservices/v1.apiextensions.k8s.io
+Show list of keys stored under /registry/apiregistration.k8s.io/apiservices/
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 get /registry/apiregistration.k8s.io/apiservices/  --prefix --keys-only=true | grep '/registry'
 ```
 
-
-
+Show key-value entry for "kind":"APIService" in pretty-print format:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 get /registry/apiregistration.k8s.io/apiservices/v1.apiextensions.k8s.io --prefix | grep '"kind":"APIService"' | python3 -m json.tool
 ```
 
-
-Defragments the storage of the etcd members with given endpoints
+Defragments the storage of the etcd members with given endpoints:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 defrag
 ```
 
-
-Check the performance of the etcd cluster
+Check the performance of the etcd cluster:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 check perf
 ```
 
-
-Prints the KV history hash for each endpoint in --endpoints
+Prints the KV history hash for each endpoint in --endpoints:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 endpoint hashkv
 ```
 
-
-Checks the healthiness of endpoints specified in `--endpoints` flag
+Checks the healthiness of endpoints specified in `--endpoints` flag:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 endpoint health
 ```
 
-
-Prints out the status of endpoints specified in `--endpoints` flag
+Prints out the status of endpoints specified in `--endpoints` flag:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 endpoint status
 ```
 
-
-Stores an etcd node backend snapshot to a given file
+Stores an etcd node backend snapshot to a given file:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 snapshot save ~/etcd-backup.db
 ```
 
----
 
 ## Reference: Reverting from MicroK8s v1.19 to v1.18
 
-If you are using MicroK8s v1.19 and want to revert to v1.18 to use etcd and etcdctl, you can revert back via
+If you are using MicroK8s v1.19 and want to revert to v1.18 to use etcd and etcdctl, you can revert back via:
 
 ```bash
 sudo snap remove microk8s --purge
@@ -135,7 +120,7 @@ microk8s.inspect
 sudo journalctl -u snap.microk8s.daemon-etcd
 ```
 
-Check output from etcd
+Check output from etcd:
 ```bash
 /snap/microk8s/current/etcd
 ```
