@@ -53,7 +53,7 @@ Show list of keys and values in /registry/namespaces/default in JSON format:
 etcdctl --endpoints=http://127.0.0.1:2380 get /registry/namespaces/default --prefix --keys-only=false -w=json
 ```
 
-Show list of keys and values in /registry/namespaces/default pretty-print JSON format:
+Show list of keys and values in /registry/namespaces/default in pretty-print JSON format:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 get /registry/namespaces/default --prefix --keys-only=false -w=json | python3 -m json.tool
 ```
@@ -63,7 +63,7 @@ Show list of keys stored under /registry/apiregistration.k8s.io/apiservices/
 etcdctl --endpoints=http://127.0.0.1:2380 get /registry/apiregistration.k8s.io/apiservices/  --prefix --keys-only=true | grep '/registry'
 ```
 
-Show key-value entry for "kind":"APIService" in pretty-print format:
+Show key-value entry for "kind":"APIService" in pretty-print JSON format:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 get /registry/apiregistration.k8s.io/apiservices/v1.apiextensions.k8s.io --prefix | grep '"kind":"APIService"' | python3 -m json.tool
 ```
@@ -83,12 +83,12 @@ Prints the KV history hash for each endpoint in --endpoints:
 etcdctl --endpoints=http://127.0.0.1:2380 endpoint hashkv
 ```
 
-Checks the healthiness of endpoints specified in `--endpoints` flag:
+Checks the healthiness of endpoints specified in --endpoints flag:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 endpoint health
 ```
 
-Prints out the status of endpoints specified in `--endpoints` flag:
+Prints out the status of endpoints specified in --endpoints flag:
 ```bash
 etcdctl --endpoints=http://127.0.0.1:2380 endpoint status
 ```
