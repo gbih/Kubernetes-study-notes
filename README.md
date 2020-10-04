@@ -26,6 +26,7 @@ multipass launch --name actionbook-vm --disk 50G
 multipass info actionbook-vm
 ```
 
+## MicroK8s installation
 
 * Log into multipass shell
 ```shell
@@ -33,8 +34,9 @@ multipass shell actionbook-vm
 ```
 
 * Install MicroK8s
+- We want to explore etcdctl later. Microk8s 1.18 is the last version to use etcdctl (1.19 uses dqlite)
 ```shell
-sudo snap install microk8s --classic
+sudo snap install microk8s --classic --channel=1.18/stable
 ```
 
 * Add the user ubuntu to the 'microk8s' group:
@@ -58,8 +60,13 @@ sudo snap alias microk8s.kubectl kubectl
 
 * Turn on the services you want
 ```shell
-microk8s enable dns storage ingress metrics-server
+microk8s enable dns storage ingress metallb
 microk8s status
+```
+
+* Confirm running services
+```
+microk8s.inspect
 ```
 
 -----------------------
