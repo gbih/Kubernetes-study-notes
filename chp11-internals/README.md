@@ -1,5 +1,5 @@
 # Study Notes for Kubernetes In Action, v1
-## Chapter 10
+## Chapter 11
 
 ### Objectives
 - Explore Kubernetes internals
@@ -11,26 +11,31 @@
 
 ## Install and Setup
 
-* Microk8s 1.18 is the last version to use and etcd and etcdctl (1.19 uses dqlite), so confirm you are using MicroK8s 1.18
+Microk8s 1.18 is the last version to use and etcd and etcdctl (1.19 uses dqlite), so confirm you are using MicroK8s 1.18
 
 `snap info microk8s`
 
 The installed version is indicated on this line:
+
 `installed:   v1.18.9   (1702) 199MB classic`
 
 
 etcdctl should be pre-installed at /snap/microk8s/current/etcdctl
 
 Test:
-`/snap/microk8s/current/etcdctl version`
-
+```bash
+/snap/microk8s/current/etcdctl version
+```
 
 Create alias:
-`echo 'alias etcdctl="/snap/microk8s/current/etcdctl"' >>~/.bashrc`
+```bash
+echo 'alias etcdctl="/snap/microk8s/current/etcdctl"' >>~/.bashrc
+```
 
 Force read and execution of ~/.bashrc:
-`source ~/.bashrc`
-
+```bash
+source ~/.bashrc
+```
 ---
 
 
