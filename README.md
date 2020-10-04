@@ -169,11 +169,9 @@ cd into install directory
 
 ## Check Initial install:
 
-Confirm available disk space:
+Confirm file system layout and available disk space:
 
 `df`
-
-Something like:
 
 ```shell
 Filesystem     1K-blocks    Used Available Use% Mounted on
