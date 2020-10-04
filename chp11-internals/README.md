@@ -125,7 +125,7 @@ Check output from etcd:
 /snap/microk8s/current/etcd
 ```
 
-You Should see a log entry resembling something like this:
+You should see a log entry resembling something like this:
 ```bash
 2020-10-04 17:57:43.335106 C | etcdmain: listen tcp 127.0.0.1:2380: bind: address already in use
 ```
