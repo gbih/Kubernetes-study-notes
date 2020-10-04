@@ -10,9 +10,11 @@
 
 ------------
 
-## Multipass installation
+## Multipass installation and Ubuntu VM setup
 
-1. Install multipass. Possible defaults are:
+* [Download Multipass installler](https://multipass.run)
+
+* Install Ubuntu virtual instance via Multipass. Defaults include:
 --cpus 1
 --disk 5G
 --mem 1G
@@ -21,7 +23,7 @@
 multipass launch --name actionbook-vm --disk 50G
 ```
 
-2. Gather info about instance
+* Check VM info
 ```shell
 multipass info actionbook-vm
 ```
