@@ -4,6 +4,11 @@
 
 ### Notes
 
+- Declare resources via YAML, then let controllers implement them
+
+- Controllers watch, create, update, reconcile resources
+
+
 p.322-323
 - A few pointers on exploring the controllers’ source code
 - If you’re interested in seeing exactly how these controllers operate, I strongly encourage you to browse through their source code. 
