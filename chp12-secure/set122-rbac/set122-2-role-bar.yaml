@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: bar
+  # Roles are namespaced. If omitted, default ns is used.
+  name: service-reader
+rules:
+  # Services are resources in the core apiGroup, which has no name, hence ""
+- apiGroups: [""]
+
+  # Allow getting individual Services and listing them
+  verbs: ["get", "list"]
+
+  # This rule pertains to services
+  resources: ["services"]
+
+# A Role resource defines what actions can be taken on which resources.
+# This Role allows users to get and list Services in the foo namespace.
+
