@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: chp11-set1112
+  labels:
+    name: chp11-set1112
+

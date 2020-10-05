@@ -26,9 +26,9 @@ etcdctl should be pre-installed at /snap/microk8s/current/etcdctl
 /snap/microk8s/current/etcdctl version
 ```
 
-Create alias:
+Set path for more convenience in .bash_profile
 ```bash
-echo 'alias etcdctl="/snap/microk8s/current/etcdctl"' >>~/.bashrc
+export PATH=$PATH:/snap/microk8s/current
 ```
 
 Force read and execution of ~/.bashrc:
