@@ -99,5 +99,5 @@ echo "etcdctl --endpoints=http://127.0.0.1:2380 get /registry/deployments/chp11-
 etcdctl --endpoints=http://127.0.0.1:2380 get /registry/deployments/chp11-set1112 --prefix --keys-only=false -w=json | python3 -m json.tool
 echo $HR
 
-#echo "kubectl delete -f $FULLPATH"
-#kubectl delete -f $FULLPATH
+echo "kubectl delete -f $FULLPATH"
+kubectl delete -f $FULLPATH
