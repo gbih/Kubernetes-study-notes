@@ -1,8 +1,10 @@
 # Study Notes for Kubernetes In Action, v1
 ## Chapter 11
 
+### General Notes
+- Very important material about Kubernetes internals
+
 ### Objectives
-- Explore Kubernetes internals
 - Use etcdctl and etcd
 - Understand each component and its role
 - Understand networking between pods
