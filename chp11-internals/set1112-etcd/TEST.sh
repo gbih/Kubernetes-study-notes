@@ -1,11 +1,7 @@
 #!/bin/bash 
-# -li is used to simulate an interactive login shell, needed for expanding aliases 
 . ~/src/SETUP.sh
 FULLPATH=$(pwd)
 echo $HR_TOP
-
-shopt -s expand_aliases
-source ~/.bashrc
 
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH
