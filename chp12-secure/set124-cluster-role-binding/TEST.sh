@@ -1,5 +1,5 @@
 #!/bin/bash
-. ~/src/SETUP.sh
+. ~/src/COMMON/SETUP.sh
 FULLPATH=$(pwd)
 
 echo "1. The default system:discovery ClusterRole"

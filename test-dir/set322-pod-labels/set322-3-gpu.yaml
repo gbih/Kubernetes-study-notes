@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-gpu
+  namespace: chp03-set322
+spec:
+  nodeSelector:
+    gpu: "true"
+  containers:
+  - image: georgebaptista/kubia
+    name: kubia
+    ports:
+    - containerPort: 8080
+      protocol: TCP
