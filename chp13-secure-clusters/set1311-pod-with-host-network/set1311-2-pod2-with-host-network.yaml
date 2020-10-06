@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2-with-host-network
+  namespace: chp13-set1311
+spec:
+  hostNetwork: true # use the host node's network namespace
+  containers:
+  - name: main
+    image: alpine
+    command: ["/bin/sleep", "999999"]

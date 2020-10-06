@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: clusterrolebinding-magalix
+
+subjects:
+- kind: User
+  name: magalix
+  apiGroup: rbac.authorization.k8s.io
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp-privileged # match name of Role or ClusterRole to bind to
+

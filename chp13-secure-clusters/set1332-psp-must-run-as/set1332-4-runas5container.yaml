@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: run-as-5 
+  namespace: chp13-set1332
+spec:
+#  securityContext:
+#    runAsUser: 2 
+#    runAsGroup: 2 
+#    fsGroup: 2 # Since fsGroup field is specified, all processes of the container are also part of the supplementary group ID 
+    #supplementaryGroups: [2]
+  containers:
+  - name: main
+    image: luksa/kubia-run-as-user-5
+    command: ["/bin/sleep", "999999"]

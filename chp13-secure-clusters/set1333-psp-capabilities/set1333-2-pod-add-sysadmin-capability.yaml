@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-add-sysadmin-capability
+  namespace: chp13-set1333
+spec:
+  containers:
+  - name: main
+    image: alpine
+    command: ["/bin/sleep", "999999"]
+    securityContext:
+      capabilities:
+        add:
+        - SYS_ADMIN

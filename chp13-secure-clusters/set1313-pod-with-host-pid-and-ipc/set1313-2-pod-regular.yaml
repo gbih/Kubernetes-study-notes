@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-regular
+  namespace: chp13-set1313
+spec:
+  # make the pod use the host's PID namespace
+  #hostPID: true
+  # make the pod use the host's IPC namespace
+  #hostIPC: true
+  containers:
+  - name: main
+    image: alpine
+    command: ["/bin/sleep", "999999"]
+

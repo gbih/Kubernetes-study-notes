@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-as-user2
+  namespace: chp13-set1332
+spec:
+#  securityContext:
+#    runAsUser: 2 
+#    runAsGroup: 2 
+#    fsGroup: 2 # Since fsGroup field is specified, all processes of the container are also part of the supplementary group ID 
+    #supplementaryGroups: [2]
+  containers:
+  - name: main
+    #image: luksa/kubia-run-as-user-5
+    image: alpine
+    command: ["/bin/sleep", "999999"]
+#    securityContext:
+#      allowPrivilegeEscalation: true
+    securityContext:
+      runAsUser: 2
+      #supplementalGroups: [2] # Supplemental groups is an array of IDs

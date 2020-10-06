@@ -7,7 +7,8 @@ KUBE_APISERVER="/var/snap/microk8s/current/args/kube-apiserver"
 enter () {
   echo ""
   read -p "[[ Press ENTER to continue ]]"
-  clear
+  tput reset # non-destructive clearing of screen, can still scroll back up
+
   echo $HR
 }
 

@@ -6,6 +6,7 @@ FULLPATH=$(pwd)
 
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH
+echo $HR_TOP
 
 enter
 

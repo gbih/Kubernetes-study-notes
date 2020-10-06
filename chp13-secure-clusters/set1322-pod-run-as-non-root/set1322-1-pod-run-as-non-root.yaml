@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-run-as-non-root
+  namespace: chp13-set1322
+spec:
+  containers:
+  - name: main
+    image: alpine
+    command: ["/bin/sleep", "999999"]
+    securityContext:
+      # This container will only be allowed to run as a non-root user
+      runAsNonRoot: true

@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: psp-default
+rules:
+- apiGroups: [""]
+  resources: ["podsecuritypolicies"]
+  verbs: ["use"]
+  resourceNames: ["default"]
+
+
+
+#rules:
+#- apiGroups:
+#  - policy
+#  resourceNames:
+#  - default
+#  resources:
+#  - podsecuritypolicies
+#  verbs:
+#  - use

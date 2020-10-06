@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: psp-bob
+  namespace: chp13-set1335
+
+subjects:
+- kind: User
+  name: bob
+  apiGroup: rbac.authorization.k8s.io
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp-privileged # match name of Role or ClusterRole to bind to
+
+# allows bob to operate on resources in the chp13-set1335 namespace

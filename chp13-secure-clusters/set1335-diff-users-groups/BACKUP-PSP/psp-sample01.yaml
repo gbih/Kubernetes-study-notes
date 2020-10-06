@@ -1,0 +1,49 @@
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: privileged
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
+spec:
+  privileged: true
+  allowPrivilegeEscalation: true
+  readOnlyRootFilesystem: false
+  allowedCapabilities:
+  - '*'
+  volumes:
+  - '*'
+
+  # hostNetwork allows a pod to operate in the host's default namespaces,
+  # allowing them to see and manipulate node-level resources and devices. Try not to use this.
+  hostNetwork: true
+
+  hostPorts: # Need to specify to enable hostPorts
+  - min: 0
+    max: 65535
+  hostIPC: true
+  hostPID: true
+  
+  # runAsUser.rule: "MustRunAs", "MustRunAsNonRoot", "RunAsAny"
+#  runAsUser:
+#    rule: 'RunAsAny' # Because the container image is root, the user default becomes root
+
+  # https://kubernetes.io/docs/concepts/policy/pod-security-policy/
+  runAsUser:
+    # Require the container to run without root privileges.
+    #rule: 'MustRunAsNonRoot'
+
+  runAsUser:
+    rule: RunAsAny
+#  runAsUser:
+#    rule: 'MustRunAs'
+#    ranges:
+#    - min: 1 # 0 is the root user
+#      max: 10 
+
+  seLinux:
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'RunAsAny'
+  fsGroup:
+    rule: 'RunAsAny'
+

@@ -20,8 +20,6 @@ PSP/
 REFERENCE/
 SETUP-Fluentd/
 SETUP-rbac-and-metrics/
-chp12-secure/
-chp13-secure-clusters/
 chp14-pod-resources/
 chp15-scaling/
 chp17-bestpractices/

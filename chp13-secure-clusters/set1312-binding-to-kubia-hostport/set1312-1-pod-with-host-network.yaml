@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-hostport
+  namespace: chp13-set1312
+spec:
+  containers:
+  - image: luksa/kubia
+    name: kubia
+    ports:
+    - containerPort: 8080
+      # enable binding to port in node's default namespace, but still have own network namespace
+      hostPort: 9000
+      protocol: TCP

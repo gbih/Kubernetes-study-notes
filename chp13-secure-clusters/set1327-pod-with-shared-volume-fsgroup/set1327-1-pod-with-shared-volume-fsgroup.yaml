@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-shared-volume-fsgroup
+  namespace: chp13-set1327
+spec:
+  securityContext:
+    # fsGroup and supplementalGroups are defined at the pod level
+    fsGroup: 555
+    supplementalGroups: [666, 777]
+  containers:
+
+  - name: first
+    image: alpine
+    command: ["/bin/sleep", "999999"]
+    securityContext: # first container runs as User ID 1111
+      runAsUser: 1111
+    volumeMounts:
+    - name: shared-volume
+      mountPath: /volume # use same volume as 2nd container
+      readOnly: false
+
+  - name: second
+    image: alpine
+    command: ["/bin/sleep", "999999"]
+    securityContext: # second container runs as User ID 2222
+      runAsUser: 2222
+    volumeMounts:
+    - name: shared-volume
+      mountPath: /volume # use same volume as 1st container
+      readOnly: false
+
+  volumes:
+  - name: shared-volume
+    emptyDir:

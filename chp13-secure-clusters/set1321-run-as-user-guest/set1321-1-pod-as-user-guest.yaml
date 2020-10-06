@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-as-user-guest
+  namespace: chp13-set1321
+spec:
+  containers:
+  - name: main
+    image: alpine
+    command: ["/bin/sleep", "999999"]
+    # Need to specify a user ID, not a username here
+    # id 405 corresponds to the guest user
+    securityContext:
+      runAsUser: 405
