@@ -36,7 +36,6 @@ kubectl get svc -o yaml
 
 <details><summary>Output</summary>
 <p>
-#### output
 
 ```
 kubectl get svc -o yaml
