@@ -1,5 +1,5 @@
 #!/bin/bash
-. ~/src/SETUP.sh
+. ~/src/common/SETUP.sh
 FULLPATH=$(pwd)
 echo $HR_TOP
 
