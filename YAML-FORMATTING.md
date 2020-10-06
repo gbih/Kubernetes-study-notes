@@ -1,4 +1,4 @@
-ON and YAML output from kubectl
+# Formatting JSON and YAML output from kubectl
 
 
 ## Objective 
