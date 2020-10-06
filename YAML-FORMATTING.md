@@ -179,9 +179,8 @@ kubectl get svc -o json | jq '.'
   ```
   </p>
   </details>
-
-
-
+&nbsp  
+&nbsp  
 2. Display resource in JSON format, select field 'apiVersion: .apiVersion' in jq, output as JSON
 ```bash
 kubectl get svc -o json | jq '. | {apiVersion: .apiVersion}'
