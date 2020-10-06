@@ -10,8 +10,8 @@ For example:
 ```
 kubectl get svc -o yaml | grep -vE "managedFields|selfLink|creationTimestamp"
 ```
-  <details><summary>Output</summary>
-  <p>
+<details><summary>Output</summary>
+<p>
   
   ```
  apiVersion: v1
@@ -64,16 +64,13 @@ kind: List
 metadata:
   resourceVersion: "" 
   ```
-  </p>
-  </details>
+</p>
+</details>
 &nbsp
 &nbsp
-
-
 
 
 Instead, we can use a combination of yq and jq for fitered output.
-
 
 ## Install 
 
