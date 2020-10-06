@@ -38,10 +38,6 @@ kubectl get svc -o yaml
 <p>
 
 ```
-kubectl get svc -o yaml
-
-# will output:
-
 apiVersion: v1
 items:
 - apiVersion: v1
