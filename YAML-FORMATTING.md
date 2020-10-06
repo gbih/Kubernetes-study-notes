@@ -18,12 +18,12 @@ Instead, we can use a combination of yq and jq for fitered output.
 ## Install 
 
 * jq
-Lightweight and flexible command-line JSON processor.
-https://stedolan.github.io/jq/
+  Lightweight and flexible command-line JSON processor.
+  https://stedolan.github.io/jq/
 
 * yq
-Lightweight and portable command-line YAML processor
-https://mikefarah.gitbook.io/yq/
+  Lightweight and portable command-line YAML processor
+  https://mikefarah.gitbook.io/yq/
 
 ---
 
@@ -31,11 +31,9 @@ https://mikefarah.gitbook.io/yq/
 
 ```
 kubectl get svc -o yaml
-```
 
-will output:
+# will output:
 
-```
 apiVersion: v1
 items:
 - apiVersion: v1
