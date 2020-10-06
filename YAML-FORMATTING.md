@@ -30,16 +30,71 @@ Instead, we can use a combination of yq and jq for fitered output.
 ## Original example
 
 
-
-<details><summary>CLICK ME</summary>
-<p>
-
-#### yes, even hidden code blocks!
-
-```python
-print("hello world!")
 ```
+kubectl get svc -o yaml
+```
+<details><summary>Output</summary>
+<p>
+#### output
+```
+kubectl get svc -o yaml
 
+# will output:
+
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2020-10-04T03:38:58Z"
+    labels:
+      component: apiserver
+      provider: kubernetes
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:component: {}
+            f:provider: {}
+        f:spec:
+          f:clusterIP: {}
+          f:ports:
+            .: {}
+            k:{"port":443,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: kube-apiserver
+      operation: Update
+      time: "2020-10-04T03:38:58Z"
+    name: kubernetes
+    namespace: default
+    resourceVersion: "58"
+    selfLink: /api/v1/namespaces/default/services/kubernetes
+    uid: f7749243-1a91-4c64-953e-9ca7d11ab2ef
+  spec:
+    clusterIP: 10.152.183.1
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 16443
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+```
 </p>
 </details>
 
