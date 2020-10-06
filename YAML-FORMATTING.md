@@ -196,10 +196,8 @@ kubectl get svc -o json | jq '. | {apiVersion: .apiVersion}'
   ```
   </p>
   </details>
-
-
-
-
+&nbsp
+&nbsp
 
 3. Display resource in JSON format, filter out nested field 'managedFields' in jq, output as JSON
 ```bash
@@ -254,7 +252,8 @@ kubectl get svc -o json | jq 'del(.items[].metadata.managedFields)'
   ```
   </p>
   </details>
-
+&nbsp
+&nbsp
 
 4. Display resource in JSON format, filter out multiple nested fields in jq, output as JSON
 ```bash
@@ -307,7 +306,8 @@ kubectl get svc -o json | jq 'del(.items[].metadata.managedFields, .items[].meta
   ```
   </p>
   </details>
-
+&nbsp
+&nbsp
 
 5. Display resource in JSON format, filter out multiple nested fields in jq, output as YAML
 ```bash
@@ -348,7 +348,8 @@ kubectl get svc -o json | jq 'del(.items[].metadata.managedFields, .items[].meta
   ```
   </p>
   </details>
-
+&nbsp
+&nbsp
 
 6. Display resource in JSON format, filter out multiple nested fields in jq, output as YAML with optional tab space of 4
 ```bash
@@ -388,7 +389,8 @@ kubectl get svc -o json | jq 'del(.items[].metadata.managedFields, .items[].meta
   ```
   </p>
   </details>
-
+&nbsp
+&nbsp
 
 ##  Flags for yq
 
