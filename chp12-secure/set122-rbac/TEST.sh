@@ -9,7 +9,6 @@ echo $HR
 
 echo "1. Create namespaces foo and bar"
 echo ""
-#kubectl apply -f $PSPPATH
 kubectl apply -f $FULLPATH/set122-0-ns-foo.yaml
 kubectl apply -f $FULLPATH/set122-0-ns-bar.yaml
 
@@ -66,17 +65,14 @@ echo $HR
 echo "kubectl describe role -n=foo"
 kubectl describe role -n=foo
 
-#enter
-#echo "kubectl get role service-reader -n=foo -o yaml"
-#kubectl get role service-reader -n=foo -o yaml
-
 enter
 
-#echo "Check config view"
-#echo ""
-#echo "kubectl config view"
-#kubectl config view
-#enter
+echo "Check config view"
+echo ""
+echo "kubectl config view"
+kubectl config view
+
+enter
 
 echo "4. curl test. This should return an error, since we are using RBAC and haven't set up RoleBinding yet"
 echo ""
@@ -93,19 +89,13 @@ echo "kubectl create -f set122-3-rolebinding-foo.yaml"
 kubectl create -f set122-3-rolebinding-foo.yaml
 echo $HR
 
-
 echo "kubectl describe rolebinding test -n=foo"
 kubectl describe rolebinding test -n=foo
-
 
 enter
 
 echo "6. curl test. This should work, since we use RoleBinding to bind Role resource with ServiceAccount"
 echo ""
-
-#echo "kubectl get rolebinding test -n=foo -o yaml"
-#kubectl get rolebinding test -n=foo -o yaml
-#echo $HR
 
 echo "Get Services from the API server"
 echo "kubectl exec -it test -n=foo -- curl localhost:8001/api/v1/namespaces/foo/services"
@@ -169,15 +159,6 @@ kubectl get clusterrolebinding
 echo $HR
 
 
-echo "kubectl get events -n=foo"
-kubectl get events -n=foo
-echo $HR
-
-echo "kubectl get events -n=bar"
-kubectl get events -n=bar
-echo $HR
-
-#kubectl delete -f $PSPPATH
 kubectl delete ns foo
 kubectl delete ns bar
 kubectl delete clusterrole pv-reader

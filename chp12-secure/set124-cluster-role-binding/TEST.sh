@@ -2,37 +2,36 @@
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
 
-echo "1. The default system:discovery ClusterRole"
+echo "The default system:discovery ClusterRole"
 echo ""
 
 
-echo "The API server also exposes non-resource URLs"
-echo "Access to these URLs is granted via the predefined system:discovery ClusterRole and ClusterRoleBinding"
+echo "The API server also exposes non-resource URLs."
+echo "Access to these URLs is granted via the predefined system:discovery ClusterRole and ClusterRoleBinding."
 echo ""
-echo "kubectl get clusterrole system:discovery -o yaml"
+echo "kubectl get clusterrole system:discovery -o json | jq 'del(.metadata.managedFields, .metadata.selfLink, .metadata.annotations)' | yq r -P -"
 echo ""
-kubectl get clusterrole system:discovery -o yaml
-echo ""
+kubectl get clusterrole system:discovery -o json | jq 'del(.metadata.managedFields, .metadata.selfLink, .metadata.annotations)' | yq r -P -
 
 enter
 
-echo "2. The default system:discovery ClusterRoleBinding"
+echo "The default system:discovery ClusterRoleBinding"
 echo ""
 
-echo "kubectl get clusterrolebinding system:discovery -o yaml"
+echo "kubectl get clusterrolebinding system:discovery -o json | jq 'del(.metadata.managedFields, .metadata.selfLink, .metadata.annotations)' | yq r -P -"
 echo ""
-kubectl get clusterrolebinding system:discovery -o yaml
+kubectl get clusterrolebinding system:discovery -o json | jq 'del(.metadata.managedFields, .metadata.selfLink, .metadata.annotations)' | yq r -P -
 
 enter
 
-echo "1. Create namespace and pod resources"
+echo "Create namespace and pod resources"
 echo ""
 kubectl apply -f $FULLPATH/set1224-0-ns.yaml
-#kubectl apply -f ../../PSP
 echo ""
 
 echo "kubectl run test --image=georgebaptista/kubectl-proxy --restart=Never -n=foo"
 kubectl run test --image=georgebaptista/kubectl-proxy --restart=Never -n=foo
+echo ""
 
 echo "kubectl -n=foo wait --for=condition=Ready=True pod/test --timeout=31s"
 kubectl -n=foo wait --for=condition=Ready=True pod/test --timeout=31s
@@ -42,16 +41,6 @@ enter
 echo "Get enn var from the test pod"
 echo "kubectl -n=foo exec -it test -- printenv"
 kubectl -n=foo exec -it test -- printenv
-
-#echo "kubectl -n=foo exec -it test -- sh -c 'export TEST=$KUBERNETES_SERVICE_HOST'"
-#kubectl -n=foo exec -it test -- sh -c 'export TEST=$KUBERNETES_SERVICE_HOST'
-#echo "TEST IS $TEST"
-#echo $HR
-
-#echo "Get enn var from the test pod"
-#echo "kubectl -n=foo exec -it test -- printenv"
-#kubectl -n=foo exec -it test -- printenv
-#echo ""
 
 echo $HR
 

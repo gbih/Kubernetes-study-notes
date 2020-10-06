@@ -11,12 +11,17 @@ echo $HR_TOP
 enter
 
 echo "kubectl get sa -o yaml"
+echo ""
 kubectl get sa -o yaml
 
 enter
 
-echo "kubectl get sa foo -o yaml -n=chp12-set121"
-kubectl get sa foo -o yaml -n=chp12-set121
+#echo "kubectl get sa foo -o yaml -n=chp12-set121"
+#kubectl get sa foo -o yaml -n=chp12-set121
+
+echo "kubectl get sa foo -o json -n=chp12-set121 | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)' | yq r -P -"
+echo ""
+kubectl get sa foo -o json -n=chp12-set121 | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)' | yq r -P -
 
 enter 
 
@@ -27,7 +32,6 @@ TOKEN=$(kubectl get sa foo -n=chp12-set121 -o jsonpath={'.secrets[0].name'})
 
 echo "kubectl describe secret $TOKEN -n=chp12-set121"
 kubectl describe secret $TOKEN -n=chp12-set121
-echo ""
 
 enter
 
@@ -38,14 +42,14 @@ echo ""
 
 echo "kubectl wait --for=condition=Ready pod/curl-custom-sa -n=chp12-set121"
 kubectl wait --for=condition=Ready pod/curl-custom-sa -n=chp12-set121
-echo ""
+echo $HR
 
 echo "kubectl get pods -o wide -n=chp12-set121"
 kubectl get pods -o wide -n=chp12-set121
-echo ""
+echo $HR
 
-echo "kubectl -n=chp12-set121 exec -it curl-custom-sa -c main -- cat /var/run/secrets/kubernetes.io/serviceaccount/token"
-kubectl -n=chp12-set121 exec -it curl-custom-sa -c main -- cat /var/run/secrets/kubernetes.io/serviceaccount/token
+echo "kubectl -n=chp12-set121 exec -it pod/curl-custom-sa -c main -- cat /var/run/secrets/kubernetes.io/serviceaccount/token"
+kubectl -n=chp12-set121 exec -it pod/curl-custom-sa -c main -- cat /var/run/secrets/kubernetes.io/serviceaccount/token
 echo ""
 
 enter
@@ -53,8 +57,8 @@ enter
 echo "Talking to the API server with a custom ServiceAccount"
 echo ""
 
-echo "kubectl -n=chp12-set121 exec -it curl-custom-sa -c main -- curl localhost:8001/api/v1/namespaces/chp12-set12/serviceaccounts"
-kubectl -n=chp12-set121 exec -it curl-custom-sa -c main -- curl localhost:8001/api/v1/namespaces/chp12-set12/serviceaccounts
+echo "kubectl -n=chp12-set121 exec -it pod/curl-custom-sa -c main -- curl localhost:8001/api/v1/namespaces/chp12-set12/serviceaccounts"
+kubectl -n=chp12-set121 exec -it pod/curl-custom-sa -c main -- curl localhost:8001/api/v1/namespaces/chp12-set12/serviceaccounts
 echo ""
 
 
