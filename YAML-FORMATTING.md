@@ -33,9 +33,11 @@ Instead, we can use a combination of yq and jq for fitered output.
 ```
 kubectl get svc -o yaml
 ```
+
 <details><summary>Output</summary>
 <p>
 #### output
+
 ```
 kubectl get svc -o yaml
 
