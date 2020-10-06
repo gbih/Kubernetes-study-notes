@@ -1,5 +1,5 @@
 #!/bin/bash
-. ~/src/COMMON/SETUP.sh
+. ~/src/common/setup.sh
 FULLPATH=$(pwd)
 
 echo "kubectl apply -f $FULLPATH/set522-0-ns.yaml"

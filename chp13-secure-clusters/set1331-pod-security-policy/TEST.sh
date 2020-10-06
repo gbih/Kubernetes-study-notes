@@ -1,5 +1,5 @@
 #d!/bin/bash
-. ~/src/COMMON/SETUP.sh
+. ~/src/common/setup.sh
 FULLPATH=$(pwd)
 
 ((i++))
