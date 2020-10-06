@@ -179,7 +179,6 @@ kubectl get svc -o json | jq '.'
   ```
   </p>
   </details>
-
 &nbsp  
 &nbsp  
 
