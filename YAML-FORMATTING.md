@@ -29,6 +29,24 @@ Instead, we can use a combination of yq and jq for fitered output.
 
 ## Original example
 
+
+
+<details><summary>CLICK ME</summary>
+<p>
+
+#### yes, even hidden code blocks!
+
+```python
+print("hello world!")
+```
+
+</p>
+</details>
+
+
+
+
+
 ```
 kubectl get svc -o yaml
 
