@@ -10,13 +10,74 @@ For example:
 ```
 kubectl get svc -o yaml | grep -vE "managedFields|selfLink|creationTimestamp"
 ```
+  <details><summary>Output</summary>
+  <p>
+  
+  ```
+ apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      component: apiserver
+      provider: kubernetes
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:component: {}
+            f:provider: {}
+        f:spec:
+          f:clusterIP: {}
+          f:ports:
+            .: {}
+            k:{"port":443,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: kube-apiserver
+      operation: Update
+      time: "2020-10-04T03:38:58Z"
+    name: kubernetes
+    namespace: default
+    resourceVersion: "58"
+    uid: f7749243-1a91-4c64-953e-9ca7d11ab2ef
+  spec:
+    clusterIP: 10.152.183.1
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 16443
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: "" 
+  ```
+  </p>
+  </details>
+&nbsp
+&nbsp
+
+
+
 
 Instead, we can use a combination of yq and jq for fitered output.
 
 
 ## Install 
 
-#### [jq: Lightweight and flexible command-line JSON processor.](https://stedolan.github.io/jq/ "jq")
+#### [jq: Lightweight and flexible command-line JSON processor](https://stedolan.github.io/jq/ "jq")
 
 #### [yq: Lightweight and portable command-line YAML processor](https://mikefarah.gitbook.io/yq/ "yq")
 
