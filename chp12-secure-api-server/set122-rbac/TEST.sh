@@ -39,7 +39,7 @@ enter
 
 
 
-echo "2. curl test. This should return an error, since we are using RBAC and haven't set up RoleBinding yet"
+echo "2. curl test. This should return an error, since we are using RBAC and haven't set up a Role and RoleBinding yet"
 echo ""
 echo "kubectl exec -it test -n foo -- curl localhost:8001/api/v1/namespaces/foo/services"
 kubectl exec -it test -n foo -- curl localhost:8001/api/v1/namespaces/foo/services
@@ -62,8 +62,15 @@ echo "kubectl apply -f $FULLPATH/set122-1-role-foo.yaml"
 kubectl apply -f $FULLPATH/set122-1-role-foo.yaml
 echo $HR
 
-echo "kubectl describe role -n=foo"
-kubectl describe role -n=foo
+echo "kubectl describe role service-reader -n=foo"
+echo ""
+kubectl describe role service-reader -n=foo
+echo $HR
+
+echo "kubectl get role service-reader -o json -n=foo | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.selfLink, .metadata.uid, .metadata.resourceVersion)' | yq r -P -"
+echo ""
+kubectl get role service-reader -o json -n=foo | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.selfLink, .metadata.uid, .metadata.resourceVersion)' | yq r -P -
+
 
 enter
 
@@ -74,7 +81,7 @@ enter
 
 #enter
 
-echo "4. curl test. This should return an error, since we are using RBAC and haven't set up RoleBinding yet"
+echo "4. curl test. We now have a Role, but still no RoleBinding, and we expect this to return an error via RBAC"
 echo ""
 echo "kubectl exec -it test -n foo -- curl localhost:8001/api/v1/namespaces/foo/services"
 kubectl exec -it test -n foo -- curl localhost:8001/api/v1/namespaces/foo/services
@@ -91,6 +98,11 @@ echo $HR
 
 echo "kubectl describe rolebinding test -n=foo"
 kubectl describe rolebinding test -n=foo
+echo $HR
+
+echo "kubectl get rolebinding test  -n=foo -o json -n=foo | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.selfLink, .metadata.uid, .metadata.resourceVersion)' | yq r -P -"
+echo ""
+kubectl get rolebinding test  -n=foo -o json -n=foo | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.selfLink, .metadata.uid, .metadata.resourceVersion)' | yq r -P -
 
 enter
 
@@ -109,12 +121,21 @@ echo ""
 
 echo "kubectl create clusterrole pv-reader --verb=get,list --resource=persistentvolumes"
 kubectl create clusterrole pv-reader --verb=get,list --resource=persistentvolumes
-
-echo "kubectl get clusterrole pv-reader"
-kubectl get clusterrole pv-reader
 echo $HR
 
+echo "kubectl describe clusterrole pv-reader"
+echo ""
+kubectl describe clusterrole pv-reader
+echo $HR
+
+echo "kubectl get clusterrole pv-reader -o json | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.selfLink, .metadata.uid, .metadata.resourceVersion)' | yq r -P -"
+echo ""
+kubectl get clusterrole pv-reader -o json | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.selfLink, .metadata.uid, .metadata.resourceVersion)' | yq r -P -
+
+enter
+
 echo "Test if the pod can list PersistentVolumes without ClusterRoleBindings"
+echo ""
 
 echo "kubectl exec -it test -n=foo -- curl localhost:8001/api/v1/persistentvolumes"
 kubectl exec -it test -n=foo -- curl localhost:8001/api/v1/persistentvolumes
@@ -125,7 +146,6 @@ enter
 
 echo "8. Using ClusterRoleBindings"
 echo "Bind ClusterRole to ServiceAccount to enable access to cluster-level resources"
-
 echo ""
 
 
@@ -168,7 +188,7 @@ enter
 echo "kubectl describe clusterrole admin"
 kubectl describe clusterrole admin
 
-
+echo $HR
 
 kubectl delete ns foo
 kubectl delete ns bar
