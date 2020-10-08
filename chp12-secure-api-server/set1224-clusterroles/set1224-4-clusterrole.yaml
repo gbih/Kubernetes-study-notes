@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: clusterrole
+  name: pv-reader
   # namespace ommited since ClusterRoles are not namespaced
 rules:
 - apiGroups: [""]

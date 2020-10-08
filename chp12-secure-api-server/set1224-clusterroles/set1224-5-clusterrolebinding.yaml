@@ -15,3 +15,5 @@ subjects:
 # ClusterRoleBinding is used to grant access to cluster-level resources.
 # In general, you will use the combination of ClusterRole and ClusterRoleBinding when granting access to cluster-level resources.
 
+# imperative style:
+# kubectl create clusterrolebinding pv-test --clusterrole=pv-reader --serviceaccount=foo:default

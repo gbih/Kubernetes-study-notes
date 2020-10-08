@@ -1,4 +1,4 @@
-# Chapter 12, Section 12.1
+# Chapter 12, Section 12.1.2
 
 ### Objective
 

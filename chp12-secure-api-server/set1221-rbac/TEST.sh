@@ -9,8 +9,8 @@ echo $HR
 
 echo "1. Create namespaces foo and bar"
 echo ""
-kubectl apply -f $FULLPATH/set122-0-ns-foo.yaml
-kubectl apply -f $FULLPATH/set122-0-ns-bar.yaml
+kubectl apply -f $FULLPATH/set1221-0-ns-foo.yaml
+kubectl apply -f $FULLPATH/set1221-0-ns-bar.yaml
 
 echo $HR
 
@@ -58,8 +58,8 @@ enter
 echo "3. Create Role Resources"
 echo ""
 
-echo "kubectl apply -f $FULLPATH/set122-1-role-foo.yaml"
-kubectl apply -f $FULLPATH/set122-1-role-foo.yaml
+echo "kubectl apply -f $FULLPATH/set1221-1-role-foo.yaml"
+kubectl apply -f $FULLPATH/set1221-1-role-foo.yaml
 echo $HR
 
 echo "kubectl describe role service-reader -n=foo"
@@ -92,8 +92,8 @@ enter
 echo "5. Bind a Role resource with ServiceAccount via RoleBinding"
 echo ""
 
-echo "kubectl create -f set122-3-rolebinding-foo.yaml"
-kubectl create -f set122-3-rolebinding-foo.yaml
+echo "kubectl apple -f set1221-3-rolebinding-foo.yaml"
+kubectl apply -f set1221-3-rolebinding-foo.yaml
 echo $HR
 
 echo "kubectl describe rolebinding test -n=foo"
@@ -119,8 +119,13 @@ enter
 echo "7. Using ClusterRoles"
 echo ""
 
-echo "kubectl create clusterrole pv-reader --verb=get,list --resource=persistentvolumes"
-kubectl create clusterrole pv-reader --verb=get,list --resource=persistentvolumes
+#echo "kubectl create clusterrole pv-reader --verb=get,list --resource=persistentvolumes"
+#kubectl create clusterrole pv-reader --verb=get,list --resource=persistentvolumes
+#
+
+echo "kubectl apply -f set1221-4-clusterrole.yaml"
+kubectl apply -f set1221-4-clusterrole.yaml
+
 echo $HR
 
 echo "kubectl describe clusterrole pv-reader"
@@ -149,8 +154,12 @@ echo "Bind ClusterRole to ServiceAccount to enable access to cluster-level resou
 echo ""
 
 
-echo "kubectl create clusterrolebinding pv-test --clusterrole=pv-reader --serviceaccount=foo:default"
-kubectl create clusterrolebinding pv-test --clusterrole=pv-reader --serviceaccount=foo:default
+#echo "kubectl create clusterrolebinding pv-test --clusterrole=pv-reader --serviceaccount=foo:default"
+#kubectl create clusterrolebinding pv-test --clusterrole=pv-reader --serviceaccount=foo:default
+
+echo "kubectl apply -f set1221-5-clusterrolebinding.yaml"
+kubectl apply -f set1221-5-clusterrolebinding.yaml
+
 echo $HR
 
 echo "After creating ClusterRoleBindings, test if we can list PersistentVolumes"
@@ -160,37 +169,17 @@ echo "kubectl exec -it test -n=foo -- curl localhost:8001/api/v1/persistentvolum
 kubectl exec -it test -n=foo  -- curl localhost:8001/api/v1/persistentvolumes
 echo ""
 
-enter
-
-echo "kubectl get role n=foo"
-kubectl get role -n=foo
 echo $HR
 
-echo "kubectl get rolebinding -n=foo"
-kubectl get rolebinding -n=foo
-echo $HR
+echo "kubectl delete -f $FULLPATH"
+kubectl delete -f $FULLPATH --ignore-not-found
 
-echo "kubectl get clusterrole"
-kubectl get clusterrole
-echo $HR
+#echo "kubectl delete ns foo"
+#echo "kubectl delete ns bar"
+#echo "kubectl delete clusterrole pv-reader"
+#echo "kubectl delete clusterrolebinding pv-test"
 
-echo "kubectl get clusterrolebinding"
-kubectl get clusterrolebinding
-echo $HR
-
-enter
-
-echo "kubectl describe clusterrole view"
-kubectl describe clusterrole view
-
-enter
-
-echo "kubectl describe clusterrole admin"
-kubectl describe clusterrole admin
-
-echo $HR
-
-kubectl delete ns foo
-kubectl delete ns bar
-kubectl delete clusterrole pv-reader
-kubectl delete clusterrolebinding pv-test
+#kubectl delete ns foo
+#kubectl delete ns bar
+#kubectl delete clusterrole pv-reader
+#kubectl delete clusterrolebinding pv-test
