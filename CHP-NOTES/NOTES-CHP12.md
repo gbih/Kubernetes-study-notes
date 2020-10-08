@@ -46,7 +46,7 @@
 ---
 
 # 12.2 Securing the cluster with role-based access control
-* RBAC plugins enables authorization-control
+* RBAC plugin enables authorization-control
 
 ### 12.2.1 Introducing the RBAC authorization plugin
 * Understanding actions
