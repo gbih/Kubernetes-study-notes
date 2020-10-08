@@ -67,12 +67,12 @@ kubectl describe role -n=foo
 
 enter
 
-echo "Check config view"
-echo ""
-echo "kubectl config view"
-kubectl config view
+#echo "Check config view"
+#echo ""
+#echo "kubectl config view"
+#kubectl config view
 
-enter
+#enter
 
 echo "4. curl test. This should return an error, since we are using RBAC and haven't set up RoleBinding yet"
 echo ""
@@ -114,7 +114,7 @@ echo "kubectl get clusterrole pv-reader"
 kubectl get clusterrole pv-reader
 echo $HR
 
-echo "Test if the pod can list PersisentVolumes without ClusterRoleBindings"
+echo "Test if the pod can list PersistentVolumes without ClusterRoleBindings"
 
 echo "kubectl exec -it test -n=foo -- curl localhost:8001/api/v1/persistentvolumes"
 kubectl exec -it test -n=foo -- curl localhost:8001/api/v1/persistentvolumes
@@ -157,6 +157,17 @@ echo $HR
 echo "kubectl get clusterrolebinding"
 kubectl get clusterrolebinding
 echo $HR
+
+enter
+
+echo "kubectl describe clusterrole view"
+kubectl describe clusterrole view
+
+enter
+
+echo "kubectl describe clusterrole admin"
+kubectl describe clusterrole admin
+
 
 
 kubectl delete ns foo

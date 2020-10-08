@@ -33,6 +33,29 @@ TOKEN=$(kubectl get sa foo -n=chp12-set121 -o jsonpath={'.secrets[0].name'})
 echo "kubectl describe secret $TOKEN -n=chp12-set121"
 kubectl describe secret $TOKEN -n=chp12-set121
 
+echo $HR
+
+echo "JWT Header, Payload, Signature"
+echo '
+{
+  "alg": "RS256",
+  "kid": "Cm2OCL2NaYYPtP3FDKQH4_FKX2QndKngfCzocfcbM1M"
+}
+{
+  "iss": "kubernetes/serviceaccount",
+  "kubernetes.io/serviceaccount/namespace": "chp12-set121",
+  "kubernetes.io/serviceaccount/secret.name": "foo-token-fgzkw",
+  "kubernetes.io/serviceaccount/service-account.name": "foo",
+  "kubernetes.io/serviceaccount/service-account.uid": "7a87d1ae-4ec9-4efb-b6a6-3157c772dbd7",
+  "sub": "system:serviceaccount:chp12-set121:foo"
+}
+RSASHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+)'
+
+
+
 enter
 
 echo "Assigning a ServiceAccount to a pod"
