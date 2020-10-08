@@ -3,7 +3,7 @@
 ### Objective
 
 ### Notes
-* This script will not work anymore when RBAC is enabled on the cluster.
+* This script will not work anymore when the RBAC-plugin is enabled on the cluster.
 
 Using ServiceAccounts
 * ServiceAccounts are a way for an application running inside a pod to authenticate itself with the API server.
