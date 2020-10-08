@@ -85,3 +85,14 @@
 ---
 
 # 12.3 Summary
+* Clients of the API server include both human users and applications running in pods.
+* Applications in pods are associated with a ServiceAccount.
+* Both users and ServiceAccounts are associated with groups.
+* By default, pods run under the default ServiceAccount, which is created for each namespace automatically.
+* Additional ServiceAccounts can be created manually and associated with a pod. 
+* ServiceAccounts can be configured to allow mounting only a constrained list of Secrets in a given pod.
+* A ServiceAccount can also be used to attach image pull Secrets to pods, so you don’t need to specify the Secrets in every pod.
+* Roles and ClusterRoles define what actions can be performed on which resources. 
+* RoleBindings and ClusterRoleBindings bind Roles and ClusterRoles to users, groups, and ServiceAccounts.
+* Each cluster comes with default ClusterRoles and ClusterRoleBindings.
+
