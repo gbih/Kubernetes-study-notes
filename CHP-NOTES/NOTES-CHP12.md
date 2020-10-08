@@ -10,6 +10,15 @@
 
 ---
 
+**12.1 Understanding authentication**
+
+**12.2 Securing the cluster with role-based access control**
+
+**12.3 Summary**
+
+---
+
+
 # 12.1 Understanding authentication
 * Authentication plugins obtain the identity of the client via:
   * Client certificate
