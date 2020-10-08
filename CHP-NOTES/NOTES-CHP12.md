@@ -8,6 +8,8 @@
 * Using Roles and RoleBindings
 * Understanding the default roles and bindings
 
+---
+
 ## 12.1 Understanding authentication
 * Authentication plugins obtain the identity of the client via:
   * Client certificate
@@ -31,7 +33,7 @@
 ### 12.1.4 Assigning a ServiceAccount to a pod
 * Creating a pod which uses a custom ServiceAccount
 
-
+---
 
 ## 12.2 Securing the cluster with role-based access control
 * No authorization without the RBAC plugin enabled
@@ -69,6 +71,8 @@
 ### 12.2.6 Granting authorization permissions wisely
 * Creating specific ServiceAccounts for each pod
 * Expecting your apps to be compromised
+
+---
 
 ## 12.3 Summary
 
