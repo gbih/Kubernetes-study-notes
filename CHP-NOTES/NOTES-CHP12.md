@@ -17,20 +17,20 @@
   * Basic HTTP authentication
   * Other methods
 
-### 12.1.1 Users and groups
+#### 12.1.1 Users and groups
 * Understanding users
 * Understanding groups
 
-### 12.1.2 Introducing ServiceAccounts
+#### 12.1.2 Introducing ServiceAccounts
 * Understanding the ServiceAccount resource
 * Understanding how ServiceAccounts tie into authorization
 
-### 12.1.13 Creating ServiceAccounts
+#### 12.1.13 Creating ServiceAccounts
 * Creating a ServiceAccount
 * Understanding a ServiceAccount's mountable secrets
 * Understanding a ServiceAccount's image pull secrets
 
-### 12.1.4 Assigning a ServiceAccount to a pod
+#### 12.1.4 Assigning a ServiceAccount to a pod
 * Creating a pod which uses a custom ServiceAccount
 
 ---
