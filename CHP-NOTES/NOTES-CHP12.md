@@ -35,7 +35,7 @@
 * Understanding the ServiceAccount resource
 * Understanding how ServiceAccounts tie into authorization
 
-### 12.1.13 Creating ServiceAccounts
+### 12.1.3 Creating ServiceAccounts
 * Creating a ServiceAccount
 * Understanding a ServiceAccount's mountable secrets
 * Understanding a ServiceAccount's image pull secrets
