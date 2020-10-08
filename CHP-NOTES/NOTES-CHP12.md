@@ -3,7 +3,7 @@
 ## This chapter covers
 
 * Understanding authentication
-* What ServiceAccounts are and why they're used for
+* What ServiceAccounts are and why they're used
 * Understanding the role-based access control (RBAC)
 * Using Roles and RoleBindings
 * Understanding the default roles and bindings
