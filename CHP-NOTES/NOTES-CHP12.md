@@ -18,13 +18,14 @@
 
 ---
 
-
 # 12.1 Understanding authentication
 * Authentication plugins obtain the identity of the client via:
   * Client certificate
   * Authentication token passed in an HTTP header
   * Basic HTTP authentication
   * Other methods
+
+
 
 ### 12.1.1 Users and groups
 * Understanding users
@@ -44,7 +45,7 @@
 
 ---
 
-## 12.2 Securing the cluster with role-based access control
+# 12.2 Securing the cluster with role-based access control
 * No authorization without the RBAC plugin enabled
 
 ### 12.2.1 Introducing the RBAC authorization plugin
@@ -83,5 +84,4 @@
 
 ---
 
-## 12.3 Summary
-
+# 12.3 Summary
