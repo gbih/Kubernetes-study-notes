@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: limited-pod
+  namespace: chp14-set1421
+spec:
+  containers:
+  - image: busybox
+    command: ["dd", "if=/dev/zero", "of=/dev/null"]
+    name: main
+    resources:
+      limits:
+        cpu: 100m # Allowing up to 1 CPU core breaks the script
+        memory: 10Mi # Aallow up to 10 mebibytes of memory
+

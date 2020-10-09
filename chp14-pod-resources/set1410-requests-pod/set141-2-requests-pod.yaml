@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: requests-pod
+  namespace: chp14-set1410
+spec:
+#  serviceAccountName: sa-chp14-set1410
+#  automountServiceAccountToken: false
+
+  containers:
+  - image: busybox
+    command: ["dd", "if=/dev/zero", "of=/dev/null"]
+    name: main
+    resources: # specify resources requests for this container
+      requests:
+        cpu: 200m # 1/5 of a single CPU core's time
+        memory: 10Mi # 10 mebibytes of memory
+
+# automountServiceAccountToken:none
+# Prevent Kubernetes from automatically mounting cluster API credentials to a pod. You can set it on either the pod or the service account, but the pod value takes precedence.
+
+# If automountServiceAccountToken is false, the pod will not be able to communicate with the cluster API.
