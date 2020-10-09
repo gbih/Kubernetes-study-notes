@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc-ok
+  namespace: chp14-set1452
+  labels:
+    app: mongodb-pvc-ok
+spec:
+  # For dynamic provisioning, specify name of storage class resource
+  # After creating claim, PV is created by the Storage Class provisioner
+  # This DOES NOT use the default standard storage class, since we specify
+  # storageClassName property here
+  storageClassName: fast
+  resources:
+    requests:
+      storage: 10Mi
+  accessModes:
+  - ReadWriteOnce # single client, RW

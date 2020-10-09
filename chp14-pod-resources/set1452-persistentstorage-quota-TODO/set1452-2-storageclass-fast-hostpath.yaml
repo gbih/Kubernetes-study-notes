@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: fast
+  # StorageClass aren't namespaced
+  labels:
+    app: mongodb-pvc
+# volume plugin to use for provisioning the PV
+provisioner: microk8s.io/hostpath
+parameters:
+  # parameters passed to the provisioner
+  type: ps-ssd
