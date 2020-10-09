@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia-deploy # no need to include app version name
+  namespace: chp12-set1223
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubia-deploy # match spec.template.metadata.labels
+  template:
+    metadata:
+      name: kubia-deploy
+      labels:
+        app: kubia-deploy # match spec.selector.matchLabels
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsNonRoot: true
+      serviceAccountName: foo
+      containers:
+      - image: georgebaptista/kubia
+        name: kubia-deploy 
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          runAsNonRoot: true
+          runAsUser: 1000 

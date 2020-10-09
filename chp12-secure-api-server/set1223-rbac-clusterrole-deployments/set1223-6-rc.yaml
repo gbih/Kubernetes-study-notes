@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kubia-rc
+  namespace: chp12-set1223
+spec:
+  replicas: 5
+  selector:
+    app: kubia-rc
+  template:
+    metadata:
+      labels:
+        app: kubia-rc # default 'app' label
+    spec:
+      serviceAccountName: foo
+      containers:
+      - name: kubia-rc
+        image: georgebaptista/kubia
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 3333
