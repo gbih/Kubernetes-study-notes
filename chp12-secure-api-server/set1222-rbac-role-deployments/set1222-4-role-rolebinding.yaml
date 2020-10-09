@@ -1,0 +1,54 @@
+# Main task here is to assign access to a PSP via RBAC.
+# This config will create a cluster-wide role named psp:restricted that can
+# use the pod security policy privileged
+#
+# This also creates a cluster-wide role binding giving access to the 
+# psp:privileged role to all authenticated users (system:authenticated)
+#
+# This makes the privileged policy the default for all users and
+# service accounts in the cluster.
+
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: psp:privileged
+  namespace: chp12-set1222
+rules:
+
+- apiGroups: ["extensions"]
+  resources: ["podsecuritypolicies"]
+  resourceNames: ["restricted"] # the psp we are giving access to
+  # resourceNames: ["privileged"]
+  verbs: ["use"]
+
+- apiGroups: [""]
+  resources: ["services", "endpoints", "pods"]
+  verbs: ["get", "list", "watch"]
+
+- apiGroups: ["extensions", "apps"]
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+
+---
+# This applies psp/restricted to all authenticated users
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: psp:privileged
+  namespace: chp12-set1222
+
+subjects:
+- kind: Group
+  name: system:authenticated # All authenticated users
+  apiGroup: rbac.authorization.k8s.io
+
+- kind: ServiceAccount
+  name: foo
+  namespace: chp12-set1222
+
+roleRef:
+  kind: Role
+  name: psp:privileged # A references to the role above
+  apiGroup: rbac.authorization.k8s.io
+
