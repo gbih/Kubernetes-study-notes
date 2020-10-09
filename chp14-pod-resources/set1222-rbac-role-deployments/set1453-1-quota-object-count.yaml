@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: objects
+  namespace: chp12-set1222
+spec:
+  hard:
+    pods: 5
+    replicationcontrollers: 5
+    secrets: 3
+    configmaps: 3
+    persistentvolumeclaims: 3
+    services: 3
+    services.loadbalancers: 3
+    services.nodeports: 3
+    fast.storageclass.storage.k8s.io/persistentvolumeclaims: 3
