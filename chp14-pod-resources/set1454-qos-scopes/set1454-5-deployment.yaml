@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kubia-deploy # no need to include app version name
-  namespace: chp12-set1222
+  namespace: chp14-set1454
 spec:
   replicas: 3
   selector:

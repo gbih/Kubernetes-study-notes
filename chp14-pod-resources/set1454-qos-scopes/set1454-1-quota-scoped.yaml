@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: best-effort-notterminating-pods
+  namespace: chp14-set1454
+spec:
+  scopes:
+  - BestEffort
+  - NotTerminating
+  hard:
+    pods: 3
+
+# Reference 1:
+# We can apply the above scopes only to pods
+#    replicationcontrollers: 5
+#    secrets: 3
+#    configmaps: 3
+#    persistentvolumeclaims: 3
+#    services: 3
+#    services.loadbalancers: 3
+#    services.nodeports: 3
+#    fast.storageclass.storage.k8s.io/persistentvolumeclaims: 3
+
+# Reference 2:
+# https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/
+# For a Pod to be given a QoS class of BestEffort, the Containers in the Pod must not have any memory or CPU limits or requests.
+
