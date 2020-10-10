@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-regular
+  namespace: chp15-set151
+spec:
+  containers:
+  - name: main
+    image: alpine
+    command: ["/bin/sleep", "99999999"]
