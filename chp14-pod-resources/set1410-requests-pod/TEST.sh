@@ -15,7 +15,6 @@ echo "$i. Deploy the app"
 echo ""
 
 echo "kubectl apply -f $FULLPATH"
-kubectl apply -f ../PSP
 kubectl apply -f $FULLPATH --record
 
 
@@ -60,4 +59,3 @@ echo "$i. Clean-up"
 echo ""
 echo "kubectl delete -f $FULLPATH"
 kubectl delete -f $FULLPATH
-kubectl delete -f ../PSP

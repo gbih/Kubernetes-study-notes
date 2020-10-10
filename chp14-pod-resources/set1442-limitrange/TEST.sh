@@ -18,6 +18,7 @@ echo ""
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH/set1442-0-ns.yaml
 kubectl apply -f $FULLPATH/set1442-1-limitrange.yaml
+kubectl apply -f $FULLPATH/psp.yaml
 sleep 1
 
 echo $HR

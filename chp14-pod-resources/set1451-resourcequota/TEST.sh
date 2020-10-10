@@ -6,7 +6,6 @@ echo $HR_TOP
 
 ((i++))
 
-
 value=$(<set1451-1-quota-cpu-memory.yaml)
 echo "$value"
 
@@ -19,6 +18,7 @@ echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH/set1451-0-ns.yaml
 kubectl apply -f $FULLPATH/set1451-1-quota-cpu-memory.yaml
 kubectl apply -f $FULLPATH/set1451-2-limits.yaml
+kubectl apply -f $FULLPATH/psp.yaml
 sleep 1
 
 echo $HR
