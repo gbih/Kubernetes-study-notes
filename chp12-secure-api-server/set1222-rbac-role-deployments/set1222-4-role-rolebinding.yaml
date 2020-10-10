@@ -15,10 +15,17 @@ metadata:
   namespace: chp12-set1222
 rules:
 
+  # Each resource type belongs to an API group. PSP belongs to 'extensions'.
+  # In a Role definition, we need to specify the apiGroup for resources listed
+  # in each rule included in this definition.
+  # We limit access only to specific PSP instances (privileged vs restricted)
+  # through the additional resourceNames field.
+
 - apiGroups: ["extensions"]
   resources: ["podsecuritypolicies"]
-  resourceNames: ["restricted"] # the psp we are giving access to
-  # resourceNames: ["privileged"]
+
+  # Options here are ["restricted"] or ["privileged"] 
+  resourceNames: ["restricted"]
   verbs: ["use"]
 
 - apiGroups: [""]
@@ -29,9 +36,9 @@ rules:
   resources: ["deployments"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 
-
 ---
-# This applies psp/restricted to all authenticated users
+
+# This applies psp:restricted to authenticated users
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -39,9 +46,10 @@ metadata:
   namespace: chp12-set1222
 
 subjects:
-- kind: Group
-  name: system:authenticated # All authenticated users
-  apiGroup: rbac.authorization.k8s.io
+
+#- kind: Group
+#  name: system:authenticated 
+#  apiGroup: rbac.authorization.k8s.io
 
 - kind: ServiceAccount
   name: foo
@@ -49,6 +57,6 @@ subjects:
 
 roleRef:
   kind: Role
-  name: psp:privileged # A references to the role above
+  name: psp:privileged # Reference to above role
   apiGroup: rbac.authorization.k8s.io
 

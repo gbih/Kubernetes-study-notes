@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Applying PSP via RBAC role/rolebinding on deployments, replicationcontrollers, pods"
+echo "12.2.2 Applying PSP via RBAC role/rolebinding on deployments, replicationcontrollers, pods"
 echo $HR_TOP
 
 kubectl apply -f $FULLPATH/set1222-0-ns.yaml
@@ -18,8 +18,26 @@ echo $HR
 
 echo "kubectl rollout status deployment kubia-deploy -n=chp12-set1222"
 kubectl rollout status deployment kubia-deploy -n=chp12-set1222
+echo $HR
+
+echo "Check for ReplicationController replicas:"
+
+EXPECTED_REPLICAS=$(kubectl get replicationcontroller/kubia-rc -n=chp12-set1222 -o jsonpath={.status.fullyLabeledReplicas})
+echo "EXPECTED_REPLICAS: $EXPECTED_REPLICAS"
+
+READY_REPLICAS=$(kubectl get replicationcontroller/kubia-rc -n=chp12-set1222 -o jsonpath={.status.readyReplicas})
+echo "READY_REPLICAS: $READY_REPLICAS"
+echo ""
+
+while [[ $EXPECTED_REPLICAS != $READY_REPLICAS ]]
+do
+kubectl get replicationcontroller/kubia-rc -n=chp12-set1222 -o custom-columns=READY_REPLICAS:..status.readyReplicas
+  sleep 1.5
+  READY_REPLICAS=$(kubectl get replicationcontroller/kubia-rc -n=chp12-set1222 -o jsonpath={.status.readyReplicas})
+done
 
 echo $HR
+
 
 echo "kubectl get all -n=chp12-set1222"
 kubectl get all -n=chp12-set1222

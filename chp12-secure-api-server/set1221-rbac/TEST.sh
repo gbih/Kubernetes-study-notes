@@ -1,6 +1,9 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "12.2.1 Introducing the RBAC authorization plugin"
+echo $HR_TOP
+
 PSPPATH='../../chp12-secure/PSP'
 
 echo "Talk to the API server with RBAC via a pod"

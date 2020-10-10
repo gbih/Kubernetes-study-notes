@@ -1,8 +1,8 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
-echo $HR_TOP1
+echo "12.2.4 Using ClusterRoles and ClusterRoleBindings"
+echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH

@@ -14,10 +14,17 @@ metadata:
   name: psp:privileged
 rules:
 
+  # Each resource type belongs to an API group. PSP belongs to 'extensions'.
+  # In a Role definition, we need to specify the apiGroup for resources listed
+  # in each rule included in this definition.
+  # We limit access only to specific PSP instances (privileged vs restricted)
+  # through the additional resourceNames field.
+
 - apiGroups: ["extensions"]
   resources: ["podsecuritypolicies"]
-  resourceNames: ["restricted"] # the psp we are giving access to
-  # resourceNames: ["privileged"]
+
+  # Options here are ["restricted"] or ["privileged"]
+  resourceNames: ["restricted"]
   verbs: ["use"]
 
 - apiGroups: [""]

@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "12.1.2 Introducing ServiceAccounts"
 echo $HR_TOP
 
 
