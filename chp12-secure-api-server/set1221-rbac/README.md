@@ -54,12 +54,9 @@ vi /var/snap/microk8s/current/args/kube-apiserver
 ```
 
 
-- Sample configuration:
+At the bottom of this file, add:
+
 ```
-...
---insecure-port=0
-
-
 # custom-setting
 --allow-privileged
 
@@ -77,11 +74,6 @@ MutatingAdmissionWebhook,\
 ValidatingAdmissionWebhook,\
 RuntimeClass,\
 ResourceQuota,\
-NamespaceLifecycle"
-
-#PodSecurityPolicy,\
-
-
-# Enable the aggregation layer
-...
+NamespaceLifecycle,\
+PodSecurityPolicy"
 ```

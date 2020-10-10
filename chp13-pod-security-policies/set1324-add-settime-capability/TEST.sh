@@ -44,7 +44,7 @@ enter
 echo "kubectl -n=chp13-set1324 exec -it pod-add-settime-capability -- -sh -c 'date +%T -s "12:00:00"'"
 kubectl -n=chp13-set1324 exec -it pod-add-settime-capability -- sh -c 'date +%T -s "12:00:00"'
 echo ""
-echo "GB: It seems this is working with privileged:true, but not with this capabilities setting..."
+echo "It seems this is working with privileged:true, but not with this capabilities setting..."
 echo ""
 
 echo "kubectl -n=chp13-set1324 exec -it pod-add-settime-capability -- sh -c 'date'"

@@ -61,4 +61,4 @@ echo $HR
 echo "$i. Clean-up"
 echo ""
 echo "kubectl delete -f $FULLPATH"
-kubectl delete -f $FULLPATH
+kubectl delete -f $FULLPATH --ignore-not-found
