@@ -6,7 +6,7 @@ FULLPATH=$(pwd)
 ((i++))
 
 cat <<- "NOTES"
-Use this setting in kube-apiserver in /var/snap/microk8s/current/args/kube-apiserver:
+Use this setting in kube-apiserver in /var/snap/microk8s/current/args/kube-controller-manager
 --horizontal-pod-autoscaler-use-rest-clients=true
 
 microk8s.enable metrics-server
@@ -22,14 +22,19 @@ enter
 echo "$i. Deploy the app"
 echo ""
 kubectl apply -f $FULLPATH/set151-0-ns.yaml
-kubectl apply -f $FULLPATH/psp.yaml
-kubectl apply -f $FULLPATH/set151-00-sa.yaml
-kubectl apply -f $FULLPATH/set151-2-deployment.yaml
-kubectl apply -f $FULLPATH/set151-3-regular-pod.yaml
+kubectl apply -f $FULLPATH/set151-0-psp.yaml
+kubectl apply -f $FULLPATH/set151-1-sa.yaml
+kubectl apply -f $FULLPATH/set151-3-deployment.yaml --record=true
+kubectl apply -f $FULLPATH/set151-5-regular-pod.yaml --record=true
 echo $HR
 
 echo "We created a regular Deployment object that doesn't use autoscaling yet."
 echo "To enable horizontal autoscaling of a Deployment's pods, we need to create a HorizontalPodAutoscaler (HPA) object and point it to the Deployment."
+
+echo $HR
+echo "kubectl rollout status deployment kubia -n=chp15-set151"
+kubectl rollout status deployment kubia -n=chp15-set151
+
 
 echo $HR
 
@@ -41,13 +46,33 @@ sleep 2
 enter
 
 echo "To enable horizontal autoscaling of a Deployment's pods, we need to create a HorizontalPodAutoscaler (HPA) object and point it to the Deployment."
+echo ""
 
-#echo "kubectl autoscale -n=chp15-set151 deployment kubia --cpu-percent=30 --min=1  --max=5"
-#kubectl autoscale -n=chp15-set151 deployment kubia --cpu-percent=30 --min=1  --max=5
+value=$(<set151-4-ha.yaml)
+echo "$value"
+echo $HR
+
+
+echo "kubectl apply -f $FULLPATH/set151-4-ha.yaml"
+kubectl apply -f $FULLPATH/set151-4-ha.yaml
 
 enter
 
-kubectl -n=chp15-set151 get hpa
+kubectl get hpa -n=chp15-set151
+
+echo $HR
+
+echo "kubectl apply -f $FULLPATH/set151-2-svc.yaml"
+kubectl apply -f $FULLPATH/set151-2-svc.yaml
+
+
+#echo "watch -n 1 kubectl get hpa,deployment -n=chp15-set151"
+#enter
+#watch -n 1 kubectl get hpa,deployment -n=chp15-set151
+
+echo $HR
+
+kubectl get pods -n=chp15-set151
 
 echo $HR
 
@@ -55,19 +80,5 @@ kubectl describe hpa -n=chp15-set151
 
 enter
 
-echo "kubectl expose deployment kubia --port=80 --target-port=8080 -n=chp15-set151"
-kubectl expose deployment kubia --port=80 --target-port=8080 -n=chp15-set151
-
-enter
-
-#echo "watch -n 1 kubectl get hpa,deployment -n=chp15-set151"
-#enter
-
-#watch -n 1 kubectl get hpa,deployment -n=chp15-set151
-
-echo $HR
-
-kubectl get pods -n=chp15-set151
-
 #echo "kubectl delete -f $FULLPATH"
-#kubectl delete -f $FULLPATH
+#kubectl delete -f $FULLPATH --force --grace-period=0

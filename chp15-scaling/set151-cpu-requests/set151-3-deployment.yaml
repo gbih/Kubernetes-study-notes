@@ -4,7 +4,7 @@ metadata:
   name: kubia
   namespace: chp15-set151
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
       app: kubia
