@@ -1,0 +1,36 @@
+#apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: kubia
+  namespace: chp14-set1453
+spec:
+
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+      - type: Percent
+        value: 900
+        periodSeconds: 2
+    scaleDown: 
+      stabilizationWindowSeconds: 5
+      policies:
+      - type: Percent   
+        value: 900
+        periodSeconds: 2
+# https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+  
+  maxReplicas: 5
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: kubia-deploy
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 30
