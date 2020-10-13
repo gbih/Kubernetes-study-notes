@@ -9,13 +9,13 @@ date \+\"Time: %T\"; \
 echo $HR; \
 kubectl top node; \
 echo $HR; \
-kubectl top pod -n=chp15-set1513; \
+kubectl top pod -n=chp15-set1512; \
 echo $HR; \
-kubectl get deployment -n=chp15-set1513; \
+kubectl get deployment -n=chp15-set1512; \
 echo $HR; \
-kubectl get pods -n=chp15-set1513; \
+kubectl get pods -n=chp15-set1512; \
 echo $HR; \
-kubectl get events -n=chp15-set1513 -o custom-columns=LastSeen:.lastTimestamp,From:.source.component,Reason:.reason,Message:.message --sort-by=lastTimestamp | tac | grep \"horizontal-pod-autoscaler\"; \
+kubectl get events -n=chp15-set1512 -o custom-columns=LastSeen:.lastTimestamp,From:.source.component,Reason:.reason,Message:.message --sort-by=lastTimestamp | tac | grep \"horizontal-pod-autoscaler\"; \
 echo $HR_TOP"
 
-# kubectl get events -n=chp15-set1513 --sort-by=.metadata.creationTimestamp | tac | grep \"horizontalpodautoscaler\"; \
+# kubectl get events -n=chp15-set1512 --sort-by=.metadata.creationTimestamp | tac | grep \"horizontalpodautoscaler\"; \
