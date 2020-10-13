@@ -4,6 +4,8 @@ FULLPATH=$(pwd)
 echo "14.5.3 Limiting the number of objects that can be created"
 echo $HR_TOP
 
+echo "In a separate terminal, run ./WATCH.sh to monitor various objects"
+enter
 
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH
@@ -14,12 +16,6 @@ echo "kubectl wait --for=condition=Ready=True pods/curl-restrictive -n=chp15-set
 kubectl wait --for=condition=Ready=True pods/curl-restrictive -n=chp15-set1513 --timeout=10s
 
 echo $HR
-
-echo "In a separate terminal, run ./WATCH.sh to monitor various objects"
-
-echo $HR
-
-enter
 
 echo "kubectl rollout status deployment kubia-deploy -n=chp15-set1513"
 kubectl rollout status deployment kubia-deploy -n=chp15-set1513
@@ -73,8 +69,8 @@ enter
 while [[ $(kubectl get deployments -n=chp15-set1513 -o jsonpath={.items[0].status.availableReplicas}) < 3 ]]
 do
   # POSIX portable syntax
-  kubectl exec -it curl-restrictive -n=chp15-set1513 -- sh -c "for i in \`seq 1 1000\`; do curl kubia.chp15-set1513.svc.cluster.local; done"
-  sleep 2
+  kubectl exec -it curl-restrictive -n=chp15-set1513 -- sh -c "for i in \`seq 1 100\`; do curl kubia.chp15-set1513.svc.cluster.local; done"
+  sleep 0.5
   echo "NEXT LOOP --------------------"
 done
 

@@ -4,7 +4,7 @@ metadata:
   name: kubia-deploy # no need to include app version name
   namespace: chp15-set1513
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: kubia-deploy # match spec.template.metadata.labels
@@ -29,10 +29,10 @@ spec:
         resources:
           requests:
             # cpu: 100m
-            memory: "1024Mi" # Min amount of ram available in Pod
+            memory: "1Mi" # Min amount of ram available in Pod
           limits:
             # cpu: 100m
-            memory: "1024Mi" # Max amount of ram available in container
+            memory: "10Mi" # Max amount of ram available in container
 
           # You must specify requests for CPU to autoscale
           # based on CPU utilization

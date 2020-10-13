@@ -4,16 +4,18 @@ clear
 HR=$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -)
 HR_TOP=$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "=")
 
-# watch -t -n1 "echo $HR_TOP; kubectl top node; echo $HR; kubectl top pod -n=chp15-set1513; echo $HR; kubectl get deployments -n=chp15-set1512; echo $HR; kubectl get events -n=chp15-set1512| grep \"horizontalpodautoscaler\"; echo $HR; kubectl get pods -n=chp15-set1512; echo $HR_TOP"
-
-watch -t -n1 "echo $HR_TOP; \
+watch -n 1 -d -t "echo $HR_TOP; \
+date \+\"Time: %T\"; \
+echo $HR; \
 kubectl top node; \
 echo $HR; \
 kubectl top pod -n=chp15-set1513; \
 echo $HR; \
-kubectl get deployments -n=chp15-set1513; \
+kubectl get deployment -n=chp15-set1513; \
 echo $HR; \
 kubectl get pods -n=chp15-set1513; \
 echo $HR; \
-kubectl get events -n=chp15-set1513 --sort-by=.metadata.creationTimestamp | tac | grep \"horizontalpodautoscaler\"; \
+kubectl get events -n=chp15-set1513 -o custom-columns=LastSeen:.lastTimestamp,From:.source.component,Reason:.reason,Message:.message --sort-by=lastTimestamp | tac | grep \"horizontal-pod-autoscaler\"; \
 echo $HR_TOP"
+
+# kubectl get events -n=chp15-set1513 --sort-by=.metadata.creationTimestamp | tac | grep \"horizontalpodautoscaler\"; \

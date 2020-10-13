@@ -19,7 +19,7 @@ spec:
         value: 10 # default
         periodSeconds: 15 # default
 
-  maxReplicas: 3 # this overrides spec.replicas setting in deployment object
+  maxReplicas: 4 # this overrides spec.replicas setting in deployment object
   minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
@@ -32,8 +32,17 @@ spec:
       name: memory # specify memory for memory utilization
       target:
         # Scale for a percentage, not specific memory value
-        type: Utilization # resource metric in terms of percentage
-        averageUtilization: 10 # When exceed 10%, create another pod
+        #type: Utilization # resource metric in terms of percentage
+        #averageUtilization: 10 # When exceed 10%, create another pod
+        #type: Utilization
+        #averageValue: .5Mi # should be a bit lower than result of `kubectl top pod`
+        type: AverageValue
+        # averageValue of this pod is 1Mi at rest, so results in scale-up
+        #averageValue: .5Mi
+
+        # Does this result in scale down?
+        averageValue: 3Mi
+
 
 
 # Scaling for percentage memory value: https://docs.openshift.com/dedicated/4/nodes/pods/nodes-pods-autoscaling.html
