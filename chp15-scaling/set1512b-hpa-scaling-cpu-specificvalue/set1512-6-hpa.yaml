@@ -29,10 +29,11 @@ spec:
       name: cpu # cpu percentage of resource specified on pod containers
       target:
         type: Utilization # resource metric in terms of percentage
-        averageUtilization: 5 # When pod consumes 5% of CPU, create new pod
+        averageValue: 15m # When pod consumes this specific CPU value, scale
 
-# We are scaling for an average CPU memory use
+# We are scaling for a specific CPU value per pod
 
+# Use 'kubectl top pod -n=chp15-set1512' for baseline usage of CPU by pod
 
 # 1. Tell the Autoscaler to adjust the number of pods so they each utilize 30% of requested CPU.
 # 2. Defaults: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/

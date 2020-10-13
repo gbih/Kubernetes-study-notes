@@ -1,9 +1,10 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: kubia
-  namespace: chp15-set1512
+  name: kubia # name for this HPA object
+  namespace: chp15-set1513
 spec:
+
   behavior:
     scaleUp:
       stabilizationWindowSeconds: 0 # default
@@ -17,23 +18,26 @@ spec:
       - type: Percent
         value: 10 # default
         periodSeconds: 15 # default
+
   maxReplicas: 3 # this overrides spec.replicas setting in deployment object
   minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
-    kind: Deployment
-    name: kubia-deploy
+    kind: Deployment # either Deployment or ReplicationController
+    name: kubia-deploy # name of object to scale (object must exist)
+
   metrics:
   - type: Resource
     resource:
-      name: cpu # cpu percentage of resource specified on pod containers
+      name: memory # specify memory for memory utilization
       target:
+        # Scale for a percentage, not specific memory value
         type: Utilization # resource metric in terms of percentage
-        averageUtilization: 5 # When pod consumes 5% of CPU, create new pod
-
-# We are scaling for an average CPU memory use
+        averageUtilization: 10 # When exceed 10%, create another pod
 
 
+# Scaling for percentage memory value: https://docs.openshift.com/dedicated/4/nodes/pods/nodes-pods-autoscaling.html
+# Memory metric setting from https://cloud.google.com/kubernetes-engine/docs/how-to/horizontal-pod-autoscaling
 # 1. Tell the Autoscaler to adjust the number of pods so they each utilize 30% of requested CPU.
 # 2. Defaults: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
 # 3. Overall reference: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/

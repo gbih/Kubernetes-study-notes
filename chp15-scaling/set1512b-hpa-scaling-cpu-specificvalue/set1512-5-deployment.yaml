@@ -27,11 +27,7 @@ spec:
           runAsNonRoot: true
           runAsUser: 1000 
         resources:
-          limits:
+          limits: 
             cpu: 200m
           requests:
             cpu: 10m
-            #memory: "56Mi"
-          #limits:
-          #  cpu: 100m
-            #memory: "56Mi"
