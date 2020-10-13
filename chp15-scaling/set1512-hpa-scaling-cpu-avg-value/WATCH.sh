@@ -11,6 +11,8 @@ kubectl top node; \
 echo $HR; \
 kubectl top pod -n=chp15-set1512; \
 echo $HR; \
+kubectl get hpa -n=chp15-set1512; \
+echo $HR; \
 kubectl get deployment -n=chp15-set1512; \
 echo $HR; \
 kubectl get pods -n=chp15-set1512; \
