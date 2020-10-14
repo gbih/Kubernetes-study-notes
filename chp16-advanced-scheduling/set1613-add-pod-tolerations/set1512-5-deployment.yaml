@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia-deploy # no need to include app version name
+  namespace: chp15-set1512
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubia-deploy # match spec.template.metadata.labels
+  template:
+    metadata:
+      name: kubia-deploy
+      labels:
+        app: kubia-deploy # match spec.selector.matchLabels
+    spec:
+
+      # allow the pod to be scheduled to production nodes
+      tolerations:
+      - key: node-type
+        operator: Equal
+        value: production
+        effect: NoSchedule
+
+      securityContext:
+        runAsUser: 1000
+        runAsNonRoot: true
+      serviceAccountName: foo
+      containers:
+      - image: georgebaptista/kubia
+        name: kubia-deploy 
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          runAsNonRoot: true
+          runAsUser: 1000 
+        resources:
+          limits:
+            cpu: 200m
+          requests:
+            cpu: 100m
+            #memory: "56Mi"
+          #limits:
+          #  cpu: 100m
+            #memory: "56Mi"
