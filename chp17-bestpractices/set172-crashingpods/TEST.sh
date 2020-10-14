@@ -10,18 +10,12 @@ Such pods are not automatically removed and rescheduled, even if they are part o
 The RS Controller doesn't care if the pod is dead -- all it cares about is the number of pods match the desired replica count.
 NOTES
 
-kubectl delete -f $FULLPATH --now --ignore-not-found
-
 enter
-
-value=$(<set172-1-replicaset-crashingpod.yaml)
-echo "$value"
-
-enter
-
 
 
 echo "kubectl apply -f $FULLPATH"
+kubectl apply -f $FULLPATH/set172-0-ns.yaml
+sleep 1
 kubectl apply -f $FULLPATH
 sleep 2
 echo $HR
