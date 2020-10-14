@@ -1,0 +1,54 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: kubia # name for this HPA object
+  namespace: chp15-set1513
+spec:
+
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0 # default
+      policies:
+      - type: Percent
+        value: 10 # default is 100
+        periodSeconds: 15 # default is 15
+    scaleDown: 
+      stabilizationWindowSeconds: 10 # default is 300
+      policies:
+      - type: Percent
+        value: 10 # default
+        periodSeconds: 15 # default
+
+  maxReplicas: 4 # this overrides spec.replicas setting in deployment object
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment # either Deployment or ReplicationController
+    name: kubia-deploy # name of object to scale (object must exist)
+
+  metrics:
+  - type: Resource
+    resource:
+      name: memory # specify memory for memory utilization
+      target:
+        # Scale for a percentage, not specific memory value
+        #type: Utilization # resource metric in terms of percentage
+        #averageUtilization: 10 # When exceed 10%, create another pod
+        #type: Utilization
+        #averageValue: .5Mi # should be a bit lower than result of `kubectl top pod`
+        type: AverageValue
+        # averageValue of this pod is 1Mi at rest, so results in scale-up
+        #averageValue: .5Mi
+
+        # Does this result in scale down?
+        averageValue: 3Mi
+
+
+
+# Scaling for percentage memory value: https://docs.openshift.com/dedicated/4/nodes/pods/nodes-pods-autoscaling.html
+# Memory metric setting from https://cloud.google.com/kubernetes-engine/docs/how-to/horizontal-pod-autoscaling
+# 1. Tell the Autoscaler to adjust the number of pods so they each utilize 30% of requested CPU.
+# 2. Defaults: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+# 3. Overall reference: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/
+# 4. Starting from v1.18 the v2beta2 API allows scaling behavior to be configured through the HPA behavior field.
+# 5. Scaling policies: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#scaling-policies
