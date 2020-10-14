@@ -14,7 +14,9 @@
 - Use MicroK8s to turn VMs into Kubernetes worker nodes
 
 - Confirm defaults to use for worker VMs
+
 https://github.com/ubuntu/microk8s/blob/master/installer/common/definitions.py
+
 ```
 # listed defaults
 
