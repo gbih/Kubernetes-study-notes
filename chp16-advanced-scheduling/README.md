@@ -51,8 +51,18 @@ mkdir src
 
 # Quick check
 kubectl get nodes
+NAME            STATUS   ROLES    AGE     VERSION
+192.168.64.5    Ready    <none>   10h     v1.18.9
+192.168.64.6    Ready    <none>   6h26m   v1.18.9
+actionbook-vm   Ready    <none>   10d     v1.18.9
+
+
 kubectl top nodes
-kubectl top pods -A
+NAME            CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+192.168.64.5    17m          1%     446Mi           11%
+192.168.64.6    16m          1%     415Mi           10%
+actionbook-vm   174m         17%    1408Mi          14%
+
 ```
 
 - Repeat the above steps with 2-3x, with node2-vm, node3-vm, etc
