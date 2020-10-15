@@ -21,6 +21,19 @@ echo $HR
 
 enter
 
+echo "Getting taints, style 1"
+echo "kubectl get nodes -o json | jq '.items[].spec.taints'"
+kubectl get nodes -o json | jq '.items[].spec.taints'
+echo $HR
+
+echo "Alternative 2"
+echo "kubectl get nodes -o=custom-columns=NAME:.metadata.name,TAINTS:.spec.taints,LABEL-NAME:.metadata.labels.name,LABEL-ENV:.metadata.labels.env"
+kubectl get nodes -o=custom-columns=NAME:.metadata.name,TAINTS:.spec.taints,LABEL-NAME:.metadata.labels.name,LABEL-ENV:.metadata.labels.env
+
+enter
+
+
+
 echo "kubectl describe node actionbook-vm"
 kubectl describe node actionbook-vm
 enter
