@@ -2,4 +2,4 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: foo
-  namespace: chp15-set1512
+  namespace: chp17-set1724

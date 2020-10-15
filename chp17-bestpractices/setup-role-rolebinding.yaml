@@ -12,7 +12,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: psp:privileged
-  namespace: chp15-set1512
+  namespace: chp17-set00
 rules:
 
   # Each resource type belongs to an API group. PSP belongs to 'extensions'.
@@ -44,7 +44,7 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: psp:privileged
-  namespace: chp15-set1512
+  namespace: chp17-set00
 
 subjects:
 - kind: Group
@@ -53,7 +53,7 @@ subjects:
 
 - kind: ServiceAccount
   name: foo
-  namespace: chp15-set1512
+  namespace: chp17-set00
 
 roleRef:
   kind: Role
