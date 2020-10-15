@@ -5,13 +5,24 @@ echo "16.1.2 Adding custom taints to a node"
 echo $HR_TOP
 
 # kubectl get nodes -l name=node1-vm
-echo "kubectl taint node -l name=node1-vm node-type=production:NoSchedule"
-kubectl taint node -l name=node1-vm node-type=production:NoSchedule
-sleep 1
+
+echo "kubectl taint node actionbook-vm node-type=master:NoSchedule"
+kubectl taint node actionbook-vm node-type=master:NoSchedule
 echo ""
 
+echo "kubectl taint node -l name=node1-vm node-type=production:NoSchedule"
+kubectl taint node -l name=node1-vm node-type=production:NoSchedule
+
+enter
+
+echo "Getting taints, style 1"
 echo "kubectl get nodes -o json | jq '.items[].spec.taints'"
 kubectl get nodes -o json | jq '.items[].spec.taints'
+echo $HR
+
+echo "Alternative 2"
+echo "kubectl get nodes -o=custom-columns=NAME:.metadata.name,TAINTS:.spec.taints,LABEL-NAME:.metadata.labels.name,LABEL-ENV:.metadata.labels.env"
+kubectl get nodes -o=custom-columns=NAME:.metadata.name,TAINTS:.spec.taints,LABEL-NAME:.metadata.labels.name,LABEL-ENV:.metadata.labels.env
 
 enter
 
@@ -31,8 +42,8 @@ kubectl apply -f $FULLPATH
 
 echo $HR
 
-echo "kubectl wait --for=condition=Ready=True pods/curl-restrictive -n=chp15-set1512 --timeout=10s"
-kubectl wait --for=condition=Ready=True pods/curl-restrictive -n=chp15-set1512 --timeout=10s
+echo "kubectl wait --for=condition=Ready=True pods/curl-restrictive -n=chp16-set1612 --timeout=10s"
+kubectl wait --for=condition=Ready=True pods/curl-restrictive -n=chp16-set1612 --timeout=10s
 
 echo $HR
 
@@ -42,18 +53,18 @@ echo $HR
 
 enter
 
-echo "kubectl rollout status deployment kubia-deploy -n=chp15-set1512"
-kubectl rollout status deployment kubia-deploy -n=chp15-set1512
+echo "kubectl rollout status deployment kubia-deploy -n=chp16-set1612"
+kubectl rollout status deployment kubia-deploy -n=chp16-set1612
 
 echo $HR
 
 echo "Check PSP is set-up correctly by getting HPA from API server."
 echo "We use RoleBinding with Role resource and ServiceAccount"
 echo ""
-echo "kubectl exec -it curl-restrictive -n=chp15-set1512 -- curl localhost:8001/apis/autoscaling/v1/namespaces/chp15-set1512/horizontalpodautoscalers/kubia | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)'"
+echo "kubectl exec -it curl-restrictive -n=chp16-set1612 -- curl localhost:8001/apis/autoscaling/v1/namespaces/chp16-set1612/horizontalpodautoscalers/kubia | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)'"
 echo ""
 
-kubectl exec -it curl-restrictive -n=chp15-set1512 -- curl localhost:8001/apis/autoscaling/v1/namespaces/chp15-set1512/horizontalpodautoscalers/kubia | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)'
+kubectl exec -it curl-restrictive -n=chp16-set1612 -- curl localhost:8001/apis/autoscaling/v1/namespaces/chp16-set1612/horizontalpodautoscalers/kubia | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)'
 
 echo $HR
 
@@ -62,6 +73,10 @@ echo "Press enter to delete objects"
 enter
 
 echo "Reset taints"
+
+echo "kubectl taint node actionbook-vm node-type=master:NoSchedule-"
+kubectl taint node actionbook-vm node-type=master:NoSchedule-
+echo ""
 
 echo "kubectl taint node -l name=node1-vm node-type:NoSchedule-"
 kubectl taint node -l name=node1-vm node-type:NoSchedule-
