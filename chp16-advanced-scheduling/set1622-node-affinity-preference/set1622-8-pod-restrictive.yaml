@@ -21,10 +21,10 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: gpu
+          - key: availability-zone
             operator: In
             values:
-            - "true"
+            - zone1
 
 # Node affinity notes
 # https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity

@@ -4,7 +4,7 @@ metadata:
   name: kubia-deploy # no need to include app version name
   namespace: chp16-set1622
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
       app: kubia-deploy # match spec.template.metadata.labels
@@ -14,6 +14,24 @@ spec:
       labels:
         app: kubia-deploy # match spec.selector.matchLabels
     spec:
+  
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 80
+            preference:
+              matchExpressions:
+              - key: availability-zone
+                operator: In
+                values:
+                - zone1
+          - weight: 20
+            preference:
+              matchExpressions:
+              - key: share-type
+                operator: In
+                values:
+                - dedicated      
 
       # allow the pod to be scheduled to production nodes
       tolerations:

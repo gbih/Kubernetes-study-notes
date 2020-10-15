@@ -1,31 +1,34 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Adding tolerations to pods"
+echo "16.2.2 Prioritizing nodes when scheduling a pod"
 echo $HR_TOP
 
 # Control-plane node
 echo "Control-plane node"
 echo "kubectl taint node actionbook-vm node-type=master:NoSchedule"
 kubectl taint node actionbook-vm node-type=master:NoSchedule
+
+echo $HR
+echo "kubectl label node -l name=node1-vm availability-zone=zone1"
+kubectl label node -l name=node1-vm availability-zone=zone1
 echo ""
+
+echo "kubectl label node -l name=node1-vm share-type=dedicated"
+kubectl label node -l name=node1-vm share-type=dedicated
+echo ""
+
+echo "kubectl label node -l name=node2-vm availability-zone=zone2"
+kubectl label node -l name=node2-vm availability-zone=zone2
+echo ""
+
+echo "kubectl label node -l name=node2-vm share-type=shared"
+kubectl label node -l name=node2-vm share-type=shared
 
 echo $HR
 
-echo "kubectl label node -l name=node2-vm gpu=true"
-kubectl label node -l name=node2-vm gpu=true
-echo ""
-
-echo "kubectl label node -l name=node1-vm env=production"
-kubectl label node -l name=node1-vm env=production
-echo ""
-
-echo "kubectl label node -l name=node2-vm env=development"
-kubectl label node -l name=node2-vm env=development
-echo ""
-
-echo "kubectl label node -l name=actionbook-vm env=control-plain"
-kubectl label node -l name=actionbook-vm env=control-plain
+echo "kubectl get node -L availability-zone -L share-type"
+kubectl get node -L availability-zone -L share-type
 
 enter
 
@@ -49,12 +52,6 @@ enter
 
 echo "kubectl wait --for=condition=Ready=True pods/curl-restrictive -n=chp16-set1622 --timeout=10s"
 kubectl wait --for=condition=Ready=True pods/curl-restrictive -n=chp16-set1622 --timeout=10s
-
-echo $HR
-
-echo "In a separate terminal, run ./WATCH.sh to monitor various objects"
-
-echo $HR
 
 enter
 
@@ -85,18 +82,18 @@ kubectl taint node actionbook-vm node-type=master:NoSchedule-
 echo $HR
 
 echo "Remove labels"
-echo "kubectl label node -l name=node2-vm gpu-"
-echo "kubectl label node -l name=node1-vm env-"
-echo "kubectl label node -l name=node2-vm env-"
-echo "kubectl label node -l name=actionbook-vm env-"
-kubectl label node -l name=node2-vm gpu-
-kubectl label node -l name=node1-vm env-
-kubectl label node -l name=node2-vm env-
-kubectl label node -l name=actionbook-vm env-
 
+echo "kubectl label node -l name=node1-vm availability-zone-"
+echo "kubectl label node -l name=node1-vm share-type-"
+echo "kubectl label node -l name=node2-vm availability-zone-"
+echo "kubectl label node -l name=node2-vm share-type-"
+
+kubectl label node -l name=node1-vm availability-zone-
+kubectl label node -l name=node1-vm share-type-
+kubectl label node -l name=node2-vm availability-zone-
+kubectl label node -l name=node2-vm share-type-
 
 echo $HR
-
 
 echo "kubectl delete -f $FULLPATH"
 kubectl delete -f $FULLPATH --ignore-not-found

@@ -1,9 +1,8 @@
-# Chapter 16, Section 16.1.3
+# 16.2.2 Prioritizing nodes when scheduling a pod
 
 ### Objective
-- Deploy production pods to production nodes. Need to tolerate taints added to nodes.
 
 ### Notes
 
-https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 
