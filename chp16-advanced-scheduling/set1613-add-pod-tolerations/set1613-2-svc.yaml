@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kubia
-  namespace: chp15-set1512
+  namespace: chp16-set1613
 # we do not create pods here, only set up the ports for them
 spec:
   ports:
