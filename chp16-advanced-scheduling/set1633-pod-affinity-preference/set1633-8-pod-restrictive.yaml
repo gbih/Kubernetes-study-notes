@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curl-restrictive
+  namespace: chp16-set1633
+spec:
+  tolerations:
+  - key: node-type
+    operator: Equal
+    value: non-production
+    effect: NoSchedule
+  serviceAccountName: foo
+  containers:
+  - name: curl-restrictive
+    image: luksa/kubectl-proxy
+    securityContext:
+      privileged: false
+      runAsUser: 2222
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: availability-zone
+            operator: In
+            values:
+            - zone1
+
+# Node affinity notes
+# https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity

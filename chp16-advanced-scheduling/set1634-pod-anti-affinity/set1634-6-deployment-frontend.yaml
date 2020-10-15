@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: chp16-set1634
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: frontend # match spec.template.metadata.labels
+  template:
+    metadata:
+      labels:
+        app: frontend # match spec.selector.matchLabels
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - topologyKey: kubernetes.io/hostname
+            labelSelector:
+              matchLabels:
+                app: backend
+      containers:
+      - name: main
+        image: busybox
+        args:
+        - sleep
+        - "9999999"
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          runAsNonRoot: true
+          runAsUser: 1000 
+        resources:
+          limits:
+            cpu: 200m
+          requests:
+            cpu: 100m
