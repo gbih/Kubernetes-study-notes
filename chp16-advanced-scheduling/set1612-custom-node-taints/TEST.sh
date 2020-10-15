@@ -32,6 +32,7 @@ echo ""
 
 echo "kubectl label node -l name=node2-vm env=development"
 kubectl label node -l name=node2-vm env=development
+echo ""
 
 echo "kubectl label node -l name=actionbook-vm env=control-plain"
 kubectl label node -l name=actionbook-vm env=control-plain
@@ -58,13 +59,17 @@ kubectl rollout status deployment kubia-deploy -n=chp16-set1612
 
 echo $HR
 
-echo "Check PSP is set-up correctly by getting HPA from API server."
+echo "Check PSP is set-up correctly by accessing API server."
 echo "We use RoleBinding with Role resource and ServiceAccount"
 echo ""
-echo "kubectl exec -it curl-restrictive -n=chp16-set1612 -- curl localhost:8001/apis/autoscaling/v1/namespaces/chp16-set1612/horizontalpodautoscalers/kubia | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)'"
+
+
+echo "kubectl exec -it curl-restrictive -n chp16-set1612 -- curl localhost:8001/api/v1/namespaces/chp16-set1612/services | jq 'del(.metadata.uid, .items[].metadata.managedFields, .items[].metadata.annotations, .status)' | yq r -P -"
 echo ""
 
-kubectl exec -it curl-restrictive -n=chp16-set1612 -- curl localhost:8001/apis/autoscaling/v1/namespaces/chp16-set1612/horizontalpodautoscalers/kubia | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)'
+kubectl exec -it curl-restrictive -n chp16-set1612 -- curl localhost:8001/api/v1/namespaces/chp16-set1612/services | jq 'del(.metadata.uid, .items[].metadata.managedFields, .items[].metadata.annotations, .status)' | yq r -P -
+
+
 
 echo $HR
 
