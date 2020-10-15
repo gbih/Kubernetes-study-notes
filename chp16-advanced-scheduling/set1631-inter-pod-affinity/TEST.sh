@@ -55,8 +55,8 @@ kubectl wait --for=condition=Ready=True pods/curl-restrictive -n=chp16-set1631 -
 
 enter
 
-echo "kubectl rollout status deployment kubia-deploy -n=chp16-set1631"
-kubectl rollout status deployment kubia-deploy -n=chp16-set1631
+echo "kubectl rollout status deployment backend -n=chp16-set1631"
+kubectl rollout status deployment backend -n=chp16-set1631
 
 echo $HR
 
@@ -64,10 +64,10 @@ echo "Check PSP is set-up correctly by accessing API server."
 echo "We use RoleBinding with Role resource and ServiceAccount"
 echo ""
 
-#echo "kubectl exec -it curl-restrictive -n chp16-set1631 -- curl localhost:8001/api/v1/namespaces/chp16-set1631/services | jq 'del(.metadata.uid, .items[].metadata.managedFields, .items[].metadata.annotations, .status)' | yq r -P -"
-#echo ""
+echo "kubectl exec -it curl-restrictive -n chp16-set1631 -- curl localhost:8001/api/v1/namespaces/chp16-set1631/services | jq 'del(.metadata.uid, .items[].metadata.managedFields, .items[].metadata.annotations, .status)' | yq r -P -"
+echo ""
 
-#kubectl exec -it curl-restrictive -n chp16-set1631 -- curl localhost:8001/api/v1/namespaces/chp16-set1631/services | jq 'del(.metadata.uid, .items[].metadata.managedFields, .items[].metadata.annotations, .status)' | yq r -P -
+kubectl exec -it curl-restrictive -n chp16-set1631 -- curl localhost:8001/api/v1/namespaces/chp16-set1631/services | jq 'del(.metadata.uid, .items[].metadata.managedFields, .items[].metadata.annotations, .status)' | yq r -P -
 
 
 echo $HR
