@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: pod-with-poststart-hook
-  namespace: chp17-set175
+  namespace: chp17-set1724
 spec:
   containers:
   - image: luksa/kubia
@@ -10,10 +10,8 @@ spec:
     ports:
     - containerPort: 8080
       protocol: TCP
-    # hook executes as soon as container starts
     lifecycle:
       postStart:
         httpGet:
-          #port: 9090 # deliberate mistake
-          port: 8080
+          port: 9090
           path: postStart
