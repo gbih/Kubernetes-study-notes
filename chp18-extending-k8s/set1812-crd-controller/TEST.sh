@@ -10,6 +10,10 @@ echo $HR
 
 
 # Need this order, at least PSP/RBAC before the crd stuff.
+
+echo "kubectl apply -f $FULLPATH/setup-sa.yaml"
+echo "kubectl apply -f $FULLPATH/setup-psp.yaml"
+echo "kubectl apply -f $FULLPATH/setup-role-rolebinding.yaml"
 kubectl apply -f $FULLPATH/setup-sa.yaml
 kubectl apply -f $FULLPATH/setup-psp.yaml
 kubectl apply -f $FULLPATH/setup-role-rolebinding.yaml
@@ -38,8 +42,8 @@ echo "kubectl get website kubia -n=chp18-set1812 -o yaml"
 kubectl get website kubia -n=chp18-set1812 -o yaml
 echo $HR
 
-echo "kubectl get pods -n=chp18-set1812"
-kubectl get pods -n=chp18-set1812
+echo "kubectl get all -n=chp18-set1812"
+kubectl get all -n=chp18-set1812
 echo $HR
 
 echo "Press enter to start deleting objects"

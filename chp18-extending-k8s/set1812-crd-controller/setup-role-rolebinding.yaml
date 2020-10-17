@@ -38,6 +38,10 @@ rules:
 - apiGroups: ["autoscaling"]
   resources: ["horizontalpodautoscalers"]
   verbs: ["get", "list", "watch"]
+
+- apiGroups: ["apiextensions", "extensions"]
+  resources: ["websites"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ---
 # This applies psp/restricted to all authenticated users
 kind: RoleBinding
@@ -52,11 +56,13 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 
 - kind: ServiceAccount
-  name: foo
+  name: website-controller
   namespace: chp18-set1812
 
 roleRef:
-  kind: Role
-  name: psp:privileged # A references to the role above
+  #kind: Role
+  #name: psp:privileged # A references to the role above
+  kind: ClusterRole
+  name: cluster-admin
   apiGroup: rbac.authorization.k8s.io
 

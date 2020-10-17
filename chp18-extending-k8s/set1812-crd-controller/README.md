@@ -3,8 +3,11 @@
 ### Objective
 
 ### Notes
+- This image is outdated:
+https://github.com/luksa/k8s-website-controller
+and needs to be updated, otherwise it will not work!
 
-p.513
-> To make your Website objects run a web server pod exposed through a Service, you’ll need to build and deploy a Website controller, which will watch the API server for the creation of Website objects and then create the Service and the web server Pod for each of them.
-
-> To make sure the Pod is managed and survives node failures, the controller will create a Deployment resource instead of an unmanaged Pod directly. 
+- Creating service imperatively:
+```
+kubectl expose deployment.apps/website-controller  --name kubia-http --dry-run=client -o yaml -n=chp18-set1812 --port=80
+```

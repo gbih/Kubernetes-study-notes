@@ -5,6 +5,3 @@ metadata:
   namespace: chp18-set1812
 spec:
   gitRepo: https://github.com/luksa/kubia-website-example.git
-#  securityContext:
-#    runAsNonRoot: true
-#    runAsUser: 1000

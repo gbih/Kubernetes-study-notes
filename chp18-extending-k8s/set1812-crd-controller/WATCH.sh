@@ -11,11 +11,17 @@ kubectl get nodes -o=custom-columns=NAME:.metadata.name,TAINTS:.spec.taints,LABE
 echo $HR; \
 kubectl top pod -n=chp18-set1812; \
 echo $HR; \
+echo "get website kubia"; \
 kubectl get website kubia -n=chp18-set1812; \
 echo $HR; \
+echo "SERVICE:"; \
+kubectl get svc -n=chp18-set1812 -o wide; \
+echo $HR; \
+echo "get deployment"; \
 kubectl get deployment -n=chp18-set1812 -o wide; \
 echo $HR; \
-kubectl get pods -n=chp18-set1812 -o wide --show-labels; \
+echo "get pods"; \
+kubectl get pods -n=chp18-set1812; \
 echo $HR; \
 kubectl get events -n=chp18-set1812 -o custom-columns=LastSeen:.lastTimestamp,From:.source.component,Reason:.reason,Message:.message --sort-by=lastTimestamp | tac; \
 echo $HR_TOP"
