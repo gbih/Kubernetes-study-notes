@@ -6,6 +6,7 @@
       "webserver": "[NAME]"
     },
     "name": "[NAME]",
+    "namespace": "[NAMESPACE]"
   },
   "spec": {
     "type": "NodePort",
