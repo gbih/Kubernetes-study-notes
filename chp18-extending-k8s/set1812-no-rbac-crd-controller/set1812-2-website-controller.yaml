@@ -15,6 +15,7 @@ spec:
   template:
     metadata:
       name: website-controller
+      #namespace: "chp18-set1812" # try this also here?
       labels:
         app: website-controller
     spec:
@@ -39,6 +40,7 @@ spec:
 
       - name: proxy
         image: luksa/kubectl-proxy:1.6.2
+
         #securityContext:
         #  allowPrivilegeEscalation: true # causes error
         #  privileged: true # causes error
