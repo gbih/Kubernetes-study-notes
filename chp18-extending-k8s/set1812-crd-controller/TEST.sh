@@ -12,13 +12,13 @@ echo $HR
 # Need this order, at least PSP/RBAC before the crd stuff.
 
 echo "kubectl apply -f $FULLPATH/setup-sa.yaml"
-echo "kubectl apply -f $FULLPATH/setup-psp.yaml"
-echo "kubectl apply -f $FULLPATH/setup-role-rolebinding.yaml"
+#echo "kubectl apply -f $FULLPATH/setup-psp.yaml"
+#echo "kubectl apply -f $FULLPATH/setup-role-rolebinding.yaml"
 echo "kubectl apply -f $FULLPATH/setup-clusterrole-clusterrolebinding.yaml"
 
 kubectl apply -f $FULLPATH/setup-sa.yaml
-kubectl apply -f $FULLPATH/setup-psp.yaml
-kubectl apply -f $FULLPATH/setup-role-rolebinding.yaml
+#kubectl apply -f $FULLPATH/setup-psp.yaml
+#kubectl apply -f $FULLPATH/setup-role-rolebinding.yaml
 kubectl apply -f $FULLPATH/setup-clusterrole-clusterrolebinding.yaml
 
 enter
