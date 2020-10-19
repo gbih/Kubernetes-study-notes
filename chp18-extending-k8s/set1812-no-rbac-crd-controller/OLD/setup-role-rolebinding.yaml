@@ -8,7 +8,7 @@
 # This makes the privileged policy the default for all users and
 # service accounts in the cluster.
 
-kind: Role
+kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: psp:privileged
@@ -44,7 +44,7 @@ rules:
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ---
 # This applies psp/restricted to all authenticated users
-kind: RoleBinding
+kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: psp:privileged

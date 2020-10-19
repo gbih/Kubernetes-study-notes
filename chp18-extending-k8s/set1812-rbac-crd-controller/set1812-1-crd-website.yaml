@@ -57,9 +57,14 @@ spec:
                         properties:
                           memory:
                             type: string
-                    
+                   
+
   # either Namespaced or Cluster
-  scope: Namespaced
+
+  scope: Namespaced # Cluster 
+
+  # RESTful API endpoint is created:
+  # /apis/extensions.example.com/v1/namespaces/{namespace}/website
   group: extensions.example.com
 
 
