@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "4.1.2 Creating an HTTP-based liveness probe"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH/set412-0-ns.yaml"
