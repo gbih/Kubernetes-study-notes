@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "4.3.2 Defining a ReplicaSet"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH/set432-0-ns.yaml"
@@ -24,7 +24,7 @@ echo "kubectl describe rs/kubia -n=chp04-set432"
 kubectl describe rs/kubia -n=chp04-set432
 echo ""
 
-echo $HR
+enter
 
 echo "kubectl delete -f $FULLPATH"
 kubectl delete -f $FULLPATH
