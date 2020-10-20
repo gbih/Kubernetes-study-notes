@@ -57,5 +57,7 @@ echo "kubectl get pod/kubia-liveness -o wide -n=chp04-set412"
 kubectl get pod/kubia-liveness -o wide -n=chp04-set412
 echo $HR
 
+enter
+
 echo "kubectl delete $FULLPATH"
 kubectl delete -f $FULLPATH
