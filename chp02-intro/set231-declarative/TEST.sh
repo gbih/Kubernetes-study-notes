@@ -1,18 +1,17 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "2.3.1 Deploying your Node.js app, declarative-style"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH/set231-0-ns.yaml"
 kubectl apply -f $FULLPATH/set231-0-ns.yaml
 echo $HR
 
-sleep 1
-
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH
 
-sleep 3
+sleep 2
 
 echo $HR
 
@@ -57,7 +56,8 @@ done
 
 echo $HR
 
+enter
+
 echo "kubectl delete -f $FULLPATH"
 kubectl delete -f $FULLPATH
 
-echo $HR

@@ -1,6 +1,6 @@
 #!/bin/bash
 . ~/src/common/setup.sh
-
+echo "2.3.1 Deploying your Node.js app, imperative-style"
 echo $HR_TOP
 
 echo "kubectl create namespace chp02-set231-imperative"
@@ -11,7 +11,9 @@ sleep 1
 echo "kubectl create deployment kubia --image=georgebaptista/kubia -n=chp02-set231-imperative"
 kubectl create deployment kubia --image=georgebaptista/kubia -n=chp02-set231-imperative
 echo $HR
-sleep 5
+
+kubectl rollout status deployment/kubia -n=chp02-set231-imperative
+echo $HR
 
 echo "kubectl get pods -n=chp02-set231-imperative"
 kubectl get pods -n=chp02-set231-imperative
