@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "4.2.2 Creating a ReplicationController"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH/set422-0-ns.yaml"
@@ -53,7 +53,7 @@ echo "kubectl get all -n=chp04-set422"
 kubectl get all -n=chp04-set422
 echo ""
 
-echo $HR
+enter
 
 echo "kubectl delete -F $FULLPATH"
 kubectl delete -f $FULLPATH
