@@ -67,7 +67,7 @@ POD1_NAME=$(kubectl get pod -n=chp02-set231-imperative -o jsonpath='{.items[0].m
 echo "kubectl describe pod $POD1_NAME -n=chp02-set231-imperative"
 kubectl describe pod $POD1_NAME -n=chp02-set231-imperative
 
-echo $HR
+enter
 
 echo "kubectl delete namespace chp02-set231-imperative"
 kubectl delete namespace chp02-set231-imperative
