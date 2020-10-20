@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "3.2.2 Creating a simple YAML descriptor for a pod"
 echo $HR_TOP
 
 echo "kubectl get nodes --show-labels"
@@ -89,6 +89,7 @@ echo "kubectl get events -n=chp03-set322"
 kubectl get events -n=chp03-set322
 echo $HR
 
+enter
 
 echo "kubectl label nodes actionbook-vm gpu-"
 kubectl label nodes actionbook-vm gpu-
