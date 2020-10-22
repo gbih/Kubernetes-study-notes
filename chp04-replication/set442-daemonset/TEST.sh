@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "4.4.2 Using a DaemonSet to run pods only on certain nodes"
 echo $HR_TOP
 
 echo "kubectl get nodes --show-labels"
@@ -42,7 +42,7 @@ echo "kubectl label nodes actionbook-vm disk-"
 kubectl label nodes actionbook-vm disk-
 echo ""
 
-echo $HR
+enter
 
 echo "kubectl delete -f $FULLPATH"
 kubectl delete -f $FULLPATH

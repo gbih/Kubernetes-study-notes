@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "4.5.2 Defining a Job resource"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

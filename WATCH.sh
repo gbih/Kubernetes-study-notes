@@ -19,6 +19,6 @@ kubectl get deployment -n=$namespace -o wide; \
 echo $HR; \
 kubectl get pods -n=$namespace -o wide --show-labels; \
 echo $HR; \
-kubectl get events -n=$namespace -o custom-columns=LastSeen:.lastTimestamp,From:.source.component,Reason:.reason,Message:.message --sort-by=lastTimestamp | tac; \
+kubectl get events -n=$namespace | tac; \
 echo $HR_TOP"
 

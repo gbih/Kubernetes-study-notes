@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "4.5.4 Running multiple pod instances in a Job"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

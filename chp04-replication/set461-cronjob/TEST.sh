@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "4.6.1 Creating a CronJob"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"
