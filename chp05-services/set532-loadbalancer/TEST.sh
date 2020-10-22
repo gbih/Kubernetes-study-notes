@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "5.3.2 Exposing a service through an external load balancer"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

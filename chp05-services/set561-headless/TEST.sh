@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo 5.6.1 Creating a headless service"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "5.1.2 Discovering services"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

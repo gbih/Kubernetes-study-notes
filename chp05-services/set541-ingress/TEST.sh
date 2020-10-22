@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "5.4.1 Creating an Ingress resource"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

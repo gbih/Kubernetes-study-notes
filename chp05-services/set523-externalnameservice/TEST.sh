@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "5.2.3 Creating an alias for an external service"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

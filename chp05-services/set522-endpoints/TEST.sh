@@ -1,5 +1,6 @@
 #!/bin/bash
 . ~/src/common/setup.sh
+echo "5.2.2 Manually configuring service endpoints"
 FULLPATH=$(pwd)
 
 echo "kubectl apply -f $FULLPATH/set522-0-ns.yaml"

@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "5.3.1 Using a NodePort service"
 echo $HR_TOP
 
 kubectl apply -f $FULLPATH

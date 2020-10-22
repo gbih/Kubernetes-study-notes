@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "5.5.2 Adding a readiness probe to the pod template"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

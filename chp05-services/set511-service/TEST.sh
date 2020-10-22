@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "5.1.1 Creating services"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH/set511-0-ns.yaml"
