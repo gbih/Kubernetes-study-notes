@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hostnames # no need to include app version name
+  namespace: chp11-set1118
+  labels:
+    app: hostnames
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hostnames # match spec.template.metadata.labels
+  template:
+    metadata:
+      name: hostnames
+      labels:
+        app: hostnames # match spec.selector.matchLabels
+    spec:
+      containers:
+      - image: k8s.gcr.io/serve_hostname
+        name: hostnames
+

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hostnames
+  namespace: chp11-set1118
+spec:
+  type: LoadBalancer
+  selector:
+    app: hostnames
+  ports:
+  - port: 80
+    targetPort: 8080
