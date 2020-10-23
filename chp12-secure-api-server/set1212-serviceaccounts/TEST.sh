@@ -4,8 +4,26 @@ FULLPATH=$(pwd)
 echo "12.1.2 Introducing ServiceAccounts"
 echo $HR_TOP
 
+echo "Check set-up of kube-api server"
+echo ""
+echo "ps ax | grep kube-api"
+ps ax | grep kube-api
 
-echo "kubectl apply -f $FULLPATH/set1212-0-ns.yaml"
+enter
+
+echo "cat /var/snap/microk8s/current/args/kube-apiserver"
+echo ""
+cat /var/snap/microk8s/current/args/kube-apiserver
+
+enter
+
+echo "Check how this API call is authenticated:"
+echo ""
+echo "kubectl apply -f $FULLPATH/set1212-0-ns.yaml --v=6"
+kubectl apply -f $FULLPATH/set1212-0-ns.yaml --v=6
+
+enter
+
 echo "kubectl apply -f $FULLPATH/set1212-1-sa.yaml"
 echo "kubectl apply -f $FULLPATH/set1212-2-sa-image-pull-secrets.yaml"
 
@@ -18,14 +36,19 @@ enter
 echo "kubectl get sa -o yaml"
 echo ""
 kubectl get sa -o yaml
-enter
 
+echo $HR
 
 echo "kubectl get sa foo -o json -n=chp12-set1212 | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)' | yq r -P -"
 echo ""
 kubectl get sa foo -o json -n=chp12-set1212 | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)' | yq r -P -
-enter 
 
+echo $HR
+
+enter "kubectl describe sa foo -n chp12-set1212"
+kubectl describe sa foo -n chp12-set1212
+
+enter
 
 
 echo "Inspecting the custom ServiceAccount's Secret"
