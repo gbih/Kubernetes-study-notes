@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: curl-custom-sa
-  namespace: chp12-set1212
+  namespace: chp12-set1214
 spec:
   serviceAccountName: foo # use foo instead of default
   containers:

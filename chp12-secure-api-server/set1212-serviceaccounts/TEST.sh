@@ -81,40 +81,6 @@ echo "JWT Signature:"
 #jq -R 'split(".") | .[2]' <<< $JWT
 jq -R 'gsub("-";"+") | gsub("_";"/") | split(".") | .[2]' <<< "$JWT"
 
-enter
-
-echo "Assigning a ServiceAccount to a pod"
-echo "After creating ServiceAccounts, they must be assigned to pods."
-echo "This is done by setting the name of the ServiceAccount in the spec.serviceAccountName field"
-echo ""
-
-
-echo "kubectl apply -f $FULLPATH/set1212-3-pod-curl-custom-sa.yaml"
-kubectl apply -f $FULLPATH/set1212-3-pod-curl-custom-sa.yaml
-echo $HR
-
-
-echo "kubectl wait --for=condition=Ready pod/curl-custom-sa -n=chp12-set1212"
-kubectl wait --for=condition=Ready pod/curl-custom-sa -n=chp12-set1212
-echo $HR
-
-echo "kubectl get pods -o wide -n=chp12-set1212"
-kubectl get pods -o wide -n=chp12-set1212
-echo $HR
-
-echo "kubectl -n=chp12-set1212 exec -it pod/curl-custom-sa -c main -- cat /var/run/secrets/kubernetes.io/serviceaccount/token"
-echo ""
-kubectl -n=chp12-set1212 exec -it pod/curl-custom-sa -c main -- cat /var/run/secrets/kubernetes.io/serviceaccount/token
-echo ""
-
-enter
-
-echo "Talking to the API server with a custom ServiceAccount"
-echo ""
-
-echo "kubectl -n=chp12-set1212 exec -it pod/curl-custom-sa -c main -- curl localhost:8001/api/v1/namespaces/chp12-set12/serviceaccounts"
-kubectl -n=chp12-set1212 exec -it pod/curl-custom-sa -c main -- curl localhost:8001/api/v1/namespaces/chp12-set12/serviceaccounts
-echo ""
 
 echo $HR
 

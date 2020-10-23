@@ -4,3 +4,6 @@
 ### Objectives
 - Work through securing the API server via RBAC, ServiceAccounts, Roles, RoleBindings
 
+- Authenticating
+https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+
