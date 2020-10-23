@@ -13,15 +13,23 @@ kubectl top node; \
 echo $HR; \
 kubectl top pod -n=$namespace; \
 echo $HR; \
-kubectl get deployment -n=$namespace -o wide; \
+kubectl get deployment -n=$namespace; \
 echo $HR; \
-kubectl get all -n=$namespace -o wide --show-labels; \
+kubectl get all -n=$namespace --show-labels; \
 kubectl get endpoints -n=$namespace; \
 kubectl get sa -n=$namespace; \
 echo $HR; \
+kubectl get role -n=$namespace; \
+kubectl get rolebinding -n=$namespace; \
+echo $HR; \
+kubectl get clusterrole; \
+kubectl get clusterrolebinding; \
+echo $HR; \
 kubectl get secrets -n=$namespace; \
 echo $HR; \
-kubectl get events -n=$namespace | tac; \
+kubectl get events -n=$namespace; \
 echo $HR_TOP"
 
 # kubectl get nodes -o=custom-columns=NAME:.metadata.name,TAINTS:.spec.taints,LABEL-NAME:.metadata.labels.name,LABEL-ENV:.metadata.labels.env; \
+
+# kubectl get events -n=$namespace | tac; \
