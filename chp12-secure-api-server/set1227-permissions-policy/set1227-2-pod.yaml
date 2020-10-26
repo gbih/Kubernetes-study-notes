@@ -3,11 +3,10 @@ kind: Pod
 metadata:
   labels:
     env: dev
-  name: test
-  namespace: chp12-set1226
+  name: my-pod
+  namespace: chp12-set1227
 spec:
   containers:
   - image: luksa/kubectl-proxy
-    name: test
-  restartPolicy: Always
-  serviceAccountName: test
+    name: my-pod
+  serviceAccountName: my-sa

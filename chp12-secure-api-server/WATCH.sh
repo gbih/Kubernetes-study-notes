@@ -29,7 +29,3 @@ kubectl get secrets -n=$namespace; \
 echo $HR; \
 kubectl get events -n=$namespace; \
 echo $HR_TOP"
-
-# kubectl get nodes -o=custom-columns=NAME:.metadata.name,TAINTS:.spec.taints,LABEL-NAME:.metadata.labels.name,LABEL-ENV:.metadata.labels.env; \
-
-# kubectl get events -n=$namespace | tac; \

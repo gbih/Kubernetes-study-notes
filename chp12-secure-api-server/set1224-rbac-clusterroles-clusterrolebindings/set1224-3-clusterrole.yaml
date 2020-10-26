@@ -2,14 +2,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: pv-reader
-  # namespace ommited since ClusterRoles are not namespaced
 rules:
 - apiGroups: [""]
   resources: ["persistentvolumes"]
   verbs: ["get", "list"]
-
-# ClusterRole is a cluster-level RBAC resource.
-# This enables access to non-namespaced resources or non-resource URLs.
-# This is also used as a common role to be bound inside individual namespaces.
-# The main point is, it allows access to cluster-level resources, such as Nodes, PVs, Namespaces, certain API server paths that don't represent resources such as /healthz.
 

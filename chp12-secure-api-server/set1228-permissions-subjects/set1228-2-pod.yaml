@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: dev
+  name: my-pod
+  namespace: chp12-set1228
+spec:
+  containers:
+  - image: luksa/kubectl-proxy
+    name: my-pod
+  serviceAccountName: my-sa

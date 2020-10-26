@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: chp12-set1226
+  name: chp12-set1228
