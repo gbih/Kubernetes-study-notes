@@ -5,10 +5,11 @@
 - Learn about Pod Security Policies, a very important security mechanism in Kubernetes
 
 - It will be useful to examine the configuration of the API-server now that we are using PSP. We can examine the args used via:
-```
-cat /var/snap/microk8s/current/args/kube-apiserver
 
-# this outputs something like this:
+- Check admission plugins that should be enabled in addition to default enabled ones
+
+```
+vi /var/snap/microk8s/current/args/kube-apiserver
 
 --cert-dir=${SNAP_DATA}/certs
 --service-cluster-ip-range=10.152.183.0/24
@@ -38,4 +39,24 @@ cat /var/snap/microk8s/current/args/kube-apiserver
 --proxy-client-cert-file=${SNAP_DATA}/certs/front-proxy-client.crt
 --proxy-client-key-file=${SNAP_DATA}/certs/front-proxy-client.key
 #~Enable the aggregation layer
+
+# custom-setting
+--allow-privileged
+
+--enable-admission-plugins="\
+NamespaceLifecycle,\
+LimitRanger,\
+ServiceAccount,\
+TaintNodesByCondition,\
+Priority,\
+DefaultTolerationSeconds,\
+DefaultStorageClass,\
+StorageObjectInUseProtection,\
+PersistentVolumeClaimResize,\
+MutatingAdmissionWebhook,\
+ValidatingAdmissionWebhook,\
+RuntimeClass,\
+ResourceQuota,\
+NamespaceLifecycle,\
+PodSecurityPolicy"
 ```

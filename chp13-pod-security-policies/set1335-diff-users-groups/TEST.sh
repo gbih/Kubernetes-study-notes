@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Assigning different PodSecurityPolicies to different users and groups"
+echo "13.3.5 Assigning different PodSecurityPolicies to different users and groups"
 echo ""
 echo "You don't need to play around with clusters or context."
 echo "These are the important things:"

@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Sharing volumes when containers run as different users"
+echo "13.2.7 Sharing volumes when containers run as different users"
 echo $HR_TOP
 
 ((i++))

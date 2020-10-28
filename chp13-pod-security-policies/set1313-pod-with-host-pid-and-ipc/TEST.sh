@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Using the node's PID and IPC namespaces"
+echo "13.1.1 Using the node's PID and IPC namespaces"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

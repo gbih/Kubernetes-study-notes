@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Running a container as a specific user"
+echo "13.2.1 Running a container as a specific user"
 echo $HR_TOP
 
 value1=$(<set1321-1-pod-as-user-guest.yaml)

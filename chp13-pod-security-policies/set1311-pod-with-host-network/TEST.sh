@@ -1,11 +1,12 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "13.1.1 Using the node’s network namespace in a pod"
 echo $HR_TOP
 
-echo "kubectl apply -f $FULLPATH/PSP"
-kubectl apply -f $FULLPATH/PSP
-echo ""
+#echo "kubectl apply -f $FULLPATH/PSP"
+#kubectl apply -f $FULLPATH/PSP
+#echo ""
 
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH --record

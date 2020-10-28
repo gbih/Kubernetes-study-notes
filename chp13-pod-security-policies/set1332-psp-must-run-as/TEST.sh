@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Understanding runAsUser, fsGroup, and supplementalGroups policies"
+echo "13.3.2 Understanding runAsUser, fsGroup, and supplementalGroups policies"
 echo $HR_TOP
 
 ((i++))

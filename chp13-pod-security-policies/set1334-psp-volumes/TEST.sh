@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Constraining the types of volumes pods can use"
+echo "13.3.4 Constraining the types of volumes pods can use"
 echo $HR_TOP
 
 ((i++))

@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Preventing processes from writing to the container's filesystem"
+echo "13.2.6 Preventing processes from writing to the container's filesystem"
 echo $HR_TOP
 
 ((i++))

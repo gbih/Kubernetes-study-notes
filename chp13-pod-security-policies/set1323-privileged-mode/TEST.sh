@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Running pods in privileged mode"
+echo "13.2.3 Running pods in privileged mode"
 echo ""
 echo "To allows priviledge mode in microk8s, use this cluster-configuration:"
 echo "Add --allow-privileged /var/snap/microk8s/current/args/kube-apiserver"

@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Adding individual kernel capabilities to a container"
+echo "13.2.4 Adding individual kernel capabilities to a container"
 echo $HR_TOP
 
 

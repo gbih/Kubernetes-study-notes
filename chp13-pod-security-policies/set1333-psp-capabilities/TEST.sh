@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Configuring allowed, default, and disallowed capabilities"
+echo "13.3.3 Configuring allowed, default, and disallowed capabilities"
 echo $HR_TOP
 
 ((i++))

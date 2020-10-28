@@ -1,7 +1,7 @@
 #d!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Introducing the PodSecurityPolicy resource"
+echo "13.3.1 Introducing the PodSecurityPolicy resource"
 echo ""
 echo "Setup:"
 echo "Enable the PodSecurityPolicy admission control plugin in the cluster."

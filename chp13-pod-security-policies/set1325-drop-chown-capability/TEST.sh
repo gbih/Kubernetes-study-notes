@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Dropping capabilities from a container"
+echo "13.2.5 Dropping capabilities from a container"
 echo $HR_TOP
 
 value=$(<set1325-1-pod-drop-chown-capability.yaml)

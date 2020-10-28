@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Preventing a container from running as root"
+echo "13.2.2 Preventing a container from running as root"
 echo $HR_TOP
 
 ((i++))
