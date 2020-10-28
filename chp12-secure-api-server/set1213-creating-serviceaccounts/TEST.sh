@@ -4,22 +4,10 @@ FULLPATH=$(pwd)
 echo "12.1.3 Creating ServiceAccounts"
 echo $HR_TOP
 
-echo "Check set-up of kube-api server"
-echo ""
-echo "ps ax | grep kube-api"
-ps ax | grep kube-api
-
-enter
-
-echo "cat /var/snap/microk8s/current/args/kube-apiserver"
-echo ""
-cat /var/snap/microk8s/current/args/kube-apiserver
-
-enter
-
-echo "Check how this API call is authenticated:"
+echo "Examine the series of authentication plugins called during an API called"
 echo ""
 echo "kubectl apply -f $FULLPATH/set1213-0-ns.yaml --v=6"
+echo ""
 kubectl apply -f $FULLPATH/set1213-0-ns.yaml --v=6
 
 enter
@@ -37,19 +25,15 @@ echo "kubectl get sa -o yaml"
 echo ""
 kubectl get sa -o yaml
 
-echo $HR
+enter
 
+echo "Use combination of jq and yq to filter out less useful fields from the output"
+echo ""
 echo "kubectl get sa foo -o json -n=chp12-set1213 | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)' | yq r -P -"
 echo ""
 kubectl get sa foo -o json -n=chp12-set1213 | jq 'del(.metadata.managedFields, .metadata.annotations, .metadata.apiVersion)' | yq r -P -
 
-echo $HR
-
-enter "kubectl describe sa foo -n chp12-set1213"
-kubectl describe sa foo -n chp12-set1213
-
 enter
-
 
 echo "Inspecting the custom ServiceAccount's Secret"
 echo ""
