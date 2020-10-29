@@ -15,8 +15,8 @@ echo "kubectl apply -f $FULLPATH/set1811-1-crd-website.yaml"
 kubectl apply -f $FULLPATH/set1811-1-crd-website.yaml
 echo $HR
 
-echo "kubectl get crd -A -o wide"
-kubectl get crd -A -o wide
+echo "kubectl get crd"
+kubectl get crd
 
 enter
 
