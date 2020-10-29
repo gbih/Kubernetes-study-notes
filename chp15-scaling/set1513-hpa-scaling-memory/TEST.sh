@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "14.5.3 Limiting the number of objects that can be created"
+echo "15.1.3 Scaling based on memory consumption"
 echo $HR_TOP
 
 echo "In a separate terminal, run ./WATCH.sh to monitor various objects"

@@ -5,8 +5,6 @@ HR=$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -)
 HR_TOP=$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "=")
 
 watch -n 1 -d -t "echo $HR_TOP; \
-date \+\"Time: %T\"; \
-echo $HR; \
 kubectl top node; \
 echo $HR; \
 kubectl top pod -n=chp15-set1513; \

@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "14.5.4 Scaling based on other and custom metrics"
+echo "15.1.4 Scaling based on other and custom metrics"
 echo ""
 echo "These custom metrics may have names which are cluster specific, and require a more advanced cluster monitoring setup, such as Prometheus. The metrics-server looks like it does not handle these metrics."
 
