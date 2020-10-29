@@ -4,9 +4,9 @@ metadata:
   name: website-controller
   namespace: chp18-set1812
 spec:
-  #securityContext:
-  #  runAsNonRoot: true
-  #  runAsUser: 1000
+#  securityContext:
+#    runAsNonRoot: true
+#    runAsUser: 1000
 
   replicas: 1
   selector:

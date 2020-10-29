@@ -32,31 +32,31 @@ spec:
                 type: object
                 properties:
                   # securityContext per container
-                  securityContext:
-                    type: object
-                    properties:
-                      allowPrivilegeEscalation:
-                        type: boolean
-                      privileged:
-                        type: boolean
-                      runAsNonRoot:
-                        type: boolean
-                      runAsUser:
-                        type: integer
+                  #securityContext:
+                  #  type: object
+                  #  properties:
+                  #    allowPrivilegeEscalation:
+                  #      type: boolean
+                  #    privileged:
+                  #      type: boolean
+                  #    runAsNonRoot:
+                  #      type: boolean
+                  #    runAsUser:
+                  #      type: integer
                   # resources per container
-                  resources:
-                    type: object
-                    properties:
-                      requests:
-                        type: object
-                        properties:
-                          memory:
-                            type: string
-                      limits:
-                        type: object
-                        properties:
-                          memory:
-                            type: string
+                  #resources:
+                  #  type: object
+                  #  properties:
+                  #    requests:
+                  #      type: object
+                  #      properties:
+                  #        memory:
+                  #          type: string
+                  #    limits:
+                  #      type: object
+                  #      properties:
+                  #        memory:
+                  #          type: string
                    
 
   # either Namespaced or Cluster
