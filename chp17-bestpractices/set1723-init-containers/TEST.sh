@@ -12,6 +12,11 @@ kubectl apply -f role-rolebinding.yaml
 kubectl apply -f set1723-1-pod-fortune-client.yaml 
 echo $HR
 
+echo "kubectl wait --for=condition=Ready=True pods/fortune-client -n=chp17-set1723 --timeout=20s"
+kubectl wait --for=condition=Ready=True pods/fortune-client -n=chp17-set1723 --timeout=20s
+echo ""
+
+
 echo "Execute the pod's init containers sequentially"
 echo ""
 echo "kubectl get pod -n=chp17-set1723 -o wide"
