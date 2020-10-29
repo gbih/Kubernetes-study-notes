@@ -21,10 +21,10 @@ echo "kubectl delete -f set1726-pod.yaml"
 
 echo $HR
 
-echo "kubectl -n=chp17-set1726 exec pod-with-prestop-hook-it -- tail -f /tmp/log/log.txt"
-kubectl -n=chp17-set1726 exec pod-with-prestop-hook -it -- tail -f /tmp/log/log.txt
+echo "Run this in a separate terminal, then press enter"
+echo "kubectl -n=chp17-set1726 exec pod-with-prestop-hook -it -- tail -f /tmp/log/log.txt"
 
-echo $HR
+enter
 
 echo "kubectl delete -f $FULLPATH"
 kubectl delete -f $FULLPATH --ignore-not-found
