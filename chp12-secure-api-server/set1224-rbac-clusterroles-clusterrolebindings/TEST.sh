@@ -2,7 +2,6 @@
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
 echo "12.2.4 Using ClusterRoles and ClusterRoleBindings"
-echo "This is usually for system-level resources."
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH/set1224-0-ns.yaml"
@@ -57,7 +56,7 @@ kubectl describe rolebinding pv-test -n chp12-set1224
 enter
 
 echo "Try again:"
-echo "(expect another error)"
+echo "(expect another error, since a cluster-level resource requires a clusterrole and clusterrolebinding)"
 echo ""
 echo "kubectl exec deployment/test -n chp12-set1224 --v=6 -it -- curl localhost:8001/api/v1/persistentvolumes"
 kubectl exec deployment/test -n chp12-set1224 --v=6 -it -- curl localhost:8001/api/v1/persistentvolumes

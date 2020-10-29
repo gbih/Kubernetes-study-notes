@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "12.2.8 "
+echo "12.2.8 Explore through privilege levels with RoleBindings"
 echo $HR_TOP
 
 
@@ -15,7 +15,6 @@ function urlTest() {
 ###########################################
 
 # Make sure any clusterrolebindings are deleted beforehand
-kubectl delete -f $FULLPATH --force --ignore-not-found
 kubectl delete clusterrolebinding my-binding --ignore-not-found
 kubectl delete rolebinding my-binding -n chp12-set1228 --ignore-not-found
 
@@ -207,6 +206,6 @@ enter
 ###########################################
 
 # Make sure any clusterrolebindings are deleted afterward
-kubectl delete -f $FULLPATH --force --ignore-not-found
+kubectl delete -f $FULLPATH
 kubectl delete clusterrolebinding my-binding --ignore-not-found
 kubectl delete rolebinding my-binding -n chp12-set1228 --ignore-not-found

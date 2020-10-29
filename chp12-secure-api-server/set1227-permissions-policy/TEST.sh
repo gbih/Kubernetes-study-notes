@@ -2,30 +2,19 @@
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
 echo "12.2.7 Granting authorization permissions wisely"
+echo "Iterate accessing the API Server with varying levels of priviledge"
 echo $HR_TOP
 
 function urlTest() {
 
-  echo "Get all resources"
-  echo "kubectl exec -it my-pod -n chp12-set1227 -- curl localhost:8001"
-  echo ""
-  kubectl exec -it my-pod -n chp12-set1227 -- curl localhost:8001?limit=10
-  echo ""
-  echo $HR
-  echo "Get deployment resources"
   # .[]? is similar to .[], but no errors will be output if . is not an array or object.
   echo "kubectl exec -it my-pod -n chp12-set1227 -- curl localhost:8001/apis/apps/v1/deployments | jq -r '.items[]?.metadata.name'"
-  echo ""
   kubectl exec -it my-pod -n chp12-set1227 -- curl localhost:8001/apis/apps/v1/deployments | jq -r '.items[]?.metadata.name'
-  echo ""
   echo $HR
-  echo "Get services in this namespace"
   echo "kubectl exec -it my-pod -n chp12-set1227 -- curl localhost:8001/api/v1/namespaces/chp12-set1227/services"
   kubectl exec -it my-pod -n chp12-set1227 -- curl localhost:8001/api/v1/namespaces/chp12-set1227/services
   echo ""
   echo $HR
-
-  echo "Get non-namespaced resource, persistentvolume"
   echo "kubectl exec -it my-pod -n chp12-set1227 -- curl localhost:8001/api/v1/persistentvolumes"
   kubectl exec -it my-pod -n chp12-set1227 -- curl localhost:8001/api/v1/persistentvolumes
   echo ""
@@ -34,7 +23,6 @@ function urlTest() {
 
 ###########################################
 
-# Make sure any clusterrolebindings are deleted beforehand
 kubectl delete clusterrolebinding my-binding --ignore-not-found
 kubectl delete rolebinding my-binding -n chp12-set1227 --ignore-not-found
 
@@ -66,7 +54,6 @@ echo ""
 kubectl get clusterrole cluster-admin
 enter
 urlTest
-#enter
 echo $HR
 echo "kubectl delete clusterrolebinding my-binding"
 kubectl delete clusterrolebinding my-binding
@@ -83,9 +70,7 @@ echo "$value"
 kubectl apply -f $FULLPATH/crb-1b.yaml
 enter
 urlTest
-#enter
 echo $HR
-#enter
 echo "kubectl delete clusterrolebinding my-binding"
 kubectl delete clusterrolebinding my-binding
 enter
@@ -109,9 +94,7 @@ echo ""
 kubectl get clusterrole view
 enter
 urlTest
-#enter
 echo $HR
-#enter
 echo "kubectl delete clusterrolebinding my-binding"
 kubectl delete clusterrolebinding my-binding
 enter
@@ -138,9 +121,7 @@ echo ""
 kubectl get sa -n chp12-set1227
 enter
 urlTest
-#enter
 echo $HR
-#enter
 echo "kubectl delete rolebinding my-binding -n ch12-set1227"
 kubectl delete rolebinding my-binding -n chp12-set1227
 enter
@@ -167,7 +148,6 @@ echo ""
 kubectl get sa default -n chp12-set1227
 enter
 urlTest
-#enter
 echo "kubectl delete rolebinding my-binding -n chp12-set1227"
 kubectl delete rolebinding my-binding -n chp12-set1227
 enter
@@ -191,7 +171,6 @@ echo ""
 kubectl get sa my-sa -n chp12-set1227
 enter
 urlTest
-#enter
 echo $HR
 echo "kubectl delete rolebinding my-binding -n chp12-set1227"
 kubectl delete rolebinding my-binding -n chp12-set1227
@@ -219,13 +198,10 @@ echo ""
 kubectl get sa my-sa -n chp12-set1227
 enter
 urlTest
-#enter
 echo $HR
 echo "kubectl delete rolebinding my-binding -n chp12-set1227"
 kubectl delete rolebinding my-binding -n chp12-set1227
 enter
-
-
 
 ##########################################
 
