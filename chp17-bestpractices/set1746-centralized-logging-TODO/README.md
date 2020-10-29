@@ -1,6 +1,2 @@
-TODO
-
-FluentD
-Prometheus
-etc
+# 17.4.6 Handling application logs
 
