@@ -10,18 +10,24 @@ echo "$value"
 
 enter
 
-kubectl apply -f $FULLPATH/set1724-0-ns.yaml
-sleep 1 
+#kubectl apply -f $FULLPATH/set1724-0-ns.yaml
+#sleep 1 
 kubectl apply -f $FULLPATH
 
 echo $HR
+
+echo "kubectl wait --for=condition=Ready=True pods/pod-with-poststart-hook -n=chp17-set1724 --timeout=3s"
+kubectl wait --for=condition=Ready=True pods/pod-with-poststart-hook -n=chp17-set1724 --timeout=3s
+echo ""
 
 echo "kubectl get pods -n=chp17-set1724"
 kubectl get pods -n=chp17-set1724
 echo $HR
 
+kubectl get events -n=chp17-set1724
 
-enter
+echo $HR
+
 
 echo "kubectl delete -f $FULLPATH"
 kubectl delete -f $FULLPATH
