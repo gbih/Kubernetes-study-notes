@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Creating pods with resource requests"
+echo "14.1.0 Creating pods with resource requests"
 echo $HR_TOP
 
 ((i++))
@@ -32,16 +32,18 @@ echo "kubectl get pods -n=chp14-set1410"
 kubectl get pods -n=chp14-set1410 --sort-by=.status.podIP
 
 echo $HR
+echo "kubectl get psp"
+kubectl get psp
 
 ((i++))
 echo "$i. Examine CPU and memory usage from within a container"
 echo "Hit ctrl-c or q to escape:"
 echo ""
 
-echo "kubectl exec -n=chp14-set1410 -it requests-pod top"
+echo "kubectl exec -n=chp14-set1410 -it requests-pod -- top"
 enter
 
-kubectl exec -n=chp14-set1410 -it requests-pod top
+kubectl exec -n=chp14-set1410 -it requests-pod -- top
 
 echo ""
 echo "We have 1 CPU core allocated to this Multipass VM, for reference."

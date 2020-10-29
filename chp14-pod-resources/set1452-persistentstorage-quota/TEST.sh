@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Introducing the ResourceQuota object"
+echo "14.5.2 Introducing the ResourceQuota object"
 echo $HR_TOP
 
 ((i++))

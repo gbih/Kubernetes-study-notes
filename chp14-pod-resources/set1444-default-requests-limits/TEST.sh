@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "14.1.4 Applying default resource requests and limits"
+echo "14.4.4 Applying default resource requests and limits"
 echo $HR_TOP
 
 ((i++))

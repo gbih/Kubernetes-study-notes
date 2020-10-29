@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Creating a LimitRange object"
+echo "14.4.2 Creating a LimitRange object"
 echo $HR_TOP
 
 ((i++))

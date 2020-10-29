@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Setting a hard limit for the amount of resources a container can use"
+echo "14.2.1 Setting a hard limit for the amount of resources a container can use"
 echo $HR_TOP
 ((i++))
 
@@ -30,17 +30,19 @@ echo "kubectl get pods -n=chp14-set1421 -o wide"
 kubectl get pods -n=chp14-set1421 -o wide --sort-by=.status.podIP
 
 echo $HR
-
+echo "kubectl get psp"
+kubectl get psp
+echo $HR
 
 ((i++))
 echo "$i. Examine CPU and memory usage from within a container"
 echo "Hit ctrl-c or q to escape:"
 echo ""
-echo "kubectl exec -n=chp14-set1421 -it limited-pod top"
+echo "kubectl exec -n=chp14-set1421 -it limited-pod -- top"
 
 enter
 
-kubectl exec -n=chp14-set1421 -it limited-pod top
+kubectl exec -n=chp14-set1421 -it limited-pod -- top
 
 enter
 

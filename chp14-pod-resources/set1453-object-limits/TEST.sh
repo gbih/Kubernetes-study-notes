@@ -27,9 +27,10 @@ value=$(<set1453-1-quota-object-count.yaml)
 echo "$value"
 
 enter
-
-echo "kubectl rollout status deployment kubia-deploy -n=chp14-set1453"
-kubectl rollout status deployment kubia-deploy -n=chp14-set1453
+echo "Note: Need timeout flag or this will hang"
+echo ""
+echo "kubectl rollout status deployment kubia-deploy -n=chp14-set1453 --timeout=10s"
+kubectl rollout status deployment kubia-deploy -n=chp14-set1453 --timeout=10s
 
 echo $HR
 
