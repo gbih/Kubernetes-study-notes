@@ -2,4 +2,3 @@
 
 ### Notes
 
-- Cannot use scratch-based image here, since it lacks a shell and we cannot run `sh`, etc

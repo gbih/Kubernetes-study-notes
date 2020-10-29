@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "17.3.2 Preventing broken connections during pod shut-down"
 kubectl apply -f $FULLPATH
 
 echo $HR
@@ -21,9 +21,10 @@ echo ""
 echo "kubectl -n=chp17-set1732 exec pod-with-prestop-hook -it -- tail -f /tmp/log/log.txt"
 kubectl -n=chp17-set1732 exec pod-with-prestop-hook -it -- tail -f /tmp/log/log.txt
 
+#enter
 echo $HR
 
-#echo "kubectl delete -f $FULLPATH"
-#kubectl delete -f $FULLPATH
+echo "kubectl delete -f $FULLPATH"
+kubectl delete -f $FULLPATH
 
 
