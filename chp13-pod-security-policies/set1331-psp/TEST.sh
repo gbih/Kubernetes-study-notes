@@ -12,7 +12,7 @@ echo "Comment out --allow-privileged"
 echo "#--allow-privileged"
 echo ""
 echo "Add PodSecurityPolicy to the admission plugins:"
-echo '--enable-admission-plugins="
+echo '
 --enable-admission-plugins="\
 NamespaceLifecycle,\
 LimitRanger,\
@@ -24,7 +24,7 @@ ValidatingAdmissionWebhook,\
 ResourceQuota,\
 PodSecurityPolicy"
 '
-echo "microk8s.stop && microk8s.start"
+echo "microk8s stop && microk8s start && microk8s status"
 echo $HR_TOP
 
 enter
