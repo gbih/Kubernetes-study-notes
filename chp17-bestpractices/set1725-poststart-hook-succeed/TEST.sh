@@ -9,8 +9,8 @@ echo "$value"
 
 enter
 
-kubectl apply -f $FULLPATH/set1725-0-ns.yaml
-sleep 1 
+#kubectl apply -f $FULLPATH/set1725-0-ns.yaml
+#sleep 1 
 kubectl apply -f $FULLPATH
 
 echo $HR
@@ -18,7 +18,8 @@ echo $HR
 echo "kubectl wait --for=condition=Ready pods/lifecycle-demo -n=chp17-set1725 --timeout=11s"
 kubectl wait --for=condition=Ready pods/lifecycle-demo -n=chp17-set1725 --timeout=11s
 
-enter
+#enter
+echo $HR
 
 echo "kubectl get pods -n=chp17-set1725"
 kubectl get pods -n=chp17-set1725
@@ -30,7 +31,7 @@ echo "kubectl exec -it lifecycle-demo -n=chp17-set1725 -- cat /usr/share/message
 kubectl exec -it lifecycle-demo -n=chp17-set1725 -- cat /usr/share/message
 echo $HR
 
-enter
+#enter
 
 echo "kubectl delete -f $FULLPATH"
 kubectl delete -f $FULLPATH
