@@ -28,9 +28,11 @@ spec:
           runAsUser: 1000 
         resources:
           limits:
-            cpu: 200m
+            cpu: 300m
           requests:
-            cpu: 10m
+            cpu: 100m
+
+
             #memory: "56Mi"
           #limits:
           #  cpu: 100m
