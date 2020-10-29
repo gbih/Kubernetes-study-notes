@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "14.5.3 Limiting the number of objects that can be created"
+echo "15.1.2 Scaling based on CPU utilization (specific CPU value)"
 echo $HR_TOP
 
 

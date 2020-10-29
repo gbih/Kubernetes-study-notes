@@ -15,7 +15,7 @@ kubectl get deployment -n=chp15-set1512; \
 echo $HR; \
 kubectl get pods -n=chp15-set1512; \
 echo $HR; \
-kubectl get events -n=chp15-set1512; \
+kubectl get events -n=chp15-set1512 | tac; \
 echo $HR_TOP"
 
 # kubectl get events -n=chp15-set1512 --sort-by=.metadata.creationTimestamp | tac | grep \"horizontalpodautoscaler\"; \
