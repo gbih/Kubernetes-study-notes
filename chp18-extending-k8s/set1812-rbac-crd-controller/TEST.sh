@@ -63,3 +63,8 @@ enter
 echo "kubectl delete -f $FULLPATH"
 kubectl delete -f $FULLPATH --ignore-not-found
 
+echo "kubectl delete clusterrolebinding psp:privileged"
+kubectl delete clusterrolebinding psp:privileged
+
+echo "kubectl delete clusterrole psp:privileged"
+kubectl delete clusterrole psp:privileged

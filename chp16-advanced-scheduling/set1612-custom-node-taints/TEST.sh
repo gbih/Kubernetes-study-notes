@@ -2,6 +2,7 @@
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
 echo "16.1.2 Adding custom taints to a node"
+echo "Need a multi-node setup to run this set"
 echo $HR_TOP
 
 # kubectl get nodes -l name=node1-vm
