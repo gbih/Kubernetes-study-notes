@@ -1,0 +1,75 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: websites.extensions.example.com
+spec:
+  group: example.com
+  versions: 
+  - name: v1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              image:
+                type: string
+              gitRepo:
+                type: string
+
+              containers:
+                type: object
+                properties:
+                  # securityContext per container
+                  #securityContext:
+                  #  type: object
+                  #  properties:
+                  #    allowPrivilegeEscalation:
+                  #      type: boolean
+                  #    privileged:
+                  #      type: boolean
+                  #    runAsNonRoot:
+                  #      type: boolean
+                  #    runAsUser:
+                  #      type: integer
+                  # resources per container
+                  #resources:
+                  #  type: object
+                  #  properties:
+                  #    requests:
+                  #      type: object
+                  #      properties:
+                  #        memory:
+                  #          type: string
+                  #    limits:
+                  #      type: object
+                  #      properties:
+                  #        memory:
+                  #          type: string
+                   
+
+  # either Namespaced or Cluster
+
+  scope: Namespaced # Cluster 
+
+  # RESTful API endpoint is created:
+  # /apis/extensions.example.com/v1/namespaces/{namespace}/website
+  group: extensions.example.com
+
+
+  names:
+    # kind is normally the CamelCased singular type. Your resource manifests use this.
+    kind: Website
+
+    # singular name to be used as an alias on the CLI and for display
+    singular: website
+
+    # plural name to be used in the URL: /apis/<group>/<version>/<plural>
+    plural: websites
+
+
+# Reference:
+# https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/

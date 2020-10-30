@@ -1,0 +1,30 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: clusterrole-psp
+
+rules:
+# equivalent to cluster-admin
+#- apiGroups: ["*"]
+#  resources: ["*"]
+#  verbs: ["*"]
+#- nonResourceURLs: ["*"]
+#  verbs: ["*"]
+
+- apiGroups: ["extensions.example.com"] # CRD apiGroup, required
+  resources: ["websites"]
+  verbs: ["*"]
+
+- apiGroups: [""]
+  resources: ["pods", "services"]
+  verbs: ["get", "list", "create"]
+
+- apiGroups: ["extensions", "apps"]
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+- apiGroups: ["policy"]
+  resourceNames: ["restricted"]
+  resources: ["podsecuritypolicies"]
+  verbs: ["use"]
+
