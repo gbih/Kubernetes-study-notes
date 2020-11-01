@@ -19,12 +19,14 @@
     "template": {
       "metadata": {
         "name": "[NAME]",
-	"namespace": "[NAMESPACE]",
+	      "namespace": "[NAMESPACE]",
         "labels": {
           "webserver": "[NAME]"
         }
       },
       "spec": {
+        "serviceAccount": "[SERVICE-ACCOUNT]",
+        "serviceAccountName": "[SERVICE-ACCOUNT-NAME]",
         "containers": [
           {
             "image": "nginx:alpine",

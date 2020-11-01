@@ -1,8 +1,0 @@
-apiVersion: extensions.example.com/v1
-kind: Website
-metadata:
-  name: baptista
-  namespace: chp18-set1812
-spec:
-  # gitRepo: https://github.com/luksa/kubia-website-example.git
-  gitRepo: https://github.com/gbih/bootstrap-dashboard-example.git

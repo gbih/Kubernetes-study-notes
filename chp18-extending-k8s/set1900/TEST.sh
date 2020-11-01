@@ -19,45 +19,36 @@ FULLPATH=$(pwd)
 
 #kubectl create clusterrolebinding restricted --clusterrole=psp-privileged --group=system:authenticated --dry-run=client -o yaml > CRB.yaml
 
-
-echo "kubectl apply -f $FULLPATH/set1900-0-ns.yaml"
+echo "Create objects"
 kubectl apply -f $FULLPATH/set1900-0-ns.yaml
-echo $HR
-
-echo "kubectl apply -f $FULLPATH/setup-sa.yaml"
-echo "kubectl apply -f $FULLPATH/setup-psp.yaml"
-
-kubectl apply -f $FULLPATH/setup-sa.yaml
-kubectl apply -f $FULLPATH/setup-psp.yaml
-kubectl apply -f $FULLPATH/CR.yaml
-kubectl apply -f $FULLPATH/CRB.yaml
+kubectl apply -f $FULLPATH/set1900-1-sa.yaml
+kubectl apply -f $FULLPATH/set1900-2-psp.yaml
+kubectl apply -f $FULLPATH/set1900-3-customrole.yaml
+kubectl apply -f $FULLPATH/set1900-4-customrolebinding.yaml
 
 
-echo "kubectl apply -f $FULLPATH/set1900-1-crd-website.yaml"
-kubectl apply -f $FULLPATH/set1900-1-crd-website.yaml
+echo "kubectl apply -f $FULLPATH/set1900-5-website-crd.yaml"
+kubectl apply -f $FULLPATH/set1900-5-website-crd.yaml
 #enter
 
-echo "kubectl apply -f $FULLPATH/set1900-2-website-controller.yaml"
-kubectl apply -f $FULLPATH/set1900-2-website-controller.yaml
+echo "kubectl apply -f $FULLPATH/set1900-6-website-controller.yaml"
+kubectl apply -f $FULLPATH/set1900-6-website-controller.yaml
 #echo $HR
 
 echo "kubectl rollout status deployment website-controller -n=chp18-set1900"
 kubectl rollout status deployment website-controller -n=chp18-set1900
-#enter
+echo $HR
 
-echo "kubectl apply -f $FULLPATH/set1900-3-website-kubia.yaml"
-kubectl apply -f $FULLPATH/set1900-3-website-kubia.yaml
-#enter
-
-#kubectl apply -f $FULLPATH
-#enter
-
-#echo "kubectl get website kubia -n=chp18-set1900 -o yaml"
-#kubectl get website -n=chp18-set1900 -o yaml
-#echo $HR
+echo "kubectl apply -f $FULLPATH/set1900-7-website-kubia.yaml"
+kubectl apply -f $FULLPATH/set1900-7-website-kubia.yaml
+echo $HR
 
 echo "kubectl get all -n=chp18-set1900"
 kubectl get all -n=chp18-set1900
+echo $HR
+
+echo "kubectl auth can-i get websites.extensions.example.com --as=system:serviceaccount:chp18-set1900:website-controller"
+kubectl auth can-i get websites.extensions.example.com --as=system:serviceaccount:chp18-set1900:website-controller
 echo $HR
 
 echo "Press enter to start deleting objects"

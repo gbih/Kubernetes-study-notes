@@ -1,0 +1,12 @@
+# api version is matching combination of crd.spec.group and crd.spec.version
+apiVersion: thns.com/v1
+kind: TenantConfig
+metadata:
+  name: tenant-config-1
+spec:
+  gitRepo: https://github.com/gbih/bootstrap-dashboard-example.git
+#  tenantId: "1"
+#  category: "Category A"
+#  isCanaryCustomer: true
+
+

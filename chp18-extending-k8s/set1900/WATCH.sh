@@ -11,7 +11,8 @@ CURL_TEST=$(curl -o /dev/null -s -w "time:%{time_total}, code:%{http_code}" $SIT
 
 watch -n 1 -d -t "echo $HR_TOP; \
 echo "Site deployed at " $SITE_IP; \
-echo $CURL_TEST; \
+curl -o /dev/null -s -w "code:%{http_code}" $SITE_IP; echo ""; \
+kubectl auth can-i get websites.extensions.example.com --as=system:serviceaccount:chp18-set1900:website-controller; \
 echo $HR; \
 kubectl get clusterrole clusterrole-psp; \
 kubectl get clusterrolebinding restricted; \

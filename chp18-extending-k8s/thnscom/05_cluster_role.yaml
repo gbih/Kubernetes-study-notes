@@ -1,0 +1,9 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: "thns.com:tenantconfig:reader"
+rules:
+  - apiGroups: ["thns.com"]
+    resources: ["tenantconfigs"]
+    verbs: ["get", "list", "watch"]
+

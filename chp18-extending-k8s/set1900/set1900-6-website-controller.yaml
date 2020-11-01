@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-controller
+  namespace: chp18-set1900
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website-controller # match spec.template.metadata.labels
+  template:
+    metadata:
+      name: website-controller
+      labels:
+        app: website-controller
+    spec:
+      serviceAccount: website-controller
+      containers:
+      - name: main
+        image: georgebaptista/website-controller
+        imagePullPolicy: Always
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          runAsNonRoot: true
+          runAsUser: 1001
+        resources:
+          requests:
+            memory: "100Mi"
+          limits:
+            memory: "200Mi"
+      - name: proxy
+        image: luksa/kubectl-proxy:1.6.2
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          runAsNonRoot: true
+          runAsUser: 1000
+        resources:
+          requests:
+            memory: "100Mi"
+          limits:
+            memory: "200Mi"

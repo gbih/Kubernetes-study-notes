@@ -1,0 +1,31 @@
+!/bin/sh
+clear
+
+HR=$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -)
+HR_TOP=$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "=")
+
+NODE_IP=$(kubectl get node actionbook-vm -o jsonpath={.status.addresses[0].address})
+SITE_IP="http://$NODE_IP:30007"
+
+CURL_TEST=$(curl -o /dev/null -s -w "time:%{time_total}, code:%{http_code}" $SITE_IP)
+
+watch -n 1 -d -t "echo $HR_TOP; \
+echo "Site deployed at " $SITE_IP; \
+curl -o /dev/null -s -w "code:%{http_code}" $SITE_IP; echo ""; \
+kubectl auth can-i get websites.extensions.example.com --as=system:serviceaccount:chp18-set1812:website-controller; \
+echo $HR; \
+kubectl get clusterrole clusterrole-psp; \
+kubectl get clusterrolebinding restricted; \
+kubectl get psp restricted; \
+echo $HR; \
+kubectl get crd -n=chp18-set1812; \
+echo $HR; \
+kubectl get deployment -n=chp18-set1812; \
+kubectl get websites -n=chp18-set1812 -o wide; \
+kubectl get svc -n=chp18-set1812 -o wide; \
+kubectl get pods -n=chp18-set1812 -o wide; \
+echo $HR; \
+kubectl get events -n=chp18-set1812 | tac; \
+echo $HR_TOP"
+
+# kubectl get events -n=chp18-set1812 --sort-by=.metadata.creationTimestamp | tac | grep \"horizontalpodautoscaler\"; \

@@ -1,0 +1,67 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: websites.extensions.example.com
+spec:
+  group: example.com
+  scope: Namespaced # Cluster or Namespaced
+  # RESTful API endpoint is created:
+  # /apis/extensions.example.com/v1/namespaces/{namespace}/website
+  group: extensions.example.com
+
+  names:
+    # kind is normally the CamelCased singular type
+    kind: Website
+    singular: website
+    # plural name in URL: /apis/<group>/<version>/<plural>
+    # /apis/extensions.example.com/v1/websites
+    plural: websites
+
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              image:
+                type: string
+              gitRepo:
+                type: string
+              serviceAccount:
+                type: string
+              serviceAccountName:
+                type: string
+              containers:
+                type: object
+                properties:
+                  securityContext:
+                    type: object
+                    properties:
+                      allowPrivilegeEscalation:
+                        type: boolean
+                      privileged:
+                        type: boolean
+                      runAsNonRoot:
+                        type: boolean
+                      runAsUser:
+                        type: integer
+                  resources:
+                    type: object
+                    properties:
+                      requests:
+                        type: object
+                        properties:
+                          memory:
+                            type: string
+                      limits:
+                        type: object
+                        properties:
+                          memory:
+                            type: string
+                   
+

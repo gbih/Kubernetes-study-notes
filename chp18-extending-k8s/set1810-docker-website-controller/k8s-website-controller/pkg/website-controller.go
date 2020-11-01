@@ -19,6 +19,8 @@ type Metadata struct {
 
 type WebsiteSpec struct {
 	GitRepo string
+  ServiceAccount string
+  ServiceAccountName string
 }
 
 type Website struct {
@@ -87,8 +89,12 @@ func createResource(webserver Website, apiGroup string, kind string, filename st
 	}
 	template := strings.Replace(string(templateBytes), "[NAME]", getName(webserver), -1)
 	template = strings.Replace(template, "[GIT-REPO]", webserver.Spec.GitRepo, -1)
+	template = strings.Replace(template, "[SERVICE-ACCOUNT]", webserver.Spec.ServiceAccount, -1)
+	template = strings.Replace(template, "[SERVICE-ACCOUNT-NAME]", webserver.Spec.ServiceAccountName, -1)
 
 	template = strings.Replace(template, "[NAMESPACE]", webserver.Metadata.Namespace, -1)
+
+
 
 	query := (fmt.Sprintf("http://localhost:8001/%s/namespaces/%s/%s/", apiGroup, webserver.Metadata.Namespace, kind))
 	log.Println("query: ", query)
