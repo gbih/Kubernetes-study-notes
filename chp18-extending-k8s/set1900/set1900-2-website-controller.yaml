@@ -4,10 +4,6 @@ metadata:
   name: website-controller
   namespace: chp18-set1900
 spec:
-#  securityContext:
-#    runAsNonRoot: true
-#    runAsUser: 1000
-
   replicas: 1
   selector:
     matchLabels:
@@ -15,39 +11,33 @@ spec:
   template:
     metadata:
       name: website-controller
-      #namespace: "chp18-set1900" # try this also here?
       labels:
         app: website-controller
     spec:
       serviceAccount: website-controller
       containers:
       - name: main
-        #image: luksa/website-controller
         image: georgebaptista/website-controller
         imagePullPolicy: Always
-  
-        # 1. Need exact schema as in CRD. 
-        # 2. In CRD, we have securityContext nested under container objects
-        # 3. Since we use RBAC+PSP, need securityContext properties here
-        #securityContext:
-        #  runAsNonRoot: true
-        #  runAsUser: 1001
-        #resources:
-        #  requests:
-        #    memory: "100Mi"
-        #  limits:
-        #    memory: "200Mi"
-
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          runAsNonRoot: true
+          runAsUser: 1001
+        resources:
+          requests:
+            memory: "100Mi"
+          limits:
+            memory: "200Mi"
       - name: proxy
         image: luksa/kubectl-proxy:1.6.2
-
-        #securityContext:
-        #  allowPrivilegeEscalation: true # causes error
-        #  privileged: true # causes error
-        #  runAsNonRoot: true
-        #  runAsUser: 1000
-        #resources:
-        #  requests:
-        #    memory: "100Mi"
-        #  limits:
-        #    memory: "200Mi"
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          runAsNonRoot: true
+          runAsUser: 1000
+        resources:
+          requests:
+            memory: "100Mi"
+          limits:
+            memory: "200Mi"
