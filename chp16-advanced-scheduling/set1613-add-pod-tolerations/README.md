@@ -1,4 +1,4 @@
-# Chapter 16, Section 16.1.3
+# 16.1.3 Adding tolerations to pods
 
 ### Objective
 - Deploy production pods to production nodes. Need to tolerate taints added to nodes.

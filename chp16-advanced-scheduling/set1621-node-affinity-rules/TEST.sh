@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Adding tolerations to pods"
+echo "16.2.1 Specifying hard node affinity rules"
 echo $HR_TOP
 
 # Control-plane node

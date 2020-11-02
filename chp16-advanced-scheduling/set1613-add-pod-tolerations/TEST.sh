@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "Adding tolerations to pods"
+echo "16.1.3 Adding tolerations to pods"
 echo $HR_TOP
 
 # Control-plane node
