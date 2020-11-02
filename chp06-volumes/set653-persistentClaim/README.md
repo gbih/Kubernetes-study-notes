@@ -1,4 +1,4 @@
-# Chapter 6, Section 6.5.3
+# 6.5.3 Claiming a PersistentVolume by creating a PersistentVolumeClaim
 
 ### Objective
 1. Explore PersistentClaim

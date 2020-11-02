@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "6.5.3 Claiming a PersistentVolume by creating a PersistentVolumeClaim"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"
