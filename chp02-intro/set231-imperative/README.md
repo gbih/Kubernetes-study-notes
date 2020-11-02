@@ -1,4 +1,4 @@
-# Chapter 2, Section 2.3.1
+# 2.3.1 Deploying your Node.js app, imperative-style
 
 ### Objective
 1. Deploy kubia Go app on Kubernetes
