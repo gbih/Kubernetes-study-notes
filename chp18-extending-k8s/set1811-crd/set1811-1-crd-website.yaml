@@ -25,14 +25,12 @@ spec:
             properties:
               image:
                 type: string
-
               gitRepo:
                 type: string
 
   # either Namespaced or Cluster
   scope: Namespaced
   group: extensions.example.com
-
 
   names:
     # kind is normally the CamelCased singular type. Your resource manifests use this.
@@ -44,6 +42,3 @@ spec:
     # plural name to be used in the URL: /apis/<group>/<version>/<plural>
     plural: websites
 
-
-# Reference:
-# https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
