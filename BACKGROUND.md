@@ -1,4 +1,4 @@
-# Various background papers about Kubernetes and its history
+# Various papers about Kubernetes and its history
 
 - [Borg, Omega, and Kubernetes](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/44843.pdf)
 
