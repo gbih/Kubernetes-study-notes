@@ -1,4 +1,4 @@
-# Chapter 15, Section 15.3.0
+# 15.3.0 Horizontal scaling of cluster nodes
 
 ### Objective
 

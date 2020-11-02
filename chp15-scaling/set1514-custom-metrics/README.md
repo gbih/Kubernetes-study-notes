@@ -1,4 +1,4 @@
-# Chapter 15, Section 15.1.4
+# 15.1.4 Scaling based on other and custom metrics
 
 ### Objective
 

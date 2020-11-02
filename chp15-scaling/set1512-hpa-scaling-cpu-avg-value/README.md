@@ -1,4 +1,4 @@
-# Chapter 12, Section 15.1.2
+# 15.1.2 Scaling based on CPU utilization
 
 ### Objective
 

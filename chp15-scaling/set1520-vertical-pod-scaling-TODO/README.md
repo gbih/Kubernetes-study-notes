@@ -1,4 +1,4 @@
-# Chapter 15, Section 15.2.0
+# 15.2.0 Vertical pod autoscaling
 
 ### Objective
 
