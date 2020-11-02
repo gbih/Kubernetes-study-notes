@@ -19,7 +19,6 @@ type Metadata struct {
 
 type WebsiteSpec struct {
 	GitRepo string
-  ServiceAccount string
   ServiceAccountName string
 }
 
@@ -54,8 +53,6 @@ func main() {
 				log.Fatal(err)
 			}
 
-			// log.Printf("Received watch event: Type: %s, Name: %s, GitRepo: %s\n", event.Type, event.Object.Metadata.Name,  event.Object.Spec.GitRepo)
-
 			log.Printf("Debug: event object: %#v\n", event)
 
 			if event.Type == "ADDED" {
@@ -89,12 +86,8 @@ func createResource(webserver Website, apiGroup string, kind string, filename st
 	}
 	template := strings.Replace(string(templateBytes), "[NAME]", getName(webserver), -1)
 	template = strings.Replace(template, "[GIT-REPO]", webserver.Spec.GitRepo, -1)
-	template = strings.Replace(template, "[SERVICE-ACCOUNT]", webserver.Spec.ServiceAccount, -1)
 	template = strings.Replace(template, "[SERVICE-ACCOUNT-NAME]", webserver.Spec.ServiceAccountName, -1)
-
 	template = strings.Replace(template, "[NAMESPACE]", webserver.Metadata.Namespace, -1)
-
-
 
 	query := (fmt.Sprintf("http://localhost:8001/%s/namespaces/%s/%s/", apiGroup, webserver.Metadata.Namespace, kind))
 	log.Println("query: ", query)
@@ -106,6 +99,7 @@ func createResource(webserver Website, apiGroup string, kind string, filename st
 	resp, err := http.Post(query, "application/json", strings.NewReader(template))
 
 	// resp, err := http.Post(fmt.Sprintf("http://localhost:8001/%s/namespaces/%s/%s/", apiGroup, webserver.Metadata.Namespace, kind), "application/json", strings.NewReader(template))
+
 	if err != nil {
 		fmt.Println("ERROR in createResource()")
 		log.Fatal(err)

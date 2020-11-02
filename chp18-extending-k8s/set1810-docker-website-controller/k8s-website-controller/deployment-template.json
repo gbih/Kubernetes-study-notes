@@ -5,7 +5,8 @@
     "name": "[NAME]",
     "namespace": "[NAMESPACE]",
     "labels": {
-      "webserver": "[NAME]"
+      "webserver": "[NAME]",
+      "type": "website object-deployment"
     }
   },
   "spec": {
@@ -21,11 +22,11 @@
         "name": "[NAME]",
 	      "namespace": "[NAMESPACE]",
         "labels": {
-          "webserver": "[NAME]"
+          "webserver": "[NAME]",
+          "type": "website object deployment"
         }
       },
       "spec": {
-        "serviceAccount": "[SERVICE-ACCOUNT]",
         "serviceAccountName": "[SERVICE-ACCOUNT-NAME]",
         "containers": [
           {
