@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "5.4.4 Configuring Ingress to handlt TLD traffic
+echo "5.4.4 Configuring Ingress to handlt TLD traffic"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

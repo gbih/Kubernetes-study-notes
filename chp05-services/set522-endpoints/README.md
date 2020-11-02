@@ -1,4 +1,4 @@
-# Chapter 5, Section 5.2.2
+# 5.2.2 Manually configuring service endpoints
 
 ### Objective
 1. Explore Endpoint

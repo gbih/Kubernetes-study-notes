@@ -2,7 +2,7 @@
 ## Chapter 5: Services
 
 ### Objectives
-- Work through the mechanisms and details of Services, one of the most important elements in Kubernets.
+- Work through the mechanisms and details of Services, one of the most important elements in Kubernetes.
 
 ### Notes
 - There are essentially 2 mechanisms around Kubernetes Services:
@@ -27,8 +27,8 @@
 
 - If K8s is running in an environment that doesn't support LoadBalancer services, the load balancer will not be provisioned, but the service will still behave like a NodePort service.
 
-- Kubernetes does not offer an implementation of network load-balancers (Services of type LoadBalancer) for bare metal clusters. Bare metal cluster operators are left with two lesser tools to bring user traffic into their clusters, “NodePort” and “externalIPs” services. Both of these options have significant downsides for production use, which makes bare metal clusters second class citizens in the Kubernetes ecosystem. MetalLB aims to redress this imbalance by offering a Network LB implementation that integrates with standard network equipment, so that external services on bare metal clusters also “just work” as much as possible.
-https://metallb.universe.tf/
+- https://metallb.universe.tf/
+> Kubernetes does not offer an implementation of network load-balancers (Services of type LoadBalancer) for bare metal clusters. Bare metal cluster operators are left with two lesser tools to bring user traffic into their clusters, “NodePort” and “externalIPs” services. Both of these options have significant downsides for production use, which makes bare metal clusters second class citizens in the Kubernetes ecosystem. MetalLB aims to redress this imbalance by offering a Network LB implementation that integrates with standard network equipment, so that external services on bare metal clusters also “just work” as much as possible.
 
 - Role of Ingresses
   1. Each LoadBalancer service requires its own load balancer with its own public IP address. However, an Ingress service only requires one load balancer, even when providing access to dozens of services.
@@ -36,8 +36,4 @@ https://metallb.universe.tf/
   3. Multiple services can be exposed through a single Ingress.
   4. Ingresses operate at the application layer of the network stack (HTTP) and can provide features such as cookie-based session affinity and the like, which services cannot.
   5. To make Ingress resources work, an Ingress Controller needs to be running in the cluster.
-
-
-
-
 

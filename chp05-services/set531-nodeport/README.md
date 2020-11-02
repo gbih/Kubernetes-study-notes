@@ -1,4 +1,4 @@
-# Chapter 5, Section 5.3.1
+# 5.3.1 Using a NodePort service
 
 ### Objective
 1. Explore NodePort service

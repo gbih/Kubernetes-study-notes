@@ -1,4 +1,4 @@
-# Chapter 5, Section 5.3.2
+# 5.3.2 Exposing a service through an external load balancer
 
 ### Objective
 1. Explore LoadBalancer service

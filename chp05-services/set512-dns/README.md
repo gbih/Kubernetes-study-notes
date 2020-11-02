@@ -1,4 +1,4 @@
-# Chapter 5, Section 5.1.2
+# 5.1.2 Discovering services
 
 ### Objective
 1. Explore Services

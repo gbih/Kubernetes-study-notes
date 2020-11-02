@@ -1,4 +1,4 @@
-# Chapter 5, Section 5.4.1
+# 5.4.1 Creating an Ingress resource
 
 ### Objective
 1. Explore Ingress
