@@ -90,7 +90,7 @@ sudo docker version
 sudo docker login --username **** --password ****
 ```
 
-If you don’t want to preface the docker command with sudo, create a Unix group called docker and add users to it. When the Docker daemon starts, it creates a Unix socket accessible by members of the docker group.
+If you don't want to preface the docker command with sudo, create a Unix group called docker and add users to it. When the Docker daemon starts, it creates a Unix socket accessible by members of the docker group.
 To create the docker group and add your user:
 
 Create the docker group.
