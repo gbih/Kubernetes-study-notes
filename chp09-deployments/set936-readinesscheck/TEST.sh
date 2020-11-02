@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "9.3.6 Blocking rollouts of bad versions"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

@@ -1,4 +1,4 @@
-# Chapter 9, Section 9.3.6
+# 9.3.6 Blocking rollouts of bad versions
 
 ### Objective
 

@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "9.3.1 Creating a Deployment"
 echo $HR_TOP
 
 kubectl apply -f $FULLPATH/set931-0-ns.yaml --record

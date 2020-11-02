@@ -1,4 +1,4 @@
-# Chapter 9, Section 9.3.1
+# 9.3.1 Creating a Deployment
 
 ### Objective
 

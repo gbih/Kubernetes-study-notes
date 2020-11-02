@@ -1,5 +1,4 @@
-# Study Notes for Kubernetes In Action, v1
-## Chapter 9
+# 9.2.1 Running the initial version of the app
 
 ### Objectives
 1. Manually update ReplicationController without deprecated `rolling-update` command

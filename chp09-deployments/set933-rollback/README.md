@@ -1,4 +1,4 @@
-# Chapter 9, Section 9.3.3
+# 9.3.3 Rolling back a deployment
 
 ### Objective
 

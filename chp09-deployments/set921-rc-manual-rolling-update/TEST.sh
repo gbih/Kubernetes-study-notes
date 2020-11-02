@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "9.2.1 Running the initial version of the app"
 echo $HR_TOP
 
 echo "NOTES:"

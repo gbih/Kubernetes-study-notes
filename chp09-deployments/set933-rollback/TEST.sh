@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "9.3.3 Rolling back a deployment"
 echo $HR_TOP
 
 kubectl apply -f $FULLPATH/set933-0-ns.yaml
