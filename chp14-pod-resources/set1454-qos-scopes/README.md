@@ -1,4 +1,4 @@
-# Chapter 12, Section 12.2
+# 14.5.4 Specifying quotas for specific pod states and/or QoS classes
 
 ### Objective
 

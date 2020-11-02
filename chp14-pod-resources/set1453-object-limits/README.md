@@ -1,4 +1,4 @@
-# Chapter 12, Section 12.2
+# 14.5.3 Limiting the number of objects that can be created
 
 ### Objective
 

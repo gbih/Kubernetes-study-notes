@@ -1,3 +1,6 @@
+# 14.1.0 Creating pods with resource requests
+
+### Notes
 Requesting resources for a pod's containers
 
 Setting both how much a pod is expected to consume and the maximum amount it's allowed to consume is a vital part of any pod definition. Setting these two sets of parameters makes sure that a pod takes only its fair share of the resources provided by the Kubernetes cluster and also affects how pods are scheduled across the cluster.

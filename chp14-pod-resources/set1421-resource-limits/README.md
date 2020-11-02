@@ -1,4 +1,6 @@
-NOTES:
+# 14.2.1 Setting a hard limit for the amount of resources a container can use
+
+### NOTES:
 
 * Limiting resources available to a container
 

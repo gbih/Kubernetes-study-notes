@@ -1,4 +1,6 @@
-NOTES:
+# 14.4.2 Creating a LimitRange object
+
+### NOTES:
 
 Setting default requests and limits for pods per namespace
 We've looked at how resource requests and limits can be set for each individual container. If you don’t set them, the container is at the mercy of all other containers that do specify resource requests and limits. It’s a good idea to set requests and limits on every container.

@@ -1,4 +1,6 @@
-NOTES:
+# 14.5.1 Introducing the ResourceQuota object
+
+### NOTES:
 Limiting the total resources available in a namespace
 
 As you've seen, LimitRanges only apply to individual pods, but cluster admins also need a way to limit the total amount of resources available in a namespace. This is achieved by creating a ResourceQuota object.

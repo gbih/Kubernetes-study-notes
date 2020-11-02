@@ -1,4 +1,6 @@
-NOTES:
+# 14.4.4 Applying default resource requests and limits
+
+### NOTES:
 Applying default resource requests and limits
 
 Default resource requests and limits can be set on containers that don't specify them.
