@@ -1,4 +1,4 @@
-# Chapter 11, Section 11.1
+# 11.1.8b Extra: Exploring iptables
 
 ### Objective
 

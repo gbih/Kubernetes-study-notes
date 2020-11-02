@@ -1,4 +1,4 @@
-# Chapter 11, Section 11.1.8
+# 11.1.8 The role of Kubernetes Service Proxy
 
 ### Objective
 

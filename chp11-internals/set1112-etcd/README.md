@@ -1,4 +1,4 @@
-# Chapter 11, Section 11.1
+# 11.1.2 How Kubernetes uses etcd
 
 ### Objective
 
