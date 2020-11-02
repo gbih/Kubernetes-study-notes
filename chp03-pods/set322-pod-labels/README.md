@@ -1,4 +1,4 @@
-# Chapter 3, Section 3.2.2
+# 3.2.2 Creating a simple YAML descriptor for a pod
 
 ### Objective
 1. Labels and Selectors
