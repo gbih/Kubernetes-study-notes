@@ -1,8 +1,12 @@
+# This creates the website-controller pod, not the final custom website object
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: website-controller
   namespace: chp18-set1812
+  labels:
+    type: website-controller
 spec:
   replicas: 1
   selector:
@@ -12,13 +16,13 @@ spec:
     metadata:
       labels:
         app: website-controller
+        type: website-controller
     spec:
-      serviceAccount: website-controller
       serviceAccountName: website-controller
 
       containers:
       - name: main
-        image: georgebaptista/website-controller
+        image: georgebaptista/website-controller:v1.1
         imagePullPolicy: Always
         securityContext:
           allowPrivilegeEscalation: false
@@ -32,6 +36,7 @@ spec:
             memory: "200Mi"
       - name: proxy
         image: luksa/kubectl-proxy:1.6.2
+        imagePullPolicy: Always
         securityContext:
           allowPrivilegeEscalation: false
           privileged: false

@@ -2,7 +2,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: restricted
-
+  labels:
+    type: clusterrolebinding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -12,11 +13,3 @@ subjects:
 - kind: ServiceAccount
   name: website-controller
   namespace: chp18-set1812
-
-#- kind: ServiceAccount
-#  name: default
-#  namespace: chp18-set1812
-
-#- apiGroup: rbac.authorization.k8s.io # OK
-#  kind: Group
-#  name: system:serviceaccounts:chp18-set1812

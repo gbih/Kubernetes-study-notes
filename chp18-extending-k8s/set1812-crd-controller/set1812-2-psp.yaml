@@ -3,18 +3,21 @@ apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: restricted
+  labels:
+    type: podsecuritypolicy
 spec:
   privileged: false
   allowPrivilegeEscalation: false
   allowedCapabilities:
   - "" # allow default set
   volumes:
-    - 'configMap'
-    - 'emptyDir'
-    - 'projected'
-    - 'secret'
-    - 'downwardAPI'
-    - 'persistentVolumeClaim'
+  - '*'
+#    - 'configMap'
+#    - 'emptyDir'
+#    - 'projected'
+#    - 'secret'
+#    - 'downwardAPI'
+#    - 'persistentVolumeClaim'
   hostNetwork: false
   hostIPC: false
   hostPID: false

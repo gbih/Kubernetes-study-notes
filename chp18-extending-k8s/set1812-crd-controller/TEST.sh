@@ -47,6 +47,7 @@ echo "kubectl get all -n=chp18-set1812"
 kubectl get all -n=chp18-set1812
 echo $HR
 
+echo "RBAC TESTS:"
 echo "kubectl auth --as=system:serviceaccount:chp18-set1812:website-controller can-i get websites.extensions.example.com"
 kubectl auth --as=system:serviceaccount:chp18-set1812:website-controller can-i get websites.extensions.example.com
 echo $HR
@@ -63,11 +64,6 @@ echo "kubectl auth --as=system:serviceaccount:chp18-set1812:website-controller c
 kubectl auth --as=system:serviceaccount:chp18-set1812:website-controller can-i create replicasets
 echo $HR
 
-echo "kubectl auth --as=system:serviceaccount:chp18-set1812:website-controller can-i create replicationcontrollers"
-kubectl auth --as=system:serviceaccount:chp18-set1812:website-controller can-i create replicationcontrollers
-echo $HR
-
-
 echo "Press enter to start deleting objects"
 
 enter
@@ -77,8 +73,15 @@ enter
 
 #enter
 
-echo "kubectl delete -f $FULLPATH"
-kubectl delete -f $FULLPATH --ignore-not-found
+#echo "kubectl delete -f $FULLPATH"
+#kubectl delete -f $FULLPATH --ignore-not-found
+echo "kubectl delete ..."
+kubectl delete -f set1812-2-psp.yaml
+kubectl delete -f set1812-3-customrole.yaml
+kubectl delete -f set1812-4-customrolebinding.yaml
+kubectl delete -f set1812-5-website-crd.yaml
+kubectl delete -f set1812-6-website-controller.yaml
+kubectl delete -f set1812-7-website-kubia.yaml
 
 #kubectl delete clusterrolebinding website-controller
 
