@@ -1,0 +1,7 @@
+apiVersion: extensions.example.com/v1 # group name
+kind: Website
+metadata:
+  name: kubia
+  namespace: chp18-set1811b
+spec:
+  gitRepo: https://github.com/luksa/kubia-website-example.git
