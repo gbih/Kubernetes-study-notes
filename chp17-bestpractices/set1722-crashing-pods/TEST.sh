@@ -32,8 +32,6 @@ kubectl describe rs crashing-pods -n=chp17-set1722
 enter
 
 POD0=$(kubectl get pods -n=chp17-set1722 -o jsonpath={'.items[0].metadata.name'})
-#echo "POD0 is $POD0"
-#echo ""
 
 echo "The pod status also shows as running."
 echo ""

@@ -1,4 +1,4 @@
-docker build -t kubiaprivate .
+dcker build -t kubiaprivate .
 
 
 docker tag kubiaprivate georgebaptista/kubiaprivate:private

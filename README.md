@@ -36,10 +36,18 @@ multipass shell actionbook-vm
 ```
 
 * Install MicroK8s
-- We want to explore etcdctl later. Microk8s 1.18 is the last version to use etcdctl (1.19 uses dqlite)
+
 ```shell
-sudo snap install microk8s --classic --channel=1.18/stable
+sudo snap install microk8s --classic --channel=1.19/stable
 ```
+
+
+* We want to explore etcdctl later. Even though Microk8s 1.19 now uses dqlite as the default, we can revert to etcd by disabling ha-cluster:
+```shell
+microk8s.disable ha-cluster
+sudo snap install etcd
+```
+
 
 * Add the user ubuntu to the 'microk8s' group:
 ```shell
