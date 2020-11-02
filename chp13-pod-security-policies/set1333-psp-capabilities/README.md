@@ -1,3 +1,6 @@
+# 13.3.3 Configuring allowed, default, and disallowed capabilities
+
+### Notes
 Configuring allowed, default, and disallowed capabilities
 
 As you learned, containers can run in privileged mode or not, and you can define a more fine-grained permission configuration by adding or dropping Linux kernel capabilities in each container. Three fields influence which capabilities containers can or cannot use:

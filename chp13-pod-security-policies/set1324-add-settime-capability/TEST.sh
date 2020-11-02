@@ -10,11 +10,6 @@ echo "$value"
 
 enter
 
-#value=$(<PSP/podsecuritypolicy.yaml)
-#echo "$value"
-
-#enter
-
 ((i++))
 
 echo "$i. Deploying the app"

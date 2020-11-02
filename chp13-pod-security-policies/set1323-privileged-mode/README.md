@@ -1,4 +1,4 @@
-# Chapter 13, Section 13.23
+# 13.2.3 Running pods in privileged mode
 
 ### Objective
 

@@ -1,3 +1,6 @@
+# 13.2.7 Sharing volumes when containers run as different users
+
+### Notes
 Sharing volumes when containers run as different users
 
 In chapter 6, we explained how volumes are used to share data between the pod's containers. You had no trouble writing files in one container and reading them in the other.

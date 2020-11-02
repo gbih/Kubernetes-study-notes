@@ -15,29 +15,10 @@ echo "$value"
 
 enter
 
-#echo "PSP/psp-sample01.yaml"
-#value2=$(<PSP/psp-sample01.yaml)
-#echo "$value2"
-
-#enter
-
-#((i++))
-#echo "$i. Check API-Server settings"
-#echo ""
-
-
-#echo "cat /var/snap/microk8s/current/args/kube-apiserver"
-#echo ""
-#cat /var/snap/microk8s/current/args/kube-apiserver
-
-#enter
-
 ((i++))
 echo "$i. Deploying the app"
 echo ""
 
-#echo "kubectl apply -f $FULLPATH/PSP"
-#kubectl apply -f $FULLPATH/PSP
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH --record
 
@@ -70,9 +51,6 @@ kubectl get pods -n=chp13-set1322 -o wide --sort-by=.status.podIP
 echo ""
 echo "kubectl get node"
 kubectl get node
-#echo ""
-#echo "kubectl get psp"
-#kubectl get psp
 
 enter
 
@@ -92,10 +70,6 @@ echo $HR
 ((i++))
 echo "$i. Clean-up"
 echo ""
-
-#echo "kubectl delete -f $FULLPATH/PSP --now"
-#kubectl delete -f $FULLPATH/PSP --now
-#echo ""
 
 echo "kubectl delete -f $FULLPATH --now"
 kubectl delete -f $FULLPATH --now

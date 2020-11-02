@@ -1,3 +1,7 @@
+# 13.3.1 Introducing the PodSecurityPolicy resource
+
+### Notes
+
 PodSecurityPolicy is a cluster-level (non-namespaced) resource, which defines what security-related features users can or can't use in their pods. The job of upholding the policies configured in PodSecurityPolicy resources is performed by the PodSecurityPolicy admission control plugin running in the API server.
 
 When someone posts a pod resource to the API server, the PodSecurityPolicy admission control plugin validates the pod definition against the configured PodSecurityPolicies. If the pod conforms to the cluster's policies, it's accepted and stored into etcd; otherwise it’s rejected immediately. The plugin may also modify the pod resource according to defaults configured in the policy.

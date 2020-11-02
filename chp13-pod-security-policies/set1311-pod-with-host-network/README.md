@@ -1,4 +1,4 @@
-# Chapter 13, Section 13.11
+# 13.1.1 Using the node’s network namespace in a pod
 
 ### Objective
 
@@ -14,7 +14,7 @@ Containers in a pod usually run under separate Linux namespaces, which isolate t
 For example, we learned that each pod gets its own IP and port space, because it uses its own network namespace. Likewise, each pod has its own process tree, because it has its own PID namespace, and it also uses its own IPC namespace, allowing only processes in the same pod to communicate with each other through the Inter-Process Communication mechanism (IPC).
 
 
-** Using the node's network namespace in a pod
+* Using the node's network namespace in a pod
 
 Certain pods (usually system pods) need to operate in the host's default namespaces, allowing them to see and manipulate node-level resources and devices. For example, a pod may need to use the node’s network adapters instead of its own virtual network adapters. This can be achieved by setting the hostNetwork property in the pod spec to true.
 

@@ -1,3 +1,7 @@
+# 13.2.4 Adding individual kernel capabilities to a container
+
+### Notes
+
 Adding individual kernel capabilities to a container
 
 In the previous section, you saw one way of giving a container unlimited power. In the old days, traditional UNIX implementations only distinguished between privileged and unprivileged processes, but for many years, Linux has supported a much more fine-grained permission system through kernel capabilities.

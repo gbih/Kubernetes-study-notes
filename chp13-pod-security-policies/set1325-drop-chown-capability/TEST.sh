@@ -32,13 +32,6 @@ kubectl get node
 echo $HR
 echo "kubectl describe sa -n=chp13-set1325"
 kubectl describe sa -n=chp13-set1325
-echo $HR
-
-#echo "kubectl describe clusterrole psp-min-psp"
-#kubectl describe clusterrole psp-min-psp 
-#echo $HR
-#echo "kubectl describe clusterrolebinding psp-min-psp"
-#kubectl describe clusterrolebinding psp-min-psp
 
 enter
 

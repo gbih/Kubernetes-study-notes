@@ -1,4 +1,4 @@
-# Chapter 13, Section 13.21
+# 13.2.1 Running a container as a specific user
 
 ### Objective
 

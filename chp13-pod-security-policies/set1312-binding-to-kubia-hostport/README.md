@@ -1,4 +1,4 @@
-# Chapter 13, Section 13.12
+# 13.1.2 Binding to a host port without using the host’s network namespace
 
 ### Objective
 

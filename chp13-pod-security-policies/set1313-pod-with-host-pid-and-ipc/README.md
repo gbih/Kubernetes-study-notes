@@ -1,4 +1,4 @@
-# Chapter 13, Section 13.13
+# 13.1.1 Using the node's PID and IPC namespaces
 
 ### Objective
 

@@ -1,4 +1,4 @@
-# Chapter 13, Section 13.22
+# 13.2.2 Preventing a container from running as root
 
 ### Objective
 
