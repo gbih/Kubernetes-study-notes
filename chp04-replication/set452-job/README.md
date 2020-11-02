@@ -1,4 +1,4 @@
-# Chapter 4, Section 4.5.2
+# 4.5.2 Defining a Job resource
 
 ### Objective
 1. Explore Jobs

@@ -1,4 +1,4 @@
-# Chapter 4, Section 4.5.4
+# 4.5.4 Running multiple pod instances in a Job
 
 ### Objective
 1. Explore multiple job instances in a Job

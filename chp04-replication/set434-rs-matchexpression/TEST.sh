@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-echo "4.3.4 Using the ReplicaSet’s more expressive label selectors"
+echo "4.3.4 Using the ReplicaSet's more expressive label selectors"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH/set434-0-ns.yaml"

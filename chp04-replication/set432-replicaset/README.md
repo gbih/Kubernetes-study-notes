@@ -1,4 +1,4 @@
-# Chapter 4, Section 4.3.2
+# 4.3.2 Defining a ReplicaSet
 
 ### Objective
 1. Explore ReplicaSets

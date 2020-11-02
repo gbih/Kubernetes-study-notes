@@ -1,4 +1,4 @@
-# Chapter 4, Section 4.6.1
+# 4.6.1 Creating a CronJob
 
 ### Objective
 1. Explore Kubernetes CronJobs

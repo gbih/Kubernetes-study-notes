@@ -1,4 +1,4 @@
-# Chapter 4, Section 4.1.2
+# 4.1.2 Creating an HTTP-based liveness probe
 
 ### Objective
 1. Explore using liveness probe with pods

@@ -1,4 +1,4 @@
-# Chapter 4, Section 4.5.5
+# 4.5.5 Limiting the time allowed for a Job pod to complete
 
 ### Objective
 1. Explore multiple job instances running parallel

@@ -1,4 +1,4 @@
-# Chapter 4, Section 4.4.2
+# 4.4.2 Using a DaemonSet to run pods only on certain nodes
 
 ### Objective
 1. Explore DaemonSets

@@ -1,4 +1,4 @@
-# Chapter 4, Section 4.3.4
+# 4.3.4 Using the ReplicaSet's more expressive label selectors
 
 ### Objective
 1. Explore ReplicaSets with expressive label selectors
