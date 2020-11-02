@@ -1,4 +1,4 @@
-# Chapter 7, Section 7.4.4
+# 7.4.4 Passing all entries of a ConfigMap as environment variables at once
 
 ### Objective
 

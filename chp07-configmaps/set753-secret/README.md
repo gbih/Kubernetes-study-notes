@@ -1,4 +1,4 @@
-# Chapter 7, Section 7.5.3
+# 7.5.3 Creating a Secret
 
 ### Objective
 

@@ -1,4 +1,4 @@
-# Chapter 7, Section 7.2.2
+# 7.2.2 Overriding the command and arguments in Kubernetes
 
 ### Objective
 

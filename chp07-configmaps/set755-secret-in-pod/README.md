@@ -1,4 +1,4 @@
-# Chapter 7, Section 7.5.3
+# 7.5.5 Using the Secret in a pod
 
 ### Objective
 

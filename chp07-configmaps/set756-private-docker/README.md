@@ -1,4 +1,4 @@
-# Chapter 7, Section 7.5.6
+# 7.5.6 Understanding image pull Secrets
 
 ### Objective
 

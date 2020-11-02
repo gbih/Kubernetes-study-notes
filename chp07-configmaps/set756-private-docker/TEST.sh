@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "7.5.6 Understanding image pull Secrets"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH/set756-0-ns.yaml"

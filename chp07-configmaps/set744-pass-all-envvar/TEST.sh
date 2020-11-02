@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "7.4.4 Passing all entries of a ConfigMap as environment variables at once"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

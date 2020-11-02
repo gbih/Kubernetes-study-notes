@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "7.3.1 Specifying environment variables in a container definition"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

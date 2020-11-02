@@ -1,4 +1,4 @@
-# Chapter 7, Section 7.4.5
+# 7.4.5 Passing a ConfigMap entry as a command-line argument
 
 ### Objective
 

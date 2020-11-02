@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "7.4.5 Passing a ConfigMap entry as a command-line argument"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

@@ -1,4 +1,4 @@
-# Chapter 7, Section 7.3.3
+# 7.3.1 Specifying environment variables in a container definition
 
 ### Objective
 

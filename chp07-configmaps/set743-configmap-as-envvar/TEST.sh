@@ -1,6 +1,7 @@
 #!/bin/bash
 . ../../SETUP.sh
 FULLPATH=$(pwd)
+echo "7.4.3 Passing a ConfigMap entry to a container as an environment variable"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

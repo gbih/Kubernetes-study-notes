@@ -1,4 +1,4 @@
-# Chapter 7, Section 7.4.3
+# 7.4.3 Passing a ConfigMap entry to a container as an environment variable
 
 ### Objective
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "7.4.2 Creating a ConfigMap"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

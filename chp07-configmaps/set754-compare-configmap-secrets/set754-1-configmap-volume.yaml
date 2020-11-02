@@ -20,4 +20,4 @@ data:
 kind: ConfigMap
 metadata:
   name: fortune-config
-  namespace: chp07-set753
+  namespace: chp07-set754

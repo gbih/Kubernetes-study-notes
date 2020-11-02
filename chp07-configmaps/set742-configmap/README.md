@@ -1,4 +1,4 @@
-# Chapter 7, Section 7.4.2
+# 7.4.2 Creating a ConfigMap
 
 ### Objective
 

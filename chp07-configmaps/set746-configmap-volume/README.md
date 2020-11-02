@@ -1,4 +1,4 @@
-# Chapter 7, Section 7.4.6
+# 7.4.6 Using a configMap volume to expose ConfigMap entries as files
 
 ### Objective
 

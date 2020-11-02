@@ -1,6 +1,7 @@
 #!/bin/bash
 . ../../SETUP.sh
 FULLPATH=$(pwd)
+echo "7.4.6 Using a configMap volume to expose ConfigMap entries as files"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

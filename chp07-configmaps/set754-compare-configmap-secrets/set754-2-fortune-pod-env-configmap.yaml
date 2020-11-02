@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: fortune-https
-  namespace: chp07-set753
+  namespace: chp07-set754
   labels:
     app: fortune-https
 spec:

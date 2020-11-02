@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "7.5.3 Creating a Secret"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH/set753-0-ns.yaml"

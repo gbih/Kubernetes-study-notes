@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "7.2.2 Overriding the command and arguments in Kubernetes"
 echo $HR_TOP
 
 kubectl apply -f $FULLPATH

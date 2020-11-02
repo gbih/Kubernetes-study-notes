@@ -1,24 +1,25 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "7.5.4 Comparing ConfigMaps and Secrets"
 echo $HR_TOP
 
-echo "kubectl apply -f $FULLPATH/set753-0-ns.yaml"
-echo "kubectl apply -f $FULLPATH/set753-1-configmap-volume.yaml"
-kubectl apply -f $FULLPATH/set753-0-ns.yaml
-kubectl apply -f $FULLPATH/set753-1-configmap-volume.yaml
+echo "kubectl apply -f $FULLPATH/set754-0-ns.yaml"
+echo "kubectl apply -f $FULLPATH/set754-1-configmap-volume.yaml"
+kubectl apply -f $FULLPATH/set754-0-ns.yaml
+kubectl apply -f $FULLPATH/set754-1-configmap-volume.yaml
 echo $HR
 
 rm -f https.cert
 rm -f https.key
 rm -f foo
 
-value=$(<set753-1-configmap-volume.yaml)
+value=$(<set754-1-configmap-volume.yaml)
 echo "$value"
 
 enter
 
-#value=$(<set753-2-fortune-pod-env-configmap.yaml)
+#value=$(<set754-2-fortune-pod-env-configmap.yaml)
 #echo "$value"
 
 #enter
@@ -42,11 +43,11 @@ echo $HR
 
 
 echo "Create a Secret from the three files."
-echo 'kubectl -n=chp07-set753 create secret generic fortune-https \
+echo 'kubectl -n=chp07-set754 create secret generic fortune-https \
 --from-file=https.key \
 --from-file=https.cert \
 --from-file=foo'
-kubectl -n=chp07-set753 create secret generic fortune-https \
+kubectl -n=chp07-set754 create secret generic fortune-https \
 --from-file=https.key \
 --from-file=https.cert \
 --from-file=foo
@@ -54,18 +55,18 @@ kubectl -n=chp07-set753 create secret generic fortune-https \
 
 enter
 
-echo "kubectl get secret fortune-https -n=chp07-set753 -o yaml"
-kubectl get secret fortune-https -n=chp07-set753 -o yaml 
+echo "kubectl get secret fortune-https -n=chp07-set754 -o yaml"
+kubectl get secret fortune-https -n=chp07-set754 -o yaml 
 
 enter
 
-echo "kubectl get configmap fortune-config -n=chp07-set753 -o yaml"
-kubectl get configmap fortune-config -n=chp07-set753 -o yaml
+echo "kubectl get configmap fortune-config -n=chp07-set754 -o yaml"
+kubectl get configmap fortune-config -n=chp07-set754 -o yaml
 
 enter
 
-echo "kubectl delete ns chp07-set753"
-kubectl delete ns chp07-set753
+echo "kubectl delete ns chp07-set754"
+kubectl delete ns chp07-set754
 
 
 : <<'END_COMMENT'
@@ -75,8 +76,8 @@ enter
 echo "See if it’s serving HTTPS traffic by opening a port-forward tunnel to the pod’s port 443 and using it to send a request to the server with curl"
 echo ""
 
-echo "kubectl port-forward fortune-https -n=chp07-set753 8443:443 &"
-kubectl port-forward fortune-https -n=chp07-set753 8443:443 &
+echo "kubectl port-forward fortune-https -n=chp07-set754 8443:443 &"
+kubectl port-forward fortune-https -n=chp07-set754 8443:443 &
 echo ""
 #echo $HR
 
