@@ -1,4 +1,4 @@
-# Chapter 6, Section 6.5.2
+# 6.5.2 Creating a PersistentVolume
 
 ### Objective
 1. Explore PersistentVolume

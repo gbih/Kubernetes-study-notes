@@ -1,4 +1,4 @@
-# Chapter 6, Section 6.2.2
+# 6.2.2 Using a Git repository as the starting point for a volume - deprecated. Use init-container instead to use git repos
 
 ### Objective
 

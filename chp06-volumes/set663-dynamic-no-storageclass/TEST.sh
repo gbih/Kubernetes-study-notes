@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "6.6.3 Dynamic provisioning without specifying a storage class"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

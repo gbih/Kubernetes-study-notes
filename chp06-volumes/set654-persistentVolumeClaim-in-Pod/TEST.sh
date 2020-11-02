@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "6.5.4 Using a PersistentVolumeClaim in a pod"
 echo $HR_TOP
 
 kubectl apply -f $FULLPATH

@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "6.2.1 Using an emptyDir volume"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

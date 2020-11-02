@@ -1,4 +1,4 @@
-# Chapter 6, Section 6.6.1
+# 6.6.1 Defining the available storage types through StorageClass resources
 
 ### Objective
 1. Explore Dynamic provisioning of PersistentVolumes 

@@ -1,4 +1,4 @@
-# Chapter 6, Section 6.6.3
+# 6.6.3 Dynamic provisioning without specifying a storage class
 
 ### Objective
 1. Explore Dynamic provisioning of PersistentVolumes 

@@ -1,4 +1,4 @@
-# Chapter 6, Section 6.5.4
+# 6.5.4 Using a PersistentVolumeClaim in a pod
 
 ### Objective
 1. Explore PersistentVolumeClaim in a pod

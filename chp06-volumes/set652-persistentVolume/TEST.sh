@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "6.5.2 Creating a PersistentVolume"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

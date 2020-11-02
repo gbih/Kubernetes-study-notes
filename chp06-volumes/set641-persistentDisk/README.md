@@ -1,4 +1,4 @@
-# Chapter 6, Section 6.4.1
+# 6.2.1 Using a Persistent Disk in a pod volume (hostPath volume in multipass
 
 ### Objective
 1. Explore Persistent Disk

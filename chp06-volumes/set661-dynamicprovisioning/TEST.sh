@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "6.6.1 Defining the available storage types through StorageClass resources"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

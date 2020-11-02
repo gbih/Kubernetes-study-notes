@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "6.2.1 Using a Persistent Disk in a pod volume (hostPath volume in multipass)"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

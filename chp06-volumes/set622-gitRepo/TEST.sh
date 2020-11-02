@@ -1,7 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
-
+echo "6.2.2 Using a Git repository as the starting point for a volume - deprecated. Use init-container instead to use git repos"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

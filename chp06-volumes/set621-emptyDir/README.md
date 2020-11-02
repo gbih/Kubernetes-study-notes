@@ -1,4 +1,4 @@
-# Chapter 6, Section 6.2.1
+# 6.2.1 Using an emptyDir volume
 
 ### Objective
 
