@@ -1,4 +1,6 @@
-17.2.4c Pre-stop hook
+# 17.2.4c Tests for Section 17.6 pre-stop hook
+
+### Notes
 
 https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/
 

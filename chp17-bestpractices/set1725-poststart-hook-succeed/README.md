@@ -1,4 +1,4 @@
-# 17.2.4b USING A POST-START CONTAINER LIFECYCLE HOOK
+# 17.2.4b Adding lifecyle hooks - Post-start hooks
 
 Selected material from:
 https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/
