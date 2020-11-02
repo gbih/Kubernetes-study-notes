@@ -1,10 +1,13 @@
-IMPORTANT:
-You can't communicate with your pods through the Service you created because it's headless.
-You'll need to connect to individual pods directly (or create a regular Service, but that wouldn’t allow you to talk to a specific pod).
+# 10.3.1 Creating the app and container image
 
-Here we will communicate directly with the pod by using the API server as a proxy to the pods.
+### Notes
 
-One useful feature of the API server is the ability to proxy connections directly to individual pods. Because the API server is secured, sending requests to pods through the API server is cumbersome.
+- You can't communicate with your pods through the Service you created because it's headless.
+- You'll need to connect to individual pods directly (or create a regular Service, but that wouldn’t allow you to talk to a specific pod).
+
+- Here we will communicate directly with the pod by using the API server as a proxy to the pods.
+
+- One useful feature of the API server is the ability to proxy connections directly to individual pods. Because the API server is secured, sending requests to pods through the API server is cumbersome.
 
 <apiServerHost>:<port>/api/v1/namespaces/default/pods/kubia-0/proxy/<path>
 so, we use:

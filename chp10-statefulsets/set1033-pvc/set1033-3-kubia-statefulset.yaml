@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: kubia
-  namespace: chp10-set1030
+  namespace: chp10-set1033
   labels:
     app: kubia
 spec:
@@ -32,7 +32,7 @@ spec:
       # a PVC for each pod.
       name: data 
       labels:
-        custom-label: chp10-set1030
+        custom-label: chp10-set1033
     spec:
       resources:
         requests:

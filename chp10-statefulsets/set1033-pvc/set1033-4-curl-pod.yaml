@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: curl-pod
-  namespace: chp10-set1030
+  namespace: chp10-set1033
 spec:
   containers:
   - name: curl-container

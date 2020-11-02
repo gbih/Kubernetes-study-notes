@@ -1,4 +1,4 @@
-# Chapter 10, Section 10.3.0
+# 10.3.3 Playing with your pods
 
 ### Objective
 

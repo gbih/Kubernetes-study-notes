@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "10.3.1 Creating the app and container image"
 echo $HR_TOP
 
 echo "Run this in a separate terminal:"
