@@ -1,4 +1,4 @@
-# Chapter 8, Section 8.1.3
+# 8.1.3 Passing metadata through files in a downwardAPI volume
 
 ### Objective
 

@@ -1,6 +1,7 @@
 #!/bin/bash
-. ../../SETUP.sh
+. ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "8.2.3 Simplifying API server communication with ambassador containers"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

@@ -1,6 +1,7 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "8.2.2 Talking to the API server from within a pod"
 echo $HR_TOP
 
 echo "kubectl apply -f $FULLPATH"

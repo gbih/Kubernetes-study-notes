@@ -1,4 +1,4 @@
-# Chapter 8, Section 8.2.2
+# 8.2.2 Talking to the API server from within a pod
 
 ### Objective
 

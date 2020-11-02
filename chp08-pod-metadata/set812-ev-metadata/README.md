@@ -1,4 +1,4 @@
-# Chapter 8, Section 8.1.2
+# 8.1.2 Exposing metadata through environment variables
 
 ### Objective
 

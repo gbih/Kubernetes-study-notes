@@ -1,4 +1,4 @@
-# Chapter 8, Section 8.2.4
+# 8.2.4 Using client libraries to talk to the API server
 
 ### Objective
 

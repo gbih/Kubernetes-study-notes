@@ -1,7 +1,9 @@
 #!/bin/bash
 . ~/src/common/setup.sh
 FULLPATH=$(pwd)
+echo "8.1.2 Exposing metadata through environment variables"
 echo $HR_TOP
+
 
 echo "kubectl apply -f $FULLPATH"
 kubectl apply -f $FULLPATH
