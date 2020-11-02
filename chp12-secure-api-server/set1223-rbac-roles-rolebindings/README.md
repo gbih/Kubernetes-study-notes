@@ -1,4 +1,4 @@
-# Chapter 12, Section 12.2.3
+# 12.2.3 Using Roles and RoleBindings
 
 ### Objective
 

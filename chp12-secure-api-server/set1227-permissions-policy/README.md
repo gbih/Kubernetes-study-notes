@@ -1,5 +1,4 @@
-# Study Notes for Kubernetes In Action, v1
-## Chapter 12
+# 12.2.7 Granting authorization permissions wisely
 
 ### Objectives
 

@@ -1,4 +1,4 @@
-# Chapter 12, Section 12.2.4
+# 12.2.4 Using ClusterRoles and ClusterRoleBindings
 
 ### Objective
 - Explore using ClusterRoles and ClusterRoleBinding

@@ -1,5 +1,4 @@
-# Study Notes for Kubernetes In Action, v1
-## Chapter 12
+# 12.2.8 Explore through privilege levels with RoleBindings
 
 ### Objectives
 

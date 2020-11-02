@@ -1,4 +1,4 @@
-# Chapter 12, Section 12.1.2
+# 12.1.4 Assigning a ServiceAccount to a pod
 
 ### Objective
 
